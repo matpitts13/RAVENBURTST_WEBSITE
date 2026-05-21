@@ -1,5 +1,6 @@
 ---
 const links = [
+  { href: '/',         label: 'Home' },
   { href: '/features', label: 'Features' },
   { href: '/pricing',  label: 'Pricing' },
   { href: '/support',  label: 'Support' },
@@ -17,7 +18,7 @@ const current = Astro.url.pathname
     <div class="hidden md:flex items-center gap-8">
       {links.map(l => (
         <a href={l.href}
-          class:list={['text-sm transition-colors', current === l.href ? 'text-white font-medium' : 'text-rb-muted hover:text-rb-text']}>
+          class:list={['text-sm transition-colors', (l.href === '/' ? current === '/' : current === l.href) ? 'text-white font-medium' : 'text-rb-muted hover:text-rb-text']}>
           {l.label}
         </a>
       ))}
