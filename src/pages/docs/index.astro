@@ -1,0 +1,29 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro'
+---
+<DocsLayout title="Documentation" description="Everything you need to get the most out of Ravenburst.">
+  <h1 class="text-4xl font-serif font-bold text-rb-text mb-4">Ravenburst Documentation</h1>
+  <p class="text-rb-muted text-lg mb-10 leading-relaxed">Everything you need to get up and running, and make the most of every feature.</p>
+
+  <div class="grid md:grid-cols-2 gap-4">
+    {[
+      { href: '/docs/getting-started', icon: '🚀', title: 'First Launch', body: 'Install Ravenburst, start your trial, and create your first project.' },
+      { href: '/docs/features', icon: '✍️', title: 'Features Guide', body: 'A walkthrough of every feature — editor, navigator, AI tools, and more.' },
+      { href: '/docs/keyboard-shortcuts', icon: '⌨️', title: 'Keyboard Shortcuts', body: 'Every shortcut in one place. Print-friendly.' },
+      { href: '/docs/export-formats', icon: '📄', title: 'Export Formats', body: 'Manuscript, paperback, screenplay, academic, children\'s book, EPUB — all documented.' },
+      { href: '/docs/ai-setup', icon: '🤖', title: 'Setting Up AI', body: 'Configure Ollama (local, free) or Claude (your API key) for editorial AI features.' },
+      { href: '/docs/license', icon: '🔑', title: 'License & Activation', body: 'Activate your license, manage devices, and understand how the trial works.' },
+    ].map(card => (
+      <a href={card.href} class="bg-rb-surface border border-rb-border rounded-xl p-5 hover:border-rb-accent transition-colors block">
+        <div class="text-2xl mb-3">{card.icon}</div>
+        <div class="font-semibold text-rb-text mb-1">{card.title}</div>
+        <div class="text-sm text-rb-muted leading-relaxed">{card.body}</div>
+      </a>
+    ))}
+  </div>
+
+  <div class="mt-10 bg-rb-surface border border-rb-border rounded-xl p-6 text-sm text-rb-muted">
+    <strong class="text-rb-text">Need more help?</strong> Email us at
+    <a href="mailto:support@ravenburst.com" class="text-rb-accent">support@ravenburst.com</a> — we reply within 48 hours.
+  </div>
+</DocsLayout>

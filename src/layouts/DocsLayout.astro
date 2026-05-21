@@ -1,0 +1,82 @@
+---
+import Base from './Base.astro'
+import Nav from '../components/Nav.astro'
+import Footer from '../components/Footer.astro'
+
+interface Props {
+  title: string
+  description?: string
+}
+const { title, description } = Astro.props
+const current = Astro.url.pathname
+
+const sections = [
+  {
+    heading: 'Getting Started',
+    links: [
+      { href: '/docs', label: 'Overview' },
+      { href: '/docs/getting-started', label: 'First Launch' },
+    ],
+  },
+  {
+    heading: 'Using Ravenburst',
+    links: [
+      { href: '/docs/features', label: 'Features Guide' },
+      { href: '/docs/keyboard-shortcuts', label: 'Keyboard Shortcuts' },
+      { href: '/docs/export-formats', label: 'Export Formats' },
+    ],
+  },
+  {
+    heading: 'AI Setup',
+    links: [
+      { href: '/docs/ai-setup', label: 'Setting Up AI' },
+    ],
+  },
+  {
+    heading: 'License & Account',
+    links: [
+      { href: '/docs/license', label: 'License & Activation' },
+    ],
+  },
+]
+---
+<Base title={`${title} — Docs`} description={description}>
+  <Nav />
+  <div class="pt-24 max-w-6xl mx-auto px-6 flex gap-10 pb-20 min-h-screen">
+
+    <!-- Sidebar -->
+    <aside class="hidden md:block w-56 flex-shrink-0 pt-8">
+      <div class="sticky top-28">
+        <p class="text-xs uppercase tracking-widest text-rb-muted font-semibold mb-4">Documentation</p>
+        {sections.map(s => (
+          <div class="mb-6">
+            <p class="text-xs uppercase tracking-wider text-rb-muted mb-2">{s.heading}</p>
+            <ul class="space-y-1">
+              {s.links.map(l => (
+                <li>
+                  <a
+                    href={l.href}
+                    class:list={[
+                      'block text-sm px-2 py-1 rounded transition-colors',
+                      (current === l.href || (l.href !== '/docs' && current.startsWith(l.href)))
+                        ? 'text-rb-text bg-rb-surface font-medium'
+                        : 'text-rb-muted hover:text-rb-text',
+                    ]}
+                  >
+                    {l.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </aside>
+
+    <!-- Main content -->
+    <main class="flex-1 pt-8 min-w-0">
+      <slot />
+    </main>
+  </div>
+  <Footer />
+</Base>

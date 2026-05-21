@@ -1,0 +1,90 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro'
+---
+<DocsLayout title="Features Guide" description="A complete walkthrough of every Ravenburst feature.">
+  <h1 class="text-4xl font-serif font-bold text-rb-text mb-2">Features Guide</h1>
+  <p class="text-rb-muted mb-10">A walkthrough of every major feature in Ravenburst.</p>
+
+  <div class="space-y-12 text-sm text-rb-muted leading-relaxed">
+
+    <section>
+      <h2 class="text-xl font-semibold text-rb-text mb-4">The Editor</h2>
+      <p class="mb-3">Ravenburst uses a full rich-text editor with a two-row format bar above it. The format bar controls character formatting (bold, italic, font, size, colour, highlight) in the top row, and paragraph formatting (alignment, lists, indent, line spacing, tables) in the bottom row.</p>
+      <p class="mb-3">Notable editor behaviours:</p>
+      <ul class="space-y-1 list-disc list-inside">
+        <li><strong class="text-rb-text">No autocorrect.</strong> Ever. What you type is what stays.</li>
+        <li><strong class="text-rb-text">No autocomplete.</strong> No AI whispering sentence completions.</li>
+        <li><strong class="text-rb-text">Typewriter mode</strong> — toggle via View menu or Ctrl+Shift+T. Keeps your cursor centred vertically as you type.</li>
+        <li><strong class="text-rb-text">Zoom</strong> — scale the editor text independently of your OS zoom. The percentage shows in the status bar.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-semibold text-rb-text mb-4">Navigator & Project Structure</h2>
+      <p class="mb-3">The Navigator on the left shows your full project tree. Every project contains:</p>
+      <ul class="space-y-1 list-disc list-inside mb-3">
+        <li><strong class="text-rb-text">Manuscript</strong> — Parts, Chapters, Scenes in any nesting</li>
+        <li><strong class="text-rb-text">Front Matter</strong> — title page, dedication, epigraph, etc.</li>
+        <li><strong class="text-rb-text">Characters</strong> — character cards with full profile fields</li>
+        <li><strong class="text-rb-text">Places</strong> — location cards</li>
+        <li><strong class="text-rb-text">Reference</strong> — notes and images for research</li>
+        <li><strong class="text-rb-text">Notes</strong> — freeform notes not tied to the manuscript</li>
+        <li><strong class="text-rb-text">Templates</strong> — reusable document templates</li>
+        <li><strong class="text-rb-text">AI Reports</strong> — saved outputs from AI analysis</li>
+        <li><strong class="text-rb-text">Trash</strong> — soft-deleted documents, restorable at any time</li>
+      </ul>
+      <p>Drag to reorder. Double-click to rename. Right-click for context menu options.</p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-semibold text-rb-text mb-4">Snapshots</h2>
+      <p class="mb-3">Press <strong class="text-rb-text">Ctrl+Shift+S</strong> at any time to save a named snapshot of the current document. Snapshots are stored permanently — nothing is ever auto-deleted.</p>
+      <p>Browse, preview, and restore snapshots from the Snapshots panel (accessible from the document's right-click menu or the Inspector panel).</p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-semibold text-rb-text mb-4">Find & Replace</h2>
+      <ul class="space-y-1 list-disc list-inside">
+        <li><strong class="text-rb-text">Ctrl+F</strong> — find within the current document. Supports regex.</li>
+        <li><strong class="text-rb-text">Ctrl+Shift+F</strong> — project-wide search across all documents.</li>
+        <li>Replace single or all instances. Click a result to jump to the document and highlight the match.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-semibold text-rb-text mb-4">Spellcheck & Dictionary</h2>
+      <p class="mb-3">Spellcheck runs as you type. Misspelled words are underlined in red. Right-click for suggestions, to ignore, or to add to your custom dictionary.</p>
+      <p>Your custom dictionary is stored locally — character names and technical terms you add are remembered between sessions. Manage your dictionary via <strong class="text-rb-text">Edit → Manage Custom Dictionary</strong>.</p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-semibold text-rb-text mb-4">Word Count</h2>
+      <p>Word counts appear in the status bar at all times — per document and per project. Select text to see a selection count. Open <strong class="text-rb-text">View → Word Count Panel</strong> for a full breakdown by chapter.</p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-semibold text-rb-text mb-4">Import</h2>
+      <p>Go to <strong class="text-rb-text">File → Import</strong> to import:</p>
+      <ul class="space-y-1 list-disc list-inside mt-2">
+        <li><strong class="text-rb-text">.docx</strong> — Microsoft Word (formatting preserved)</li>
+        <li><strong class="text-rb-text">.txt</strong> — Plain text</li>
+        <li><strong class="text-rb-text">.md</strong> — Markdown</li>
+        <li><strong class="text-rb-text">.fountain</strong> — Fountain screenplay format</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-semibold text-rb-text mb-4">AI Features</h2>
+      <div class="bg-rb-surface border border-rb-accent/30 rounded-lg p-4 mb-4 text-rb-muted">
+        <strong class="text-rb-text">The AI does not write for you.</strong> Every AI feature is editorial — it finds problems, asks questions, and surfaces information. It will never generate prose, suggest sentences, or complete your thoughts.
+      </div>
+      <ul class="space-y-3 list-disc list-inside">
+        <li><strong class="text-rb-text">Continuity Check</strong> — scans your manuscript for character inconsistencies, timeline errors, and name variants. Results saved to AI Reports.</li>
+        <li><strong class="text-rb-text">Writing Coach</strong> — structural feedback in the form of questions, not rewrites. Challenges your thinking without touching your words.</li>
+        <li><strong class="text-rb-text">Reference Assistant</strong> — factual background research. Answers saved to your Reference section, never auto-inserted into your manuscript.</li>
+        <li><strong class="text-rb-text">Story Bible</strong> — extracts characters, locations, and events from your chapters automatically.</li>
+      </ul>
+    </section>
+
+  </div>
+</DocsLayout>

@@ -1,0 +1,72 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro'
+const formats = [
+  {
+    group: 'Manuscript',
+    items: [
+      { name: 'Manuscript DOCX', desc: 'Standard manuscript format. Times New Roman 12pt, double-spaced, 1" margins, chapter breaks, page numbers, author name in header. Opens in Microsoft Word or any DOCX-compatible editor.' },
+      { name: 'Manuscript PDF', desc: 'Same formatting as Manuscript DOCX, exported as a PDF.' },
+    ]
+  },
+  {
+    group: 'Paperback / Print',
+    items: [
+      { name: 'Paperback 5×7', desc: 'KDP-ready interior PDF at 5"×7" trim size. Correct margins for Amazon KDP paperback submission.' },
+      { name: 'Paperback 6×9', desc: 'KDP-ready interior PDF at 6"×9" trim size. The most common paperback format.' },
+      { name: 'Proof 5×7 / 6×9', desc: 'Same as paperback, intended for ordering a physical proof copy.' },
+    ]
+  },
+  {
+    group: 'Screenplay & Stage Play',
+    items: [
+      { name: 'Screenplay PDF', desc: 'WGA-standard format. Courier 12pt, scene headings in caps, action blocks, character names centred above dialogue, parentheticals.' },
+      { name: 'Screenplay Fountain', desc: 'Exports your screenplay as a .fountain file — readable in Highland, Fade In, and other Fountain-compatible apps.' },
+      { name: 'Stage Play PDF', desc: 'Samuel French / Dramatists Play Service format. Character names centred, dialogue indented, stage directions in italics.' },
+    ]
+  },
+  {
+    group: "Children's Book",
+    items: [
+      { name: "Children's Book — Square (8.5\"×8.5\")", desc: 'Classic square picture book format. KDP-compliant with 0.125" bleed and 0.25" safe zone. Images extend to bleed edge; text stays within safe zone.' },
+      { name: "Children's Book — Portrait (8.5\"×11\")", desc: 'Taller portrait format for more illustration space.' },
+      { name: "Children's Book — Landscape (11\"×8.5\")", desc: 'Wide panoramic format. Great for sweeping scenes and double-page spreads.' },
+    ]
+  },
+  {
+    group: 'Academic',
+    items: [
+      { name: 'Academic APA — DOCX', desc: 'APA 7th Edition (2019). Double-spaced, Times New Roman 12pt, running head, title page, abstract, References section label. Format specs are user-editable via Help → Check for Format Updates.' },
+      { name: 'Academic APA — PDF', desc: 'Same formatting as APA DOCX, exported as PDF.' },
+      { name: 'Academic MLA — DOCX', desc: 'MLA 9th Edition (2021). Double-spaced, Times New Roman 12pt, LastName # header, Works Cited label.' },
+      { name: 'Academic MLA — PDF', desc: 'Same as MLA DOCX, exported as PDF.' },
+    ]
+  },
+  {
+    group: 'Other',
+    items: [
+      { name: 'EPUB', desc: 'Standard e-book format. Compatible with Calibre, Apple Books, Kobo, and most e-readers.' },
+      { name: 'Print', desc: 'Sends the current document to your system printer via the OS print dialog.' },
+    ]
+  },
+]
+---
+<DocsLayout title="Export Formats" description="Every export format Ravenburst supports, documented.">
+  <h1 class="text-4xl font-serif font-bold text-rb-text mb-2">Export Formats</h1>
+  <p class="text-rb-muted mb-10">Access all formats via <strong class="text-rb-text">File → Compile / Export</strong>.</p>
+
+  <div class="space-y-10 text-sm text-rb-muted">
+    {formats.map(group => (
+      <section>
+        <h2 class="text-base font-semibold text-rb-text mb-4 border-b border-rb-border pb-2">{group.group}</h2>
+        <div class="space-y-4">
+          {group.items.map(item => (
+            <div class="bg-rb-surface rounded-lg p-4 border border-rb-border">
+              <div class="font-medium text-rb-text mb-1">{item.name}</div>
+              <div class="leading-relaxed">{item.desc}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+    ))}
+  </div>
+</DocsLayout>

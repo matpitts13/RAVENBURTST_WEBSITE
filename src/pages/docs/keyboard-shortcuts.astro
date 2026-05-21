@@ -1,0 +1,117 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro'
+const mod = 'Ctrl'
+const shortcuts = [
+  {
+    section: 'File',
+    items: [
+      [mod+'+N', 'New Project'],
+      [mod+'+O', 'Open Project'],
+      [mod+'+S', 'Save'],
+      [mod+'+Shift+E', 'Compile / Export'],
+      [mod+'+P', 'Print'],
+    ]
+  },
+  {
+    section: 'Edit',
+    items: [
+      [mod+'+Z', 'Undo'],
+      [mod+'+Shift+Z', 'Redo'],
+      [mod+'+X', 'Cut'],
+      [mod+'+C', 'Copy'],
+      [mod+'+V', 'Paste'],
+      [mod+'+A', 'Select All'],
+      [mod+'+F', 'Find in document'],
+      [mod+'+Shift+F', 'Find in project'],
+    ]
+  },
+  {
+    section: 'Format — Character',
+    items: [
+      [mod+'+B', 'Bold'],
+      [mod+'+I', 'Italic'],
+      [mod+'+U', 'Underline'],
+      [mod+'+Shift+X', 'Strikethrough'],
+      [mod+'+Shift+=', 'Superscript'],
+      [mod+'+Shift+-', 'Subscript'],
+      [mod+'+'+'\\', 'Clear Formatting'],
+    ]
+  },
+  {
+    section: 'Format — Paragraph',
+    items: [
+      [mod+'+Alt+0', 'Normal paragraph'],
+      [mod+'+Alt+1', 'Heading 1'],
+      [mod+'+Alt+2', 'Heading 2'],
+      [mod+'+Alt+3', 'Heading 3'],
+      [mod+'+Shift+L', 'Align Left'],
+      [mod+'+Shift+E', 'Align Centre'],
+      [mod+'+Shift+R', 'Align Right'],
+      [mod+'+Shift+J', 'Justify'],
+      [mod+'+Shift+7', 'Numbered List'],
+      [mod+'+Shift+8', 'Bullet List'],
+    ]
+  },
+  {
+    section: 'Insert',
+    items: [
+      [mod+'+Shift+F', 'Insert Footnote'],
+    ]
+  },
+  {
+    section: 'View',
+    items: [
+      [mod+'+=', 'Zoom In'],
+      [mod+'+'-'', 'Zoom Out'],
+      [mod+'+0', 'Reset Zoom'],
+      [mod+'+Shift+T', 'Typewriter Mode'],
+      ['F11', 'Fullscreen'],
+    ]
+  },
+  {
+    section: 'Snapshots',
+    items: [
+      [mod+'+Shift+S', 'Save Snapshot'],
+    ]
+  },
+  {
+    section: 'Navigation',
+    items: [
+      [mod+'+[', 'Previous Document'],
+      [mod+'+]', 'Next Document'],
+      [mod+'+Shift+/', 'Keyboard Shortcuts'],
+      [mod+'+,', 'Preferences'],
+    ]
+  },
+  {
+    section: 'Help',
+    items: [
+      [mod+'+Shift+'+'/', 'Keyboard Shortcuts'],
+    ]
+  },
+]
+---
+<DocsLayout title="Keyboard Shortcuts" description="Every Ravenburst keyboard shortcut in one place.">
+  <h1 class="text-4xl font-serif font-bold text-rb-text mb-2">Keyboard Shortcuts</h1>
+  <p class="text-rb-muted mb-10">All shortcuts use <kbd class="bg-rb-surface border border-rb-border text-rb-text px-1.5 py-0.5 rounded text-xs">Ctrl</kbd> on Windows/Linux and <kbd class="bg-rb-surface border border-rb-border text-rb-text px-1.5 py-0.5 rounded text-xs">Cmd</kbd> on macOS.</p>
+
+  <div class="space-y-8">
+    {shortcuts.map(group => (
+      <section>
+        <h2 class="text-sm uppercase tracking-widest text-rb-muted font-semibold mb-3 border-b border-rb-border pb-2">{group.section}</h2>
+        <table class="w-full text-sm">
+          <tbody>
+            {group.items.map(([key, action]) => (
+              <tr class="border-b border-rb-border/50">
+                <td class="py-2 pr-6 w-52">
+                  <kbd class="bg-rb-surface border border-rb-border text-rb-text px-2 py-0.5 rounded text-xs font-mono">{key}</kbd>
+                </td>
+                <td class="py-2 text-rb-muted">{action}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </section>
+    ))}
+  </div>
+</DocsLayout>

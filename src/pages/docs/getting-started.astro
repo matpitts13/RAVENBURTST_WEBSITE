@@ -1,0 +1,61 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro'
+---
+<DocsLayout title="First Launch" description="Install Ravenburst and create your first project.">
+  <h1 class="text-4xl font-serif font-bold text-rb-text mb-2">First Launch</h1>
+  <p class="text-rb-muted mb-10">Get up and running in under 5 minutes.</p>
+
+  <div class="space-y-10 text-sm text-rb-muted leading-relaxed">
+
+    <section>
+      <h2 class="text-xl font-semibold text-rb-text mb-4">1. Download & Install</h2>
+      <p class="mb-3">Download the installer for your platform from the <a href="/download" class="text-rb-accent">Download page</a>.</p>
+      <ul class="space-y-2 list-disc list-inside">
+        <li><strong class="text-rb-text">Windows:</strong> Run the <code class="bg-rb-surface px-1 rounded">.exe</code> installer. Ravenburst installs to your user directory — no admin rights needed.</li>
+        <li><strong class="text-rb-text">macOS:</strong> Open the <code class="bg-rb-surface px-1 rounded">.dmg</code> and drag Ravenburst to Applications.</li>
+        <li><strong class="text-rb-text">Linux:</strong> Make the <code class="bg-rb-surface px-1 rounded">.AppImage</code> executable (<code class="bg-rb-surface px-1 rounded">chmod +x</code>) and run it.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-semibold text-rb-text mb-4">2. Start Your Free Trial</h2>
+      <p class="mb-3">On first launch, Ravenburst connects to our server to register a <strong class="text-rb-text">7-day free trial</strong> for your machine. No account, no credit card required.</p>
+      <p>If you're offline, the app will start in offline mode — the trial begins once you connect to the internet.</p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-semibold text-rb-text mb-4">3. Create Your First Project</h2>
+      <p class="mb-3">Click <strong class="text-rb-text">File → New Project</strong> or use the startup screen. You'll be asked to:</p>
+      <ol class="space-y-2 list-decimal list-inside">
+        <li>Choose a <strong class="text-rb-text">project type</strong> — Novel, Screenplay, Academic Paper, Children's Book, and more</li>
+        <li>Name your project</li>
+        <li>Choose where to save the <code class="bg-rb-surface px-1 rounded">.wrytr</code> file</li>
+      </ol>
+      <p class="mt-3">Ravenburst creates a pre-structured project based on your template — chapters, scenes, characters, and reference sections all ready to go.</p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-semibold text-rb-text mb-4">4. Start Writing</h2>
+      <p class="mb-3">Click any document in the Navigator on the left to open it in the editor. Everything saves automatically every 3 seconds.</p>
+      <p>The status bar at the bottom shows your word count, save status, zoom level, and license status at a glance.</p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-semibold text-rb-text mb-4">5. Set Up AI (Optional)</h2>
+      <p class="mb-3">Ravenburst's AI features are editorial only — they never write prose for you. If you want to use them:</p>
+      <ul class="space-y-2 list-disc list-inside">
+        <li>Click the <strong class="text-rb-text">AI OFF</strong> button in the status bar</li>
+        <li>The setup wizard walks you through downloading an AI model — no command line needed</li>
+        <li>Once complete, the button switches to <strong class="text-rb-text">AI ON</strong></li>
+      </ul>
+      <p class="mt-3">See <a href="/docs/ai-setup" class="text-rb-accent">Setting Up AI</a> for full details.</p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-semibold text-rb-text mb-4">6. Activate Your License</h2>
+      <p class="mb-3">When you're ready to buy, go to <a href="/pricing" class="text-rb-accent">Pricing</a>. After purchase you'll receive an activation code by email.</p>
+      <p>Enter it via <strong class="text-rb-text">Help → Enter Activation Code</strong>. Your license works on up to 3 devices.</p>
+    </section>
+
+  </div>
+</DocsLayout>

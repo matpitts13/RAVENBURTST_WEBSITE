@@ -1,0 +1,60 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro'
+---
+<DocsLayout title="Setting Up AI" description="Configure Ollama or Claude for Ravenburst's editorial AI features.">
+  <h1 class="text-4xl font-serif font-bold text-rb-text mb-2">Setting Up AI</h1>
+  <p class="text-rb-muted mb-4">Ravenburst supports two AI providers. Both are optional — all writing and exporting works without AI.</p>
+
+  <div class="bg-rb-surface border border-rb-accent/30 rounded-xl p-5 mb-10 text-sm text-rb-muted">
+    <strong class="text-rb-text">The AI does not write for you.</strong> Ravenburst's AI acts as an editor only. It finds problems, asks questions, and surfaces research — but it will never generate prose, suggest sentences, or complete your thoughts. This is enforced in code, not policy.
+  </div>
+
+  <div class="space-y-12 text-sm text-rb-muted leading-relaxed">
+
+    <section>
+      <h2 class="text-xl font-semibold text-rb-text mb-4">Option 1 — Ollama (Local, Free)</h2>
+      <p class="mb-3">Ollama is the default AI provider. It runs entirely on your machine — no internet needed, no API key, no usage fees. Ravenburst bundles the Ollama binary in the installer so you never need to open a terminal.</p>
+      <h3 class="font-semibold text-rb-text mt-4 mb-2">Setup steps</h3>
+      <ol class="space-y-2 list-decimal list-inside">
+        <li>Click the <strong class="text-rb-text">AI OFF</strong> button in the status bar at the bottom of the app</li>
+        <li>The AI setup wizard opens — choose <strong class="text-rb-text">Ollama (Local)</strong></li>
+        <li>Select a model to download. We recommend <strong class="text-rb-text">llama3.2</strong> for a balance of quality and speed. Larger models need more RAM.</li>
+        <li>Wait for the download to complete (size varies by model — typically 2–8 GB)</li>
+        <li>The button switches to <strong class="text-rb-text">AI ON</strong> — you're ready</li>
+      </ol>
+      <h3 class="font-semibold text-rb-text mt-6 mb-2">System requirements for Ollama</h3>
+      <ul class="space-y-1 list-disc list-inside">
+        <li>8 GB RAM minimum (16 GB recommended for larger models)</li>
+        <li>A GPU dramatically improves speed but is not required — CPU inference works</li>
+        <li>2–8 GB disk space per model</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-semibold text-rb-text mb-4">Option 2 — Claude (Anthropic API)</h2>
+      <p class="mb-3">Claude provides more powerful analysis than local models. You use your own Anthropic API key — Ravenburst has no affiliation with Anthropic and receives nothing from your usage.</p>
+      <div class="bg-rb-surface border border-rb-amber/40 rounded-lg p-4 mb-4">
+        <strong class="text-rb-text">Cost note:</strong> Claude API usage is billed directly by Anthropic at their standard rates. Your key, your bill, your data. Check <strong class="text-rb-text">console.anthropic.com</strong> for current pricing.
+      </div>
+      <h3 class="font-semibold text-rb-text mt-4 mb-2">Setup steps</h3>
+      <ol class="space-y-2 list-decimal list-inside">
+        <li>Go to <strong class="text-rb-text">console.anthropic.com</strong>, create an account, and generate an API key</li>
+        <li>In Ravenburst, click <strong class="text-rb-text">AI OFF</strong> in the status bar</li>
+        <li>Choose <strong class="text-rb-text">Claude (API Key)</strong> in the setup wizard</li>
+        <li>Paste your API key — it's stored in your OS keychain, never in the app's database</li>
+        <li>The button switches to <strong class="text-rb-text">AI ON</strong></li>
+      </ol>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-semibold text-rb-text mb-4">Switching Providers</h2>
+      <p>You can switch between Ollama and Claude at any time in <strong class="text-rb-text">Preferences → AI</strong>. Your Claude key is remembered in the keychain — you don't need to re-enter it.</p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-semibold text-rb-text mb-4">Turning AI Off</h2>
+      <p>Click the <strong class="text-rb-text">AI ON</strong> button in the status bar to disable all AI features. Nothing is deleted — turn it back on at any time.</p>
+    </section>
+
+  </div>
+</DocsLayout>
