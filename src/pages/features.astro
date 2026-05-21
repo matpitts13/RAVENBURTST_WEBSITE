@@ -5,11 +5,11 @@ import Footer from '../components/Footer.astro'
 const features = [
   { icon: '✍️', title: 'Rich Text Editor', body: 'Full TipTap editor with format bar, bubble menu on selection, heading styles, lists, tables, and more. No autocorrect. No autocomplete. Ever.' },
   { icon: '📁', title: 'Full Project Structure', body: 'Chapters, scenes, parts, characters, places, reference materials, front matter, templates, and AI reports — all in one portable file.' },
-  { icon: '🔍', title: 'Continuity Check', body: 'AI scans your manuscript for character inconsistencies, timeline issues, location logic errors, and name variants. Reports saved with timestamps.' },
-  { icon: '📖', title: 'Writing Coach', body: 'Structural feedback in the form of questions — not rewrites. The coach asks what a good editor would ask. Your answers stay yours.' },
-  { icon: '🔬', title: 'Reference Assistant', body: 'Ask factual background research questions. Answers are clearly marked when uncertain, saved to your Reference section, and never invented.' },
+  { icon: '🔍', title: 'Continuity Check', body: 'AI scans your manuscript for character inconsistencies, timeline errors, and name variants — then reports what it found. It never rewrites your prose.' },
+  { icon: '📖', title: 'Writing Coach', body: 'Structural feedback in the form of questions, not rewrites. The coach asks what a good editor would ask. It challenges your thinking. Your words stay yours.' },
+  { icon: '🔬', title: 'Reference Assistant', body: 'Ask factual background questions. Get research, not sentences. Answers are clearly marked when uncertain, saved to your Reference section, never auto-inserted.' },
   { icon: '📚', title: 'Story Bible', body: 'Extract characters, locations, objects, and events from your chapters automatically. Build a consistency reference as you write.' },
-  { icon: '🌙', title: 'Local AI — Free Forever', body: 'Ollama is bundled with Ravenburst. No account needed. No API key. The AI runs on your machine. Optionally upgrade to Claude with your own key.' },
+  { icon: '🌙', title: 'Local AI — Free Forever', body: 'Ollama is bundled with Ravenburst. No account needed. No API key. The AI runs entirely on your machine. Optionally upgrade to Claude with your own key.' },
   { icon: '📊', title: 'Word Count Everything', body: 'Per-document, per-project, per-selection. Visible in the status bar always. Target word count progress bar. Breakdown by chapter.' },
   { icon: '📸', title: 'Snapshot History', body: 'Ctrl+Shift+S saves a named snapshot of any document. Browse, preview, and restore at any time. Nothing is ever truly deleted.' },
   { icon: '🔎', title: 'Find & Replace', body: 'In-document find bar with regex support. Project-wide search across all documents. Replace single or all instances.' },
@@ -23,6 +23,15 @@ const features = [
     <div class="text-center mb-16">
       <h1 class="text-4xl md:text-5xl font-serif font-bold mb-4">Built for writers who mean it.</h1>
       <p class="text-rb-muted text-xl max-w-xl mx-auto">Everything you need. Nothing you don't. No upsells, no add-ons, no feature flags.</p>
+    </div>
+    <div class="bg-rb-surface border border-rb-accent/30 rounded-2xl p-6 mb-12 max-w-3xl mx-auto text-center">
+      <div class="text-2xl mb-3">🚫✍️</div>
+      <h2 class="text-rb-text font-semibold text-lg mb-2">The AI does not write for you. Ever.</h2>
+      <p class="text-rb-muted text-sm leading-relaxed">
+        Ravenburst's AI acts as an editor, not a ghostwriter. It finds problems, asks questions, and surfaces information —
+        but it will never generate prose, suggest sentences, or complete your thoughts.
+        Every word in your manuscript is yours. That's not a limitation. That's the point.
+      </p>
     </div>
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
       {features.map(f => (
