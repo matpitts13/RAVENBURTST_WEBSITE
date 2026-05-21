@@ -1,0 +1,38 @@
+---
+import Base from '../layouts/Base.astro'
+import Nav from '../components/Nav.astro'
+import Footer from '../components/Footer.astro'
+---
+<Base title="Changelog" description="What's new in Ravenburst.">
+  <Nav />
+  <main class="pt-32 pb-20 px-6 max-w-2xl mx-auto">
+    <h1 class="text-4xl font-serif font-bold mb-12">Changelog</h1>
+    <div class="space-y-12">
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <span class="bg-rb-accent text-white text-xs px-3 py-1 rounded-full font-medium">v1.0.0</span>
+          <span class="text-rb-muted text-sm">Coming soon</span>
+        </div>
+        <ul class="space-y-2 text-sm text-rb-muted">
+          {[
+            'Full rich-text editor with TipTap',
+            'All 9 Navigator sections (Manuscript, Characters, Places, Reference, Notes, Templates, Front Matter, AI Reports, Trash)',
+            'AI editorial tools (Continuity Check, Writing Coach, Story Bible, Reference Assistant)',
+            'Export to Manuscript DOCX/PDF, Paperback, Screenplay, Stage Play, EPUB, Academic (APA/MLA), Children\'s Book',
+            'Import from DOCX, TXT, Markdown, Fountain',
+            'Project templates (Novel, Screenplay, Stage Play, Non-Fiction, Children\'s Book, Academic, Short Story)',
+            'Snapshot history with restore',
+            'Offline-first, local AI with Ollama',
+            'Windows, macOS, Linux',
+          ].map(item => (
+            <li class="flex items-start gap-2">
+              <span class="text-rb-accent mt-1">+</span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</Base>

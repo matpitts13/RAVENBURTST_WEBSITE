@@ -1,0 +1,37 @@
+---
+const links = [
+  { href: '/features', label: 'Features' },
+  { href: '/pricing',  label: 'Pricing' },
+  { href: '/support',  label: 'Support' },
+  { href: '/about',    label: 'About' },
+]
+const current = Astro.url.pathname
+---
+<header class="fixed top-0 left-0 right-0 z-50 border-b border-rb-border bg-rb-bg/90 backdrop-blur-sm">
+  <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="/" class="flex items-center gap-3 text-rb-text hover:text-white transition-colors">
+      <span class="text-2xl font-serif text-rb-accent" style="font-style:italic">𝕽</span>
+      <span class="font-semibold tracking-wide">Ravenburst</span>
+    </a>
+
+    <div class="hidden md:flex items-center gap-8">
+      {links.map(l => (
+        <a href={l.href}
+          class:list={['text-sm transition-colors', current === l.href ? 'text-white font-medium' : 'text-rb-muted hover:text-rb-text']}>
+          {l.label}
+        </a>
+      ))}
+    </div>
+
+    <div class="flex items-center gap-3">
+      <a href="/download"
+        class="text-sm text-rb-muted hover:text-rb-text transition-colors hidden md:block">
+        Download
+      </a>
+      <a href="/pricing"
+        class="text-sm bg-rb-accent hover:bg-rb-accent-hv text-white px-4 py-2 rounded-lg transition-colors font-medium">
+        Get Ravenburst
+      </a>
+    </div>
+  </nav>
+</header>

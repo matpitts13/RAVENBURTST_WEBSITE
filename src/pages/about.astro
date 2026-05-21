@@ -1,0 +1,39 @@
+---
+import Base from '../layouts/Base.astro'
+import Nav from '../components/Nav.astro'
+import Footer from '../components/Footer.astro'
+---
+<Base title="About" description="Ravenburst is built by one person, for writers who take their craft seriously.">
+  <Nav />
+  <main class="pt-32 pb-20 px-6 max-w-2xl mx-auto">
+    <h1 class="text-4xl md:text-5xl font-serif font-bold mb-8">About Ravenburst</h1>
+
+    <div class="prose prose-invert max-w-none text-rb-muted leading-relaxed space-y-6">
+      <p class="text-xl text-rb-text">
+        Ravenburst is built by one person, for writers who take their craft seriously.
+      </p>
+      <p>
+        I got frustrated. Every "AI writing tool" wanted to write for me.
+        Every writing app wanted a monthly subscription. Every "professional" tool was designed
+        for people who wanted features, not for people who wanted to write.
+      </p>
+      <p>
+        So I built the tool I wanted. One that gets out of the way when you're writing,
+        and earns its keep when you need it — catching the continuity errors you missed,
+        asking the structural questions a good editor would ask, never putting a single
+        word of your story on the page for you.
+      </p>
+      <p>
+        The AI rule in Ravenburst is enforced in code, not policy. Every AI call includes a
+        system prompt that explicitly forbids prose generation. It's not a toggle. It's not
+        a setting you can turn off. Because your story belongs to you — not to a language model.
+      </p>
+      <p>
+        The name is a nod to Edgar Allan Poe's The Raven. A burst of creativity.
+        The moment a story breaks through. Ravenburst is where that happens.
+      </p>
+      <p class="text-rb-text font-medium">— matpitts13</p>
+    </div>
+  </main>
+  <Footer />
+</Base>

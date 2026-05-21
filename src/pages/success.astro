@@ -1,0 +1,38 @@
+---
+import Base from '../layouts/Base.astro'
+import Nav from '../components/Nav.astro'
+import Footer from '../components/Footer.astro'
+---
+<Base title="Thank You!" description="Your Ravenburst license is on its way.">
+  <Nav />
+  <main class="pt-32 pb-20 px-6 max-w-xl mx-auto text-center">
+    <div class="text-6xl mb-6">🦅</div>
+    <h1 class="text-4xl font-serif font-bold mb-4">You're in.</h1>
+    <p class="text-rb-muted text-xl mb-8 leading-relaxed">
+      Your activation code is on its way to your inbox. Check your spam folder if it doesn't arrive within a few minutes.
+    </p>
+    <div class="bg-rb-surface border border-rb-border rounded-2xl p-8 text-left text-sm text-rb-muted space-y-4 mb-8">
+      <h2 class="text-rb-text font-semibold text-lg mb-4">Getting started</h2>
+      <div class="flex items-start gap-3">
+        <span class="text-rb-accent font-bold">1.</span>
+        <span><a href="/download" class="text-rb-accent underline">Download Ravenburst</a> for your platform</span>
+      </div>
+      <div class="flex items-start gap-3">
+        <span class="text-rb-accent font-bold">2.</span>
+        <span>Install and open the app</span>
+      </div>
+      <div class="flex items-start gap-3">
+        <span class="text-rb-accent font-bold">3.</span>
+        <span>Go to <strong class="text-rb-text">Help → Enter Activation Code</strong></span>
+      </div>
+      <div class="flex items-start gap-3">
+        <span class="text-rb-accent font-bold">4.</span>
+        <span>Enter your email and the code from your inbox</span>
+      </div>
+    </div>
+    <p class="text-rb-muted text-sm">
+      Questions? <a href="mailto:support@ravenburst.app" class="text-rb-accent">support@ravenburst.app</a>
+    </p>
+  </main>
+  <Footer />
+</Base>

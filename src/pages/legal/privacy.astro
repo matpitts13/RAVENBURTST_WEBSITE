@@ -1,0 +1,34 @@
+---
+import Base from '../../layouts/Base.astro'
+import Nav from '../../components/Nav.astro'
+import Footer from '../../components/Footer.astro'
+---
+<Base title="Privacy Policy">
+  <Nav />
+  <main class="pt-32 pb-20 px-6 max-w-2xl mx-auto prose prose-invert">
+    <h1 class="text-4xl font-serif font-bold mb-8">Privacy Policy</h1>
+    <p class="text-rb-muted text-sm mb-8">Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+    <div class="space-y-6 text-rb-muted leading-relaxed text-sm">
+      <p><strong class="text-rb-text">The short version:</strong> Ravenburst is a desktop app. Your writing never leaves your computer. We collect almost nothing.</p>
+      <h2 class="text-rb-text text-xl font-semibold">What we collect</h2>
+      <ul class="space-y-2">
+        <li><strong class="text-rb-text">Trial registration:</strong> A hashed machine fingerprint (not personally identifiable) to enforce the 7-day trial. No email. No name.</li>
+        <li><strong class="text-rb-text">License activation:</strong> Your email address (for sending your activation code) and a hashed license code (for device limit enforcement). Stored by our payment processor (Lemon Squeezy).</li>
+        <li><strong class="text-rb-text">Newsletter:</strong> Only if you voluntarily sign up. Managed by Kit (ConvertKit). You can unsubscribe at any time.</li>
+        <li><strong class="text-rb-text">Contact form:</strong> Your name, email, and message if you contact support. Used only to respond to you.</li>
+      </ul>
+      <h2 class="text-rb-text text-xl font-semibold">What we never collect</h2>
+      <ul class="space-y-2">
+        <li>Your writing, documents, or project content</li>
+        <li>Usage analytics or telemetry</li>
+        <li>Crash reports (v1)</li>
+        <li>AI conversation content — all AI calls are between your app and your chosen AI provider</li>
+      </ul>
+      <h2 class="text-rb-text text-xl font-semibold">Third parties</h2>
+      <p>Lemon Squeezy handles payments and is the Merchant of Record — their privacy policy applies to purchases. Kit manages our mailing list. Cloudflare runs our trial server and this website.</p>
+      <h2 class="text-rb-text text-xl font-semibold">Contact</h2>
+      <p>Questions? Email <a href="mailto:support@ravenburst.app" class="text-rb-accent">support@ravenburst.app</a>.</p>
+    </div>
+  </main>
+  <Footer />
+</Base>

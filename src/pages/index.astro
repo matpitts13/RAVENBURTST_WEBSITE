@@ -1,0 +1,143 @@
+---
+import Base from '../layouts/Base.astro'
+import Nav from '../components/Nav.astro'
+import Footer from '../components/Footer.astro'
+---
+<Base title="Ravenburst — Write Without Limits">
+  <Nav />
+
+  <!-- Hero -->
+  <section class="pt-40 pb-24 px-6 text-center max-w-4xl mx-auto">
+    <div class="inline-block bg-rb-surface border border-rb-border text-rb-muted text-xs px-3 py-1 rounded-full mb-8 tracking-wide">
+      AI that edits. Never writes.
+    </div>
+    <h1 class="text-5xl md:text-7xl font-serif font-bold mb-6 leading-tight">
+      Your story.<br/>
+      <span class="text-gradient">Your words.</span>
+    </h1>
+    <p class="text-xl text-rb-muted max-w-2xl mx-auto mb-10 leading-relaxed">
+      Ravenburst is the writing environment serious authors deserve — powerful enough for a novel,
+      honest enough to stay out of the way.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="/download"
+        class="bg-rb-accent hover:bg-rb-accent-hv text-white px-8 py-4 rounded-xl text-lg font-semibold transition-colors">
+        Download Free Trial
+      </a>
+      <a href="/features"
+        class="border border-rb-border hover:border-rb-text text-rb-muted hover:text-rb-text px-8 py-4 rounded-xl text-lg transition-colors">
+        See Features →
+      </a>
+    </div>
+    <p class="text-rb-muted text-sm mt-6">7-day free trial · No credit card · Windows, macOS, Linux</p>
+  </section>
+
+  <!-- Three-feature hook -->
+  <section class="py-20 px-6 border-t border-rb-border">
+    <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-8">
+      {[
+        {
+          icon: '📖',
+          title: 'Write without interruption',
+          body: 'Full rich-text editor. No autocorrect. No autocomplete. No AI whispering suggestions. Just you and the page.',
+        },
+        {
+          icon: '🔍',
+          title: 'An editor that earns its keep',
+          body: 'Continuity Check, Writing Coach, and Story Bible — AI that asks the right questions without putting words in your mouth.',
+        },
+        {
+          icon: '📁',
+          title: 'Everything in one file',
+          body: 'Characters, places, reference, front matter, templates. One .ravenburst file. Fully portable, fully yours.',
+        },
+      ].map(f => (
+        <div class="bg-rb-surface border border-rb-border rounded-2xl p-8">
+          <div class="text-4xl mb-4">{f.icon}</div>
+          <h3 class="text-lg font-semibold text-rb-text mb-3 font-serif">{f.title}</h3>
+          <p class="text-rb-muted leading-relaxed">{f.body}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- AI philosophy -->
+  <section class="py-20 px-6">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl md:text-4xl font-serif font-bold mb-6">
+        The AI rule we enforce in code.
+      </h2>
+      <blockquote class="text-xl text-rb-muted italic leading-relaxed border-l-4 border-rb-accent pl-6 text-left mb-8">
+        "You MUST NOT write, generate, suggest, or produce any prose, narrative, dialogue, or
+        creative text under any circumstances. Your role is analytical and structural only."
+      </blockquote>
+      <p class="text-rb-muted leading-relaxed">
+        That's the system prompt we send to every AI call. Not a policy. Not a setting.
+        Hardcoded. Because your story belongs to you — not to a language model.
+      </p>
+    </div>
+  </section>
+
+  <!-- Formats -->
+  <section class="py-20 px-6 border-t border-rb-border">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-3xl font-serif font-bold text-center mb-4">Export everything.</h2>
+      <p class="text-rb-muted text-center mb-12 max-w-xl mx-auto">
+        One project, every format. Manuscript to Amazon KDP to stage to screen.
+      </p>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        {[
+          ['📄', 'Manuscript', 'Courier 12pt, double-spaced'],
+          ['📚', 'Paperback', 'KDP 5×7 & 6×9'],
+          ['🎬', 'Screenplay', 'WGA format + Fountain'],
+          ['🎭', 'Stage Play', 'Samuel French format'],
+          ['📱', 'EPUB', 'Apple Books, Kobo, KDP'],
+          ['🖼️', "Children's Book", 'Full-bleed, 3 sizes'],
+          ['🎓', 'Academic', 'APA 7th + MLA 9th'],
+          ['🖨️', 'Proof PDF', 'With crop marks + bleed'],
+        ].map(([icon, name, sub]) => (
+          <div class="bg-rb-surface border border-rb-border rounded-xl p-5 text-center">
+            <div class="text-2xl mb-2">{icon}</div>
+            <div class="text-sm font-semibold text-rb-text">{name}</div>
+            <div class="text-xs text-rb-muted mt-1">{sub}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing teaser -->
+  <section class="py-20 px-6 border-t border-rb-border">
+    <div class="max-w-md mx-auto text-center">
+      <h2 class="text-3xl font-serif font-bold mb-4">One price. No subscription.</h2>
+      <p class="text-rb-muted mb-8 leading-relaxed">
+        Buy once, own it. Free updates through the next major version.
+        The app is yours — not rented, not streamed, not SaaS.
+      </p>
+      <a href="/pricing"
+        class="inline-block bg-rb-accent hover:bg-rb-accent-hv text-white px-8 py-4 rounded-xl font-semibold transition-colors">
+        See Pricing →
+      </a>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="py-20 px-6 border-t border-rb-border">
+    <div class="max-w-md mx-auto text-center">
+      <h2 class="text-2xl font-serif font-bold mb-3">Stay in the loop.</h2>
+      <p class="text-rb-muted text-sm mb-8">Writing tips and Ravenburst updates. No spam. Unsubscribe any time.</p>
+      <!-- Replace action with your Kit form URL -->
+      <form action="https://app.kit.com/forms/YOUR_FORM_ID/subscriptions" method="post"
+        class="flex flex-col sm:flex-row gap-3">
+        <input type="email" name="email_address" placeholder="your@email.com" required
+          class="flex-1 bg-rb-surface border border-rb-border rounded-lg px-4 py-3 text-rb-text placeholder:text-rb-muted outline-none focus:border-rb-accent transition-colors" />
+        <button type="submit"
+          class="bg-rb-accent hover:bg-rb-accent-hv text-white px-6 py-3 rounded-lg font-medium transition-colors whitespace-nowrap">
+          Join the list
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <Footer />
+</Base>

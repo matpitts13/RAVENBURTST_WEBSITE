@@ -1,0 +1,63 @@
+---
+import Base from '../layouts/Base.astro'
+import Nav from '../components/Nav.astro'
+import Footer from '../components/Footer.astro'
+const faqs = [
+  ['How do I install Ravenburst?', 'Download the installer for your platform from the Download page. On Windows, run the .exe. On macOS, open the .dmg and drag to Applications. On Linux, make the .AppImage executable and run it.'],
+  ['Where are my project files saved?', 'Your projects are saved as .ravenburst files (SQLite databases) in ~/Documents/Ravenburst/ by default. You can save them anywhere — they\'re completely portable.'],
+  ['How do I enter my activation code?', 'Go to Help → Enter Activation Code, or open Preferences → License. Enter the email address you used to purchase and paste your activation code.'],
+  ['Does Ravenburst work offline?', 'Yes — almost entirely. Writing, editing, and exporting all work offline. Only the initial 7-day trial registration and (optionally) Claude AI analysis require internet.'],
+  ['How do I set up Ollama AI?', 'Click the AI OFF button in the status bar when you first launch. The setup wizard walks you through downloading a model — no command line needed.'],
+  ['How do I get a Claude API key?', 'Go to console.anthropic.com, create a free account, and generate an API key. In Ravenburst, open the AI setup wizard and choose the Claude path.'],
+  ['What happens when my trial ends?', 'The app still opens and all your content is readable. Saving and exporting are paused until you enter an activation code. Nothing is deleted.'],
+  ['Can I use my license on multiple computers?', 'Up to 3 devices. Use Help → Deactivate License on the device you want to remove, then activate on the new one.'],
+  ['I lost my activation code. Can I get it again?', 'Yes — email support@ravenburst.app with the email address you used to purchase. We\'ll resend it.'],
+]
+---
+<Base title="Support" description="Find answers to common questions or contact us directly.">
+  <Nav />
+  <main class="pt-32 pb-20 px-6 max-w-2xl mx-auto">
+    <h1 class="text-4xl font-serif font-bold mb-4">Support</h1>
+    <p class="text-rb-muted mb-12">Find answers below, or email us — we reply within 48 hours.</p>
+
+    <div class="space-y-3 mb-16">
+      {faqs.map(([q, a]) => (
+        <details class="bg-rb-surface border border-rb-border rounded-xl p-5 group">
+          <summary class="font-medium text-rb-text cursor-pointer list-none flex justify-between items-center">
+            {q}
+            <span class="text-rb-muted group-open:rotate-180 transition-transform flex-shrink-0 ml-4">↓</span>
+          </summary>
+          <p class="mt-3 text-rb-muted text-sm leading-relaxed">{a}</p>
+        </details>
+      ))}
+    </div>
+
+    <div class="bg-rb-surface border border-rb-border rounded-2xl p-8">
+      <h2 class="text-xl font-serif font-semibold mb-6">Still stuck? Send us a message.</h2>
+      <!-- Replace with your Formspree form ID -->
+      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="space-y-4">
+        <div>
+          <label class="block text-sm text-rb-muted mb-2">Name</label>
+          <input type="text" name="name" required
+            class="w-full bg-rb-bg border border-rb-border rounded-lg px-4 py-3 text-rb-text placeholder:text-rb-muted outline-none focus:border-rb-accent transition-colors" />
+        </div>
+        <div>
+          <label class="block text-sm text-rb-muted mb-2">Email</label>
+          <input type="email" name="email" required
+            class="w-full bg-rb-bg border border-rb-border rounded-lg px-4 py-3 text-rb-text placeholder:text-rb-muted outline-none focus:border-rb-accent transition-colors" />
+        </div>
+        <div>
+          <label class="block text-sm text-rb-muted mb-2">Message</label>
+          <textarea name="message" rows="5" required
+            class="w-full bg-rb-bg border border-rb-border rounded-lg px-4 py-3 text-rb-text placeholder:text-rb-muted outline-none focus:border-rb-accent transition-colors resize-y"></textarea>
+        </div>
+        <button type="submit"
+          class="bg-rb-accent hover:bg-rb-accent-hv text-white px-6 py-3 rounded-lg font-medium transition-colors">
+          Send Message
+        </button>
+        <p class="text-rb-muted text-xs">We reply within 48 hours, usually sooner.</p>
+      </form>
+    </div>
+  </main>
+  <Footer />
+</Base>
