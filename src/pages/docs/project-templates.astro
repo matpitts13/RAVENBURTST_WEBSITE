@@ -1,0 +1,134 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro'
+
+const templates = [
+  {
+    name: 'Novel',
+    icon: '📖',
+    desc: 'The default template for long-form fiction. Chapter folders nest Scene documents. Chapters can be numbered, titled, or both.',
+    structure: 'Part (optional) → Chapter → Scene',
+    export: 'Manuscript DOCX/PDF, Paperback 5×7 and 6×9, EPUB',
+  },
+  {
+    name: 'Non-Fiction',
+    icon: '📚',
+    desc: 'For narrative non-fiction, biography, memoir, and similar long-form works. Identical structure to Novel, with numbered chapters by default.',
+    structure: 'Part (optional) → Chapter → Section',
+    export: 'Manuscript DOCX/PDF, Paperback',
+  },
+  {
+    name: 'Screenplay',
+    icon: '🎬',
+    desc: 'For feature films and TV pilots. Acts contain Scenes. Exports to WGA-standard Courier format or the open .fountain format.',
+    structure: 'Act → Scene',
+    export: 'Screenplay PDF, Screenplay (.fountain)',
+  },
+  {
+    name: 'Stage Play',
+    icon: '🎭',
+    desc: 'For stage plays using the standard US format (Samuel French / Dramatists Play Service). Character names centred, dialogue indented, stage directions in italics.',
+    structure: 'Act → Scene',
+    export: 'Stage Play PDF',
+  },
+  {
+    name: 'Stage Play (UK)',
+    icon: '🎭',
+    desc: 'UK stage play format as used by the RSC and major London venues. Slightly different margin conventions from the US format.',
+    structure: 'Act → Scene',
+    export: 'Stage Play UK PDF',
+  },
+  {
+    name: 'Stage Play (US)',
+    icon: '🎭',
+    desc: 'US stage play format (Samuel French / Dramatists Play Service). Identical to the Stage Play template but labelled for clarity when working alongside a UK version.',
+    structure: 'Act → Scene',
+    export: 'Stage Play PDF',
+  },
+  {
+    name: 'Documentary Script',
+    icon: '🎥',
+    desc: 'For documentary and factual film scripts. Segments contain Scenes. Supports voice-over (V/O) and on-camera cues in the editor.',
+    structure: 'Segment → Scene',
+    export: 'Documentary PDF',
+  },
+  {
+    name: 'Short Story / Essay',
+    icon: '✍️',
+    desc: 'Minimal structure — no chapter folders. Scene documents sit directly at the top level. Good for single-piece works that don\'t need nesting.',
+    structure: 'Section (flat)',
+    export: 'Manuscript DOCX/PDF',
+  },
+  {
+    name: 'Essay (Chicago 17th)',
+    icon: '🎓',
+    desc: 'For essays using Chicago Manual of Style (17th edition). Sections map to major essay divisions. Exports with footnotes or endnotes depending on your citation style.',
+    structure: 'Section',
+    export: 'Essay Chicago DOCX/PDF',
+  },
+  {
+    name: "Children's Book (Square)",
+    icon: '🖼️',
+    desc: 'Classic square 8.5"×8.5" picture book format. Each Page document is one spread. KDP-compliant with bleed and safe zone.',
+    structure: 'Page (flat)',
+    export: "Children's Book Square PDF",
+  },
+  {
+    name: "Children's Book (Portrait)",
+    icon: '🖼️',
+    desc: 'Taller 8.5"×11" portrait format. More vertical space for tall illustrations.',
+    structure: 'Page (flat)',
+    export: "Children's Book Portrait PDF",
+  },
+  {
+    name: "Children's Book (Landscape)",
+    icon: '🖼️',
+    desc: 'Wide 11"×8.5" panoramic format. Great for sweeping scenes and double-page spreads.',
+    structure: 'Page (flat)',
+    export: "Children's Book Landscape PDF",
+  },
+  {
+    name: 'Academic Paper (APA 7th)',
+    icon: '🎓',
+    desc: 'APA 7th Edition (2019). Double-spaced, Times New Roman 12pt, running head, title page, abstract, References label.',
+    structure: 'Section',
+    export: 'Academic APA DOCX/PDF',
+  },
+  {
+    name: 'Academic Paper (MLA 9th)',
+    icon: '🎓',
+    desc: 'MLA 9th Edition (2021). Double-spaced, Times New Roman 12pt, LastName # header, Works Cited label.',
+    structure: 'Section',
+    export: 'Academic MLA DOCX/PDF',
+  },
+  {
+    name: 'Blank Project',
+    icon: '📄',
+    desc: 'An empty project with no pre-built structure. Build your own from scratch. Good for projects that don\'t fit a standard template.',
+    structure: 'Your choice',
+    export: 'All formats available',
+  },
+]
+---
+<DocsLayout title="Project Templates" description="Every project template in Ravenburst and when to use each one.">
+  <h1 class="text-4xl font-serif font-bold text-rb-text mb-2">Project Templates</h1>
+  <p class="text-rb-muted mb-4">When you create a new project, Ravenburst asks you to choose a template. The template sets the default chapter label, chapter format, and Navigator structure — you can change any of it afterwards.</p>
+  <p class="text-rb-muted mb-10">Templates do not lock you into a specific export format. Any project can be exported to any compatible format from the Compile dialog.</p>
+
+  <div class="space-y-4 text-sm text-rb-muted">
+    {templates.map(t => (
+      <div class="bg-rb-surface border border-rb-border rounded-xl p-5">
+        <div class="flex items-start gap-3 mb-2">
+          <span class="text-2xl">{t.icon}</span>
+          <div>
+            <div class="font-semibold text-rb-text text-base">{t.name}</div>
+            <div class="leading-relaxed mt-1">{t.desc}</div>
+          </div>
+        </div>
+        <div class="mt-3 flex flex-wrap gap-x-8 gap-y-1 text-xs">
+          <div><span class="text-rb-text font-medium">Structure: </span>{t.structure}</div>
+          <div><span class="text-rb-text font-medium">Exports to: </span>{t.export}</div>
+        </div>
+      </div>
+    ))}
+  </div>
+</DocsLayout>

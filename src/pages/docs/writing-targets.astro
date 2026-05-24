@@ -1,0 +1,77 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro'
+---
+<DocsLayout title="Writing Targets & Statistics" description="Set word count goals, track your daily writing sessions, and analyse your manuscript.">
+  <h1 class="text-4xl font-serif font-bold text-rb-text mb-2">Writing Targets & Statistics</h1>
+  <p class="text-rb-muted mb-10">Track your progress, set goals, and understand your manuscript at a glance.</p>
+
+  <div class="space-y-12 text-sm text-rb-muted leading-relaxed">
+
+    <section>
+      <h2 class="text-xl font-semibold text-rb-text mb-4">Project Targets</h2>
+      <p class="mb-3">Open via <strong class="text-rb-text">Project → Project Targets</strong> or <strong class="text-rb-text">Ctrl+Shift+T</strong>.</p>
+      <p class="mb-3">Two goals you can set:</p>
+      <ul class="space-y-3 list-disc list-inside mb-4">
+        <li>
+          <strong class="text-rb-text">Manuscript Target</strong> — your total word count goal for the finished project. The progress bar fills as you write and turns green when you hit it. Only words in compiled documents (chapters and scenes marked for compile) count toward this total.
+        </li>
+        <li>
+          <strong class="text-rb-text">Session Target</strong> — words written in the current writing session. This resets automatically at midnight. Click the ↺ button to reset it manually at any time.
+        </li>
+      </ul>
+      <p>Set either target to 0 to hide its progress bar. Targets are saved per machine, not per project file — so you can set different daily goals on different computers.</p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-semibold text-rb-text mb-4">Statistics</h2>
+      <p class="mb-3">Open via <strong class="text-rb-text">Project → Statistics</strong>.</p>
+      <p class="mb-3">Switch between <strong class="text-rb-text">Compiled only</strong> (documents marked for export) and <strong class="text-rb-text">All documents</strong> (everything in the project).</p>
+      <p class="mb-3">Stats shown:</p>
+      <div class="bg-rb-surface border border-rb-border rounded-lg overflow-hidden mb-4">
+        <table class="w-full text-xs">
+          <thead class="border-b border-rb-border">
+            <tr>
+              <th class="text-left px-4 py-2 text-rb-text font-semibold">Metric</th>
+              <th class="text-left px-4 py-2 text-rb-text font-semibold">Details</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-rb-border">
+            {[
+              ['Words', 'Total word count'],
+              ['Characters', 'Including spaces'],
+              ['Characters (no spaces)', 'Excluding spaces'],
+              ['Paragraphs', 'Non-empty paragraphs'],
+              ['Sentences', 'Counted by sentence-ending punctuation'],
+              ['Avg. paragraph length', 'Words per paragraph'],
+              ['Avg. sentence length', 'Words per sentence'],
+              ['Documents', 'Number of included documents'],
+              ['Estimated pages', 'At 250 words per page'],
+              ['Reading time', 'At 238 words per minute'],
+            ].map(([metric, detail]) => (
+              <tr>
+                <td class="px-4 py-2 font-medium text-rb-text">{metric}</td>
+                <td class="px-4 py-2">{detail}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p>The <strong class="text-rb-text">Word Frequency</strong> section at the bottom shows your 20 most-used words (common English words filtered out), which can be useful for spotting overused vocabulary.</p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-semibold text-rb-text mb-4">Writing History</h2>
+      <p class="mb-3">Open via <strong class="text-rb-text">Project → Writing History</strong>.</p>
+      <p class="mb-3">Writing History tracks how many words you've written each day you have the project open. It shows:</p>
+      <ul class="space-y-2 list-disc list-inside mb-4">
+        <li><strong class="text-rb-text">Current Streak</strong> — consecutive days with at least one word written</li>
+        <li><strong class="text-rb-text">Total Written</strong> — cumulative words added across all sessions</li>
+        <li><strong class="text-rb-text">Days Recorded</strong> — total days with writing activity</li>
+        <li><strong class="text-rb-text">Bar chart</strong> — the last 30 days at a glance, bars scaled to your best day</li>
+        <li><strong class="text-rb-text">Session Log</strong> — full table of words written and total manuscript words per day</li>
+      </ul>
+      <p>Writing history is stored per project — each project file maintains its own log. History accumulates automatically; there's nothing to configure.</p>
+    </section>
+
+  </div>
+</DocsLayout>

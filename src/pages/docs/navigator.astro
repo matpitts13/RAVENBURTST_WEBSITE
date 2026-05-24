@@ -1,0 +1,112 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro'
+---
+<DocsLayout title="Navigator & Project Structure" description="How the Navigator works and how to organise your project in Ravenburst.">
+  <h1 class="text-4xl font-serif font-bold text-rb-text mb-2">Navigator & Project Structure</h1>
+  <p class="text-rb-muted mb-10">The Navigator is the spine of your project — every document, character, and piece of research lives here.</p>
+
+  <div class="space-y-12 text-sm text-rb-muted leading-relaxed">
+
+    <section>
+      <h2 class="text-xl font-semibold text-rb-text mb-4">Overview</h2>
+      <p class="mb-3">The Navigator panel sits on the left (or right — you can move it). Every section collapses and expands independently. Drag documents to reorder them. Double-click any title to rename it inline.</p>
+      <p>Right-click any document for context menu options: rename, duplicate, move to trash, change status, toggle compile inclusion, and more.</p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-semibold text-rb-text mb-4">Manuscript</h2>
+      <p class="mb-3">The Manuscript section holds your main prose. The structure is flexible:</p>
+      <ul class="space-y-2 list-disc list-inside mb-4">
+        <li><strong class="text-rb-text">Chapter folders</strong> — group scenes under a named chapter</li>
+        <li><strong class="text-rb-text">Scene documents</strong> — the actual writing lives here, either inside a chapter or at the top level</li>
+        <li><strong class="text-rb-text">Parts</strong> — optional top-level grouping above chapters (Part I, Part II…)</li>
+      </ul>
+      <p class="mb-3">Click <strong class="text-rb-text">+</strong> next to Manuscript to add a new Chapter. Use the book icon next to it to add a Part. Inside any Chapter, click <strong class="text-rb-text">+</strong> to add a Scene.</p>
+      <p>Each document has a <strong class="text-rb-text">compile checkbox</strong> — uncheck it to exclude that document from any export without deleting it. Useful for cut scenes or notes you want to keep nearby.</p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-semibold text-rb-text mb-4">Prologue & Epilogue</h2>
+      <p class="mb-3">Prologue and Epilogue are <strong class="text-rb-text">once-only</strong> sections — each project can have at most one of each. Once created, the add button disappears.</p>
+      <ul class="space-y-2 list-disc list-inside mb-3">
+        <li><strong class="text-rb-text">Prologue</strong> — compiles before Chapter 1, regardless of where it sits in the Navigator</li>
+        <li><strong class="text-rb-text">Epilogue</strong> — compiles after the final chapter</li>
+      </ul>
+      <p>These are standard document types: they have word counts, snapshots, statuses, and can be written exactly like any other scene. The only difference is their fixed compile position.</p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-semibold text-rb-text mb-4">Front Matter</h2>
+      <p class="mb-3">Front Matter appears before the manuscript in your compiled output. Ravenburst auto-creates a set of front matter documents when you create a new project:</p>
+      <ul class="space-y-2 list-disc list-inside mb-3">
+        <li><strong class="text-rb-text">Title Page</strong></li>
+        <li><strong class="text-rb-text">Copyright</strong></li>
+        <li><strong class="text-rb-text">Dedication</strong></li>
+        <li><strong class="text-rb-text">Epigraph</strong> — a quote or poem on a blank page before the story begins</li>
+        <li><strong class="text-rb-text">Table of Contents</strong></li>
+      </ul>
+      <p>You can add more, reorder them, or delete any you don't need. Toggle the compile checkbox to include or exclude each page from export.</p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-semibold text-rb-text mb-4">Back Matter</h2>
+      <p class="mb-3">Back Matter appears after the manuscript and epilogue in compiled output. Common back matter documents include:</p>
+      <ul class="space-y-2 list-disc list-inside mb-3">
+        <li><strong class="text-rb-text">Acknowledgements</strong></li>
+        <li><strong class="text-rb-text">About the Author</strong></li>
+        <li><strong class="text-rb-text">Afterword</strong></li>
+      </ul>
+      <p>Click <strong class="text-rb-text">+</strong> in the Back Matter section to add any document you need. Like front matter, each item has an individual compile toggle.</p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-semibold text-rb-text mb-4">Characters & Places</h2>
+      <p class="mb-3">Characters and Places are structured cards, not free-text documents. Each character card has fields for name, role, age, description, backstory, goals, arc, and notes. Place cards have name, type, description, and notes.</p>
+      <p class="mb-3">Names you add to Characters and Places are automatically added to the spellcheck dictionary — so your protagonist's unusual name won't flag as a typo.</p>
+      <p>Character and place cards are for reference only — they don't compile into your manuscript export.</p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-semibold text-rb-text mb-4">Reference</h2>
+      <p class="mb-3">Store research notes and images here. Reference notes are free-text documents. Reference images are displayed with a dedicated image viewer.</p>
+      <p>Nothing in the Reference section compiles into your export. It's purely for your use while writing.</p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-semibold text-rb-text mb-4">Notes</h2>
+      <p>Freeform notes not tied to the manuscript structure. Useful for brainstorming, plot ideas, to-do lists, or anything else you want to keep in the project but outside the narrative flow.</p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-semibold text-rb-text mb-4">Templates</h2>
+      <p class="mb-3">The Templates section holds reusable document templates — pre-formatted scenes, reference structures, screenplay scene blocks, and so on. Click a template to view it; use the context menu to duplicate it into your manuscript.</p>
+      <p>Ravenburst seeds each new project with a default set of templates. You can edit, delete, or add your own.</p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-semibold text-rb-text mb-4">Trash</h2>
+      <p class="mb-3">Deleted documents go to Trash rather than being permanently removed. They stay there until you explicitly empty the trash.</p>
+      <p>Right-click a trashed document to restore it to its original section, or to delete it permanently.</p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-semibold text-rb-text mb-4">Document Statuses</h2>
+      <p class="mb-3">Every document has an optional status label you can set via right-click:</p>
+      <ul class="space-y-2 list-disc list-inside">
+        <li><strong class="text-rb-text">Draft</strong> — work in progress</li>
+        <li><strong class="text-rb-text">In Progress</strong> — actively being written</li>
+        <li><strong class="text-rb-text">First Draft Done</strong></li>
+        <li><strong class="text-rb-text">Revised</strong></li>
+        <li><strong class="text-rb-text">Final</strong></li>
+      </ul>
+      <p class="mt-3">Status is visual only — it has no effect on compilation.</p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-semibold text-rb-text mb-4">Duplicating & Moving Documents</h2>
+      <p class="mb-3">Use <strong class="text-rb-text">Documents → Duplicate</strong> (or the right-click menu) to create an exact copy of the selected document. The copy appears directly below the original with "(copy)" appended to the title.</p>
+      <p>Use <strong class="text-rb-text">Documents → Move To</strong> to move the selected document to a different section (Manuscript, Notes, Research, Templates, or Trash) without deleting and recreating it.</p>
+    </section>
+
+  </div>
+</DocsLayout>

@@ -1,0 +1,90 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro'
+---
+<DocsLayout title="Compile Options" description="Control how your manuscript is assembled when you export — separators, page breaks, and document selection.">
+  <h1 class="text-4xl font-serif font-bold text-rb-text mb-2">Compile Options</h1>
+  <p class="text-rb-muted mb-10">Everything you can control when compiling your project for export.</p>
+
+  <div class="space-y-12 text-sm text-rb-muted leading-relaxed">
+
+    <section>
+      <h2 class="text-xl font-semibold text-rb-text mb-4">Opening Compile</h2>
+      <p>Go to <strong class="text-rb-text">File → Compile / Export</strong> or press <strong class="text-rb-text">Ctrl+Shift+E</strong>. The compile dialog shows all available formats and options for the selected format.</p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-semibold text-rb-text mb-4">Document Selection</h2>
+      <p class="mb-3">The <strong class="text-rb-text">Include</strong> panel lists every document marked for compile. You can uncheck individual documents here without touching the compile checkbox in the Navigator — useful for one-off exports where you want a subset of chapters.</p>
+      <p>The panel shows the title, word count, and total included word count so you can see exactly what you're exporting before you click Export.</p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-semibold text-rb-text mb-4">Scene Separator</h2>
+      <p class="mb-3">When you have multiple scene documents inside a chapter, the scene separator controls what appears between them in the compiled output.</p>
+      <div class="bg-rb-surface border border-rb-border rounded-lg overflow-hidden mb-4">
+        <table class="w-full text-xs">
+          <thead class="border-b border-rb-border">
+            <tr>
+              <th class="text-left px-4 py-2 text-rb-text font-semibold">Option</th>
+              <th class="text-left px-4 py-2 text-rb-text font-semibold">Result</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-rb-border">
+            {[
+              ['None', 'Scenes run together with no gap'],
+              ['Extra blank line', 'A single blank line between scenes (default)'],
+              ['* * *', 'Three centred asterisks — a common scene-break convention'],
+              ['— em-dash —', 'Em-dash separator, common in commercial fiction'],
+              ['Custom', 'Any text you type — centred between scenes'],
+            ].map(([opt, result]) => (
+              <tr>
+                <td class="px-4 py-2 font-medium text-rb-text">{opt}</td>
+                <td class="px-4 py-2">{result}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p>The separator is applied between scenes within a chapter. It does not appear between chapters.</p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-semibold text-rb-text mb-4">Chapter Start</h2>
+      <p class="mb-3">Controls whether each chapter starts on a new page in the compiled output.</p>
+      <ul class="space-y-2 list-disc list-inside mb-3">
+        <li><strong class="text-rb-text">New page (default)</strong> — each chapter begins on its own page. Standard for novels and most long-form prose.</li>
+        <li><strong class="text-rb-text">Continuous</strong> — chapters flow directly after the previous one, separated only by the chapter heading. Useful for short story collections or documents where page breaks would waste space.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-semibold text-rb-text mb-4">Author Name</h2>
+      <p>The author name appears in headers, title pages, and cover sheets depending on the format. It defaults to the project name if left blank.</p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-semibold text-rb-text mb-4">Chapter Numbering</h2>
+      <p>When enabled, chapters are numbered automatically in the output (<em>Chapter 1, Chapter 2…</em>) using your project's chapter label. Disable this if your chapters have unique names and you don't want a number prefix.</p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-semibold text-rb-text mb-4">Compile Order</h2>
+      <p class="mb-3">The compile order is always:</p>
+      <ol class="space-y-1 list-decimal list-inside">
+        <li>Front Matter (in Navigator order)</li>
+        <li>Prologue (if present and marked for compile)</li>
+        <li>Manuscript chapters and scenes (in Navigator order)</li>
+        <li>Epilogue (if present and marked for compile)</li>
+        <li>Back Matter (in Navigator order)</li>
+      </ol>
+      <p class="mt-3">The Navigator order is the compile order — drag documents to reorder them.</p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-semibold text-rb-text mb-4">Format Updates</h2>
+      <p class="mb-3">Some export formats (APA, MLA, and others with specific style-guide rules) can receive updates without a full app update. Go to <strong class="text-rb-text">Help → Check for Format Updates</strong> to check for updated format specs.</p>
+      <p>This is useful when a style guide releases a new edition — you'll get the correct formatting without waiting for a new app release.</p>
+    </section>
+
+  </div>
+</DocsLayout>

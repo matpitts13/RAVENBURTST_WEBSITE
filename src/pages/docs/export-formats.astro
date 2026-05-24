@@ -21,7 +21,8 @@ const formats = [
     items: [
       { name: 'Screenplay PDF', desc: 'WGA-standard format. Courier 12pt, scene headings in caps, action blocks, character names centred above dialogue, parentheticals.' },
       { name: 'Screenplay Fountain', desc: 'Exports your screenplay as a .fountain file — readable in Highland, Fade In, and other Fountain-compatible apps.' },
-      { name: 'Stage Play PDF', desc: 'Samuel French / Dramatists Play Service format. Character names centred, dialogue indented, stage directions in italics.' },
+      { name: 'Stage Play PDF (US)', desc: 'Samuel French / Dramatists Play Service format. Character names centred, dialogue indented, stage directions in italics.' },
+      { name: 'Stage Play PDF (UK)', desc: 'UK format as used by the RSC and major London venues. Slightly different margin and layout conventions from the US format.' },
     ]
   },
   {
@@ -39,6 +40,19 @@ const formats = [
       { name: 'Academic APA — PDF', desc: 'Same formatting as APA DOCX, exported as PDF.' },
       { name: 'Academic MLA — DOCX', desc: 'MLA 9th Edition (2021). Double-spaced, Times New Roman 12pt, LastName # header, Works Cited label.' },
       { name: 'Academic MLA — PDF', desc: 'Same as MLA DOCX, exported as PDF.' },
+    ]
+  },
+  {
+    group: 'Documentary',
+    items: [
+      { name: 'Documentary Script PDF', desc: 'Documentary and factual film script format. Segments and scenes with voice-over (V/O) and on-camera cues.' },
+    ]
+  },
+  {
+    group: 'Essay',
+    items: [
+      { name: 'Essay — Chicago 17th (DOCX)', desc: 'Chicago Manual of Style 17th Edition. Supports footnotes or endnotes, bibliography, and standard margin conventions.' },
+      { name: 'Essay — Chicago 17th (PDF)', desc: 'Same formatting as Chicago DOCX, exported as PDF.' },
     ]
   },
   {
