@@ -1,6 +1,20 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-rb-bg:        #1A1917;
+  --color-rb-surface:   #252422;
+  --color-rb-border:    #3A3937;
+  --color-rb-text:      #E8E6E1;
+  --color-rb-muted:     #6A6865;
+  --color-rb-accent:    #5B8EFF;
+  --color-rb-accent-hv: #4A7CFF;
+  --color-rb-green:     #16A34A;
+  --color-rb-amber:     #D97706;
+
+  --font-serif: Georgia, Lora, serif;
+  --font-sans:  Inter, system-ui, sans-serif;
+  --font-mono:  "JetBrains Mono", monospace;
+}
 
 @layer base {
   html {
@@ -9,11 +23,11 @@
     color: #E8E6E1;
   }
   body {
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: Inter, system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
   }
   h1, h2, h3 {
-    font-family: 'Georgia', serif;
+    font-family: Georgia, serif;
   }
 }
 
