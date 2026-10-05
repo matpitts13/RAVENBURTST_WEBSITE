@@ -1,0 +1,18 @@
+---
+import ListMessage from '../../components/ListMessage.astro'
+---
+<ListMessage title="Unsubscribe" heading="Unsubscribe from Ravenburst emails?">
+  <form id="unsub" method="post" action="/api/unsubscribe">
+    <input type="hidden" name="token" value="" />
+    <button type="submit" class="bg-rb-accent hover:bg-rb-accent-hv text-white px-6 py-3 rounded-lg font-medium transition-colors">
+      Unsubscribe
+    </button>
+  </form>
+</ListMessage>
+<script>
+  // Normally the server fills the token in; this covers a direct visit to
+  // /list/unsubscribe?token=...
+  const input = document.querySelector<HTMLInputElement>('#unsub input[name=token]')
+  const token = new URLSearchParams(location.search).get('token')
+  if (input && !input.value && token) input.value = token
+</script>

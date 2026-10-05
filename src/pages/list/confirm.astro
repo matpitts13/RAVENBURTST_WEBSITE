@@ -1,0 +1,19 @@
+---
+import ListMessage from '../../components/ListMessage.astro'
+---
+<ListMessage title="Confirm your address" heading="One click to finish.">
+  <p>Confirm your address and we’ll email you the day the Kickstarter goes live.</p>
+  <form id="confirm" method="post" action="/api/confirm">
+    <input type="hidden" name="token" value="" />
+    <button type="submit" class="bg-rb-accent hover:bg-rb-accent-hv text-white px-6 py-3 rounded-lg font-medium transition-colors">
+      Confirm my address
+    </button>
+  </form>
+</ListMessage>
+<script>
+  // Normally the server fills the token in; this covers a direct visit to
+  // /list/confirm?token=...
+  const input = document.querySelector<HTMLInputElement>('#confirm input[name=token]')
+  const token = new URLSearchParams(location.search).get('token')
+  if (input && !input.value && token) input.value = token
+</script>

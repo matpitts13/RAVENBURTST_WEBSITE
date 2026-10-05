@@ -4,3 +4,7 @@ dist
 .env
 .env.local
 .vercel
+
+# Wrangler local state
+.wrangler/
+list-export-*.csv

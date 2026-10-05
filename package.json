@@ -5,7 +5,11 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "check": "node scripts/check-site.mjs",
+    "deploy": "npm run build && npm run check && wrangler pages deploy",
+    "list:export": "node scripts/export-list.mjs",
+    "list:send-confirmations": "node scripts/send-confirmations.mjs"
   },
   "dependencies": {
     "astro": "^6.0.0",

@@ -1,0 +1,17 @@
+---
+// A short message page for the mailing-list flow (/list/*).
+import Base from '../layouts/Base.astro'
+import Nav from './Nav.astro'
+import Footer from './Footer.astro'
+interface Props { title: string; heading: string }
+const { title, heading } = Astro.props
+---
+<Base title={title} description={heading} noindex>
+  <Nav />
+  <main id="main" class="pt-36 pb-20 px-6 max-w-lg mx-auto text-center">
+    <img src="/brand/raven.svg" alt="" width="96" height="111" class="w-20 h-auto mx-auto mb-8" />
+    <h1 class="text-3xl font-serif font-bold mb-4">{heading}</h1>
+    <div class="text-rb-muted text-lg leading-relaxed space-y-4"><slot /></div>
+  </main>
+  <Footer />
+</Base>

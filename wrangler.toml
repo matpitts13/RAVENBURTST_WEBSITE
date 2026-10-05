@@ -1,0 +1,19 @@
+# Cloudflare Pages: the static site (dist/) plus the /api Functions in functions/.
+# Deploy: npm run deploy
+# Secret (set once, never committed): npx wrangler pages secret put RESEND_API_KEY --project-name ravenburst-site
+name = "ravenburst-site"
+pages_build_output_dir = "dist"
+compatibility_date = "2026-10-01"
+
+[vars]
+SITE_URL = "https://ravenburst.com"
+MAIL_FROM = "Ravenburst <hello@ravenburst.com>"
+# Postal address required in marketing email (CAN-SPAM). Set before sending
+# any announcement; confirmation emails are transactional and don't need it.
+MAIL_POSTAL_ADDRESS = ""
+
+[[d1_databases]]
+binding = "DB"
+database_name = "ravenburst-list"
+database_id = "841c120f-a8aa-4276-a0a1-a3b9ee0d0ffa"
+migrations_dir = "migrations"
