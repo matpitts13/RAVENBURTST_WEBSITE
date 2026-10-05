@@ -2,32 +2,88 @@
 import Base from '../../layouts/Base.astro'
 import Nav from '../../components/Nav.astro'
 import Footer from '../../components/Footer.astro'
+
+// Change this date whenever the policy's substance changes (not on every build).
+const LAST_UPDATED = 'October 4, 2026'
 ---
-<Base title="Privacy Policy">
+<Base title="Privacy Policy" description="What Ravenburst collects, why, and who handles it. Your writing never comes to us.">
   <Nav />
-  <main class="pt-32 pb-20 px-6 max-w-2xl mx-auto prose prose-invert">
-    <h1 class="text-4xl font-serif font-bold mb-8">Privacy Policy</h1>
-    <p class="text-rb-muted text-sm mb-8">Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
-    <div class="space-y-6 text-rb-muted leading-relaxed text-sm">
-      <p><strong class="text-rb-text">The short version:</strong> Ravenburst is a desktop app. Your writing never leaves your computer. We collect almost nothing.</p>
-      <h2 class="text-rb-text text-xl font-semibold">What we collect</h2>
-      <ul class="space-y-2">
-        <li><strong class="text-rb-text">Trial registration:</strong> A hashed machine fingerprint (not personally identifiable) to enforce the 7-day trial. No email. No name.</li>
-        <li><strong class="text-rb-text">License activation:</strong> Your email address (for sending your activation code) and a hashed license code (for device limit enforcement). Stored by our payment processor (Lemon Squeezy).</li>
-        <li><strong class="text-rb-text">Newsletter:</strong> Only if you voluntarily sign up. Managed by Kit (ConvertKit). You can unsubscribe at any time.</li>
-        <li><strong class="text-rb-text">Contact form:</strong> Your name, email, and message if you contact support. Used only to respond to you.</li>
-      </ul>
-      <h2 class="text-rb-text text-xl font-semibold">What we never collect</h2>
-      <ul class="space-y-2">
-        <li>Your writing, documents, or project content</li>
-        <li>Usage analytics or telemetry</li>
-        <li>Crash reports (v1)</li>
-        <li>AI conversation content — all AI calls are between your app and your chosen AI provider</li>
-      </ul>
-      <h2 class="text-rb-text text-xl font-semibold">Third parties</h2>
-      <p>Lemon Squeezy handles payments and is the Merchant of Record — their privacy policy applies to purchases. Kit manages our mailing list. Cloudflare runs our trial server and this website.</p>
-      <h2 class="text-rb-text text-xl font-semibold">Contact</h2>
-      <p>Questions? Email <a href="mailto:support@ravenburst.com" class="text-rb-accent">support@ravenburst.com</a>.</p>
+  <main id="main" class="pt-32 pb-20 px-6 max-w-3xl mx-auto">
+    <h1 class="text-4xl font-serif font-bold mb-3">Privacy Policy</h1>
+    <p class="text-rb-muted text-sm mb-10">Last updated: {LAST_UPDATED}</p>
+
+    <div class="space-y-10 text-rb-muted leading-relaxed">
+      <section class="bg-rb-surface border border-rb-border rounded-xl p-6">
+        <p class="text-rb-text">
+          <strong>The short version:</strong> Ravenburst is a desktop app. Your writing stays on your computer and is
+          never sent to us. It only goes anywhere else if you choose to back it up there. We collect very little,
+          and we don’t sell or share any of it.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-serif font-semibold text-rb-text mb-3">What we collect, and why</h2>
+        <ul class="space-y-3 list-disc pl-5">
+          <li><strong class="text-rb-text">Trial:</strong> when you start the 7-day trial, the app sends a one-way fingerprint of your computer (a hash, which can’t be turned back into anything about you) so the trial can’t be restarted. No name, no email.</li>
+          <li><strong class="text-rb-text">License:</strong> when you activate, and about once a month after, the app sends a one-way hash of your license code and the same computer fingerprint, to enforce the 3-computer limit and to honour refunds. We never receive the code itself.</li>
+          <li><strong class="text-rb-text">Purchases:</strong> when sales open, our payment provider handles your payment and billing details as the merchant of record. We receive your email address to send your activation code.</li>
+          <li><strong class="text-rb-text">Mailing list:</strong> only if you sign up. We store your email address, when you signed up and confirmed, and which page you signed up from. We use it to tell you about the Kickstarter and Ravenburst news, nothing else. Every email has an unsubscribe link.</li>
+          <li><strong class="text-rb-text">Support:</strong> if you email us, we keep the conversation so we can help you.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-serif font-semibold text-rb-text mb-3">What we never collect</h2>
+        <ul class="space-y-2 list-disc pl-5">
+          <li>Your writing, documents or anything else in your projects</li>
+          <li>Usage analytics or tracking of what you do in the app</li>
+          <li>Crash reports, unless you choose to email us one</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-serif font-semibold text-rb-text mb-3">Backups you choose</h2>
+        <p class="mb-3">
+          Ravenburst can back your projects up to places you pick. Those copies go straight from your computer to
+          that place; they never pass through us.
+        </p>
+        <ul class="space-y-3 list-disc pl-5">
+          <li><strong class="text-rb-text">Git Backup</strong> sends your project to the folder, drive or Git service (such as GitHub) that you set up. That service’s own privacy policy applies there.</li>
+          <li>
+            <strong class="text-rb-text">Google Drive</strong> (a test feature): if you connect it, Ravenburst asks Google for access only to
+            the files Ravenburst itself creates in your Drive, not the rest of your Drive. It uploads your project to a
+            “Ravenburst” folder there and reads back its own copies and their version history so you can restore them. The sign-in
+            token is stored encrypted on your computer by your operating system, and you can disconnect at any time from
+            Cloud Storage in the app or from your Google Account’s security settings. Ravenburst’s use of information received
+            from Google APIs adheres to the
+            <a href="https://developers.google.com/terms/api-services-user-data-policy" class="text-rb-accent hover:underline">Google API Services User Data Policy</a>,
+            including the Limited Use requirements.
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-serif font-semibold text-rb-text mb-3">Who handles data for us</h2>
+        <ul class="space-y-2 list-disc pl-5">
+          <li><strong class="text-rb-text">Cloudflare</strong> hosts this website, the trial and license service, and the mailing list. Like any web host it briefly processes IP addresses to deliver pages and stop abuse.</li>
+          <li><strong class="text-rb-text">Resend</strong> sends our emails, such as confirming your mailing-list signup.</li>
+          <li><strong class="text-rb-text">Our payment provider</strong> (from launch) processes purchases under its own privacy policy.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-serif font-semibold text-rb-text mb-3">Your choices</h2>
+        <p>
+          You can unsubscribe from the mailing list from any email we send, or ask us to delete your address or any
+          other information we hold by emailing <a href="mailto:support@ravenburst.com" class="text-rb-accent hover:underline">support@ravenburst.com</a>.
+          We’ll confirm once it’s done.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-serif font-semibold text-rb-text mb-3">Contact</h2>
+        <p>Questions about this policy? Email <a href="mailto:support@ravenburst.com" class="text-rb-accent hover:underline">support@ravenburst.com</a>.</p>
+      </section>
     </div>
   </main>
   <Footer />

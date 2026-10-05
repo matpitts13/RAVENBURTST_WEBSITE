@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Small-size icon (32px and below), where the raven's detail turns to
+       mush. Same circle and ink as icon.svg. Built by scripts/build-icons.cjs. -->
+  <circle cx="256" cy="256" r="248" fill="#252422"/>
+  <g transform="translate(-14 -6)" fill="none" stroke="#E8E6E1" stroke-width="54"
+     stroke-linecap="round" stroke-linejoin="round">
+    <path d="M178 130 V388"/>
+    <path d="M178 130 H272 A82 82 0 0 1 272 294 H178"/>
+    <path d="M258 294 Q318 318 362 398"/>
+  </g>
+</svg>

@@ -2,37 +2,47 @@
 import Base from '../layouts/Base.astro'
 import Nav from '../components/Nav.astro'
 import Footer from '../components/Footer.astro'
+
+const releases = [
+  {
+    version: 'v1.0.0',
+    date: 'Coming with the Kickstarter',
+    items: [
+      'Rich-text editor with footnotes, inline notes, tables, images and resume notes',
+      'Navigator with Manuscript, Front and Back Matter, Characters, Places, Notes, Reference, Template Sheets and Trash',
+      'Corkboard, outline, split view and a second window',
+      '15 project templates: prose, picture books, academic papers, screen and stage',
+      'Compile to manuscript, paperback and proof, screenplay and documentary, US and UK stage play, EPUB, children’s book, APA, MLA and Chicago',
+      'Import from Word, Markdown, plain text and Fountain',
+      'Snapshots, automatic Git backup and project trash',
+      'Google Drive backup (test feature)',
+      'Targets, statistics and writing history',
+      'Light, dark and high-contrast themes; interface text size up to 150%',
+      'Windows, macOS and Linux',
+    ],
+  },
+]
 ---
-<Base title="Changelog" description="What's new in Ravenburst.">
+<Base title="Changelog" description="What’s new in each version of Ravenburst.">
   <Nav />
-  <main class="pt-32 pb-20 px-6 max-w-2xl mx-auto">
+  <main id="main" class="pt-32 pb-20 px-6 max-w-3xl mx-auto">
     <h1 class="text-4xl font-serif font-bold mb-12">Changelog</h1>
-    <div class="space-y-12">
-      <div>
-        <div class="flex items-center gap-3 mb-4">
-          <span class="bg-rb-accent text-white text-xs px-3 py-1 rounded-full font-medium">v1.0.0</span>
-          <span class="text-rb-muted text-sm">Coming soon</span>
+    {releases.map(r => (
+      <section class="mb-12" aria-labelledby={`v-${r.version}`}>
+        <div class="flex items-baseline gap-4 mb-6">
+          <h2 id={`v-${r.version}`} class="text-2xl font-serif font-semibold">{r.version}</h2>
+          <span class="text-rb-muted text-sm">{r.date}</span>
         </div>
-        <ul class="space-y-2 text-sm text-rb-muted">
-          {[
-            'Full rich-text editor with TipTap',
-            'All 9 Navigator sections (Manuscript, Characters, Places, Reference, Notes, Templates, Front Matter, AI Reports, Trash)',
-            'AI editorial tools (Continuity Check, Writing Coach, Story Bible, Reference Assistant)',
-            'Export to Manuscript DOCX/PDF, Paperback, Screenplay, Stage Play, EPUB, Academic (APA/MLA), Children\'s Book',
-            'Import from DOCX, TXT, Markdown, Fountain',
-            'Project templates (Novel, Screenplay, Stage Play, Non-Fiction, Children\'s Book, Academic, Short Story)',
-            'Snapshot history with restore',
-            'Offline-first, local AI with Ollama',
-            'Windows, macOS, Linux',
-          ].map(item => (
-            <li class="flex items-start gap-2">
-              <span class="text-rb-accent mt-1">+</span>
+        <ul class="space-y-2">
+          {r.items.map(item => (
+            <li class="flex gap-3 text-rb-muted">
+              <span class="text-rb-green" aria-hidden="true">+</span>
               <span>{item}</span>
             </li>
           ))}
         </ul>
-      </div>
-    </div>
+      </section>
+    ))}
   </main>
   <Footer />
 </Base>

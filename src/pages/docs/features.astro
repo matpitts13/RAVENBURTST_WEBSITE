@@ -13,8 +13,7 @@ import DocsLayout from '../../layouts/DocsLayout.astro'
       <p class="mb-3">Notable editor behaviours:</p>
       <ul class="space-y-1 list-disc list-inside">
         <li><strong class="text-rb-text">No autocorrect.</strong> Ever. What you type is what stays.</li>
-        <li><strong class="text-rb-text">No autocomplete.</strong> No AI whispering sentence completions.</li>
-        <li><strong class="text-rb-text">Typewriter mode</strong> — toggle via View menu or Ctrl+Shift+T. Keeps your cursor centred vertically as you type.</li>
+        <li><strong class="text-rb-text">No autocomplete.</strong> Nothing guesses your next word.</li>
         <li><strong class="text-rb-text">Zoom</strong> — scale the editor text independently of your OS zoom. The percentage shows in the status bar.</li>
       </ul>
     </section>
@@ -30,7 +29,6 @@ import DocsLayout from '../../layouts/DocsLayout.astro'
         <li><strong class="text-rb-text">Reference</strong> — notes and images for research</li>
         <li><strong class="text-rb-text">Notes</strong> — freeform notes not tied to the manuscript</li>
         <li><strong class="text-rb-text">Templates</strong> — reusable document templates</li>
-        <li><strong class="text-rb-text">AI Reports</strong> — saved outputs from AI analysis</li>
         <li><strong class="text-rb-text">Trash</strong> — soft-deleted documents, restorable at any time</li>
       </ul>
       <p>Drag to reorder. Double-click to rename. Right-click for context menu options.</p>
@@ -45,7 +43,7 @@ import DocsLayout from '../../layouts/DocsLayout.astro'
     <section>
       <h2 class="text-xl font-semibold text-rb-text mb-4">Find & Replace</h2>
       <ul class="space-y-1 list-disc list-inside">
-        <li><strong class="text-rb-text">Ctrl+F</strong> — find within the current document. Supports regex.</li>
+        <li><strong class="text-rb-text">Ctrl+F</strong> — find within the current document (Ctrl+H for find and replace).</li>
         <li><strong class="text-rb-text">Ctrl+Shift+F</strong> — project-wide search across all documents.</li>
         <li>Replace single or all instances. Click a result to jump to the document and highlight the match.</li>
       </ul>
@@ -59,12 +57,12 @@ import DocsLayout from '../../layouts/DocsLayout.astro'
 
     <section>
       <h2 class="text-xl font-semibold text-rb-text mb-4">Word Count</h2>
-      <p>Word counts appear in the status bar at all times — per document and per project. Select text to see a selection count. Open <strong class="text-rb-text">View → Word Count Panel</strong> for a full breakdown by chapter.</p>
+      <p>Word counts appear in the status bar at all times — per document and per project. Select text to see a selection count. Open <strong class="text-rb-text">View → Word Count → Project Word Count Details</strong> for a full breakdown by chapter.</p>
     </section>
 
     <section>
       <h2 class="text-xl font-semibold text-rb-text mb-4">Writing Targets & Statistics</h2>
-      <p class="mb-3">Set a manuscript word count goal and a daily session target via <strong class="text-rb-text">Project → Project Targets</strong> (Ctrl+Shift+T). Progress bars fill as you write; the session counter resets automatically at midnight.</p>
+      <p class="mb-3">Set a manuscript word count goal and a daily session target via <strong class="text-rb-text">Project → Project Targets</strong> (Ctrl+Alt+T). Progress bars fill as you write; the session counter resets automatically at midnight.</p>
       <p class="mb-3"><strong class="text-rb-text">Project → Statistics</strong> shows a full breakdown: words, characters, paragraphs, sentences, average lengths, estimated pages, reading time, and word frequency. Switch between compiled-only and all-documents counts.</p>
       <p><strong class="text-rb-text">Project → Writing History</strong> logs your daily word count with a bar chart and streak counter. History accumulates automatically — nothing to configure.</p>
       <p class="mt-2"><a href="/docs/writing-targets" class="text-rb-accent">Full guide →</a></p>
@@ -72,11 +70,10 @@ import DocsLayout from '../../layouts/DocsLayout.astro'
 
     <section>
       <h2 class="text-xl font-semibold text-rb-text mb-4">Text Cleanup</h2>
-      <p class="mb-3">Under <strong class="text-rb-text">Edit → Text Cleanup</strong> are four automated cleanup operations for the current document:</p>
+      <p class="mb-3">Under <strong class="text-rb-text">Edit → Text Cleanup</strong> are three cleanup operations for the current document:</p>
       <ul class="space-y-1 list-disc list-inside">
         <li><strong class="text-rb-text">Replace Multiple Spaces with Single Space</strong> — collapses any run of spaces into one</li>
         <li><strong class="text-rb-text">Remove Empty Lines Between Paragraphs</strong> — deletes blank paragraph nodes</li>
-        <li><strong class="text-rb-text">Strip Leading Tabs</strong> — removes tab characters at the start of paragraphs</li>
         <li><strong class="text-rb-text">Delete Struck-Through Text</strong> — permanently removes any text you've marked with strikethrough</li>
       </ul>
     </section>
@@ -102,18 +99,6 @@ import DocsLayout from '../../layouts/DocsLayout.astro'
       </ul>
     </section>
 
-    <section>
-      <h2 class="text-xl font-semibold text-rb-text mb-4">AI Features</h2>
-      <div class="bg-rb-surface border border-rb-accent/30 rounded-lg p-4 mb-4 text-rb-muted">
-        <strong class="text-rb-text">The AI does not write for you.</strong> Every AI feature is editorial — it finds problems, asks questions, and surfaces information. It will never generate prose, suggest sentences, or complete your thoughts.
-      </div>
-      <ul class="space-y-3 list-disc list-inside">
-        <li><strong class="text-rb-text">Continuity Check</strong> — scans your manuscript for character inconsistencies, timeline errors, and name variants. Results saved to AI Reports.</li>
-        <li><strong class="text-rb-text">Writing Coach</strong> — structural feedback in the form of questions, not rewrites. Challenges your thinking without touching your words.</li>
-        <li><strong class="text-rb-text">Reference Assistant</strong> — factual background research. Answers saved to your Reference section, never auto-inserted into your manuscript.</li>
-        <li><strong class="text-rb-text">Story Bible</strong> — extracts characters, locations, and events from your chapters automatically.</li>
-      </ul>
-    </section>
 
   </div>
 </DocsLayout>

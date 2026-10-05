@@ -1,0 +1,9 @@
+---
+// Cloudflare Pages serves this with a real 404 status for any unknown path.
+// Without it, Pages falls back to the home page with a 200, so retired URLs
+// (like the old AI setup page) would look like they still exist.
+import ListMessage from '../components/ListMessage.astro'
+---
+<ListMessage title="Page not found" heading="That page isn’t here.">
+  <p>It may have moved, or never existed. Try the <a href="/" class="text-rb-accent hover:underline">home page</a>, the <a href="/features" class="text-rb-accent hover:underline">features</a> or the <a href="/docs" class="text-rb-accent hover:underline">documentation</a>.</p>
+</ListMessage>

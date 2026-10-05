@@ -1,38 +1,27 @@
 ---
+// Shown after a purchase (wired up when sales open after the Kickstarter).
 import Base from '../layouts/Base.astro'
 import Nav from '../components/Nav.astro'
 import Footer from '../components/Footer.astro'
 ---
-<Base title="Thank You!" description="Your Ravenburst license is on its way.">
+<Base title="Thank you" description="Thank you for buying Ravenburst. Your activation code is on its way.">
   <Nav />
-  <main class="pt-32 pb-20 px-6 max-w-xl mx-auto text-center">
-    <div class="text-6xl mb-6">🦅</div>
-    <h1 class="text-4xl font-serif font-bold mb-4">You're in.</h1>
-    <p class="text-rb-muted text-xl mb-8 leading-relaxed">
-      Your activation code is on its way to your inbox. Check your spam folder if it doesn't arrive within a few minutes.
+  <main id="main" class="pt-32 pb-20 px-6 max-w-xl mx-auto text-center">
+    <img src="/brand/raven.svg" alt="" width="110" height="128" class="w-24 h-auto mx-auto mb-8" />
+    <h1 class="text-4xl font-serif font-bold mb-4">You’re in.</h1>
+    <p class="text-rb-muted text-lg mb-10">
+      Your activation code is on its way to your inbox. If it hasn’t arrived in a few minutes, check your spam folder.
     </p>
-    <div class="bg-rb-surface border border-rb-border rounded-2xl p-8 text-left text-sm text-rb-muted space-y-4 mb-8">
-      <h2 class="text-rb-text font-semibold text-lg mb-4">Getting started</h2>
-      <div class="flex items-start gap-3">
-        <span class="text-rb-accent font-bold">1.</span>
-        <span><a href="/download" class="text-rb-accent underline">Download Ravenburst</a> for your platform</span>
-      </div>
-      <div class="flex items-start gap-3">
-        <span class="text-rb-accent font-bold">2.</span>
-        <span>Install and open the app</span>
-      </div>
-      <div class="flex items-start gap-3">
-        <span class="text-rb-accent font-bold">3.</span>
-        <span>Go to <strong class="text-rb-text">Help → Enter Activation Code</strong></span>
-      </div>
-      <div class="flex items-start gap-3">
-        <span class="text-rb-accent font-bold">4.</span>
-        <span>Enter your email and the code from your inbox</span>
-      </div>
+    <div class="bg-rb-surface border border-rb-border rounded-2xl p-8 text-left">
+      <h2 class="font-serif text-xl font-semibold mb-4">Getting started</h2>
+      <ol class="space-y-3 text-rb-muted list-decimal list-inside">
+        <li><a href="/download" class="text-rb-accent hover:underline">Download Ravenburst</a> for your computer</li>
+        <li>Install and open it</li>
+        <li>Choose Help → Enter Activation Code</li>
+        <li>Enter your email address and the code from your inbox</li>
+      </ol>
     </div>
-    <p class="text-rb-muted text-sm">
-      Questions? <a href="mailto:support@ravenburst.com" class="text-rb-accent">support@ravenburst.com</a>
-    </p>
+    <p class="text-rb-muted text-sm mt-8">Questions? <a href="mailto:support@ravenburst.com" class="text-rb-accent hover:underline">support@ravenburst.com</a></p>
   </main>
   <Footer />
 </Base>

@@ -5,7 +5,7 @@
   --color-rb-surface:   #252422;
   --color-rb-border:    #3A3937;
   --color-rb-text:      #E8E6E1;
-  --color-rb-muted:     #6A6865;
+  --color-rb-muted:     #A8A59F; /* ~7:1 on rb-bg; the old #6A6865 was ~3.3:1, below WCAG AA */
   --color-rb-accent:    #5B8EFF;
   --color-rb-accent-hv: #4A7CFF;
   --color-rb-green:     #16A34A;

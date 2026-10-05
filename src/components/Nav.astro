@@ -1,38 +1,43 @@
 ---
 const links = [
-  { href: '/',         label: 'Home' },
   { href: '/features', label: 'Features' },
   { href: '/pricing',  label: 'Pricing' },
-  { href: '/support',  label: 'Support' },
+  { href: '/docs',     label: 'Docs' },
   { href: '/about',    label: 'About' },
 ]
-const current = Astro.url.pathname
+const current = Astro.url.pathname.replace(/\/$/, '') || '/'
+const isActive = (href: string) => current === href || current.startsWith(href + '/')
 ---
 <header class="fixed top-0 left-0 right-0 z-50 border-b border-rb-border bg-rb-bg/90 backdrop-blur-sm">
-  <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+  <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between" aria-label="Main">
     <a href="/" class="flex items-center gap-3 text-rb-text hover:text-white transition-colors">
-      <span class="text-2xl font-serif text-rb-accent" style="font-style:italic">𝕽</span>
-      <span class="font-semibold tracking-wide">Ravenburst</span>
+      <img src="/brand/raven.svg" alt="" width="30" height="35" class="h-9 w-auto" />
+      <span class="font-serif text-lg font-semibold tracking-wide">Ravenburst</span>
     </a>
 
     <div class="hidden md:flex items-center gap-8">
       {links.map(l => (
         <a href={l.href}
-          class:list={['text-sm transition-colors', (l.href === '/' ? current === '/' : current === l.href) ? 'text-white font-medium' : 'text-rb-muted hover:text-rb-text']}>
+          aria-current={isActive(l.href) ? 'page' : undefined}
+          class:list={['text-sm transition-colors', isActive(l.href) ? 'text-white font-medium' : 'text-rb-muted hover:text-rb-text']}>
           {l.label}
         </a>
       ))}
     </div>
 
     <div class="flex items-center gap-3">
-      <a href="/download"
-        class="text-sm text-rb-muted hover:text-rb-text transition-colors hidden md:block">
-        Download
-      </a>
-      <a href="/pricing"
+      <a href="/#join"
         class="text-sm bg-rb-accent hover:bg-rb-accent-hv text-white px-4 py-2 rounded-lg transition-colors font-medium">
-        Get Ravenburst
+        Join the list
       </a>
+      <details class="md:hidden relative">
+        <summary class="list-none cursor-pointer text-rb-muted hover:text-rb-text p-2" aria-label="Menu">☰</summary>
+        <div class="absolute right-0 mt-2 w-44 bg-rb-surface border border-rb-border rounded-xl p-2 flex flex-col">
+          {links.map(l => (
+            <a href={l.href} class="px-3 py-2 text-sm text-rb-muted hover:text-rb-text rounded-lg">{l.label}</a>
+          ))}
+        </div>
+      </details>
     </div>
   </nav>
 </header>

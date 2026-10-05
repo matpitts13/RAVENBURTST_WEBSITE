@@ -4,30 +4,45 @@ interface Props {
   title: string
   description?: string
   ogImage?: string
+  noindex?: boolean
 }
 const {
+  noindex = false,
   title,
-  description = 'Ravenburst — AI-Powered Desktop Writing Editor for novelists, screenwriters, and playwrights.',
+  description = 'Ravenburst is a desktop writing studio for novelists, screenwriters and playwrights. Chapters, characters, places and research in one file, exported to manuscript, paperback, screenplay, stage play and EPUB.',
   ogImage = '/og-default.png',
 } = Astro.props
 const canonical = new URL(Astro.url.pathname, Astro.site)
+const ogImageUrl = new URL(ogImage, Astro.site)
+const fullTitle = title === 'Ravenburst' ? title : `${title} | Ravenburst`
 ---
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{fullTitle}</title>
   <meta name="description" content={description} />
-  <meta property="og:title" content={title} />
-  <meta property="og:description" content={description} />
-  <meta property="og:image" content={ogImage} />
-  <meta property="og:type" content="website" />
-  <meta name="twitter:card" content="summary_large_image" />
   <link rel="canonical" href={canonical} />
-  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-  <title>{title} | Ravenburst</title>
+  {noindex && <meta name="robots" content="noindex" />}
+  <meta name="theme-color" content="#1A1917" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Ravenburst" />
+  <meta property="og:title" content={fullTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content={ogImageUrl} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 </head>
 <body class="bg-rb-bg text-rb-text min-h-screen">
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] bg-rb-accent text-white px-4 py-2 rounded-lg">Skip to content</a>
   <slot />
 </body>
 </html>

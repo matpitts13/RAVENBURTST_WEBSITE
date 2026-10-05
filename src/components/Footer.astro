@@ -4,17 +4,17 @@ const year = new Date().getFullYear()
 <footer class="border-t border-rb-border mt-24">
   <div class="max-w-6xl mx-auto px-6 py-12">
     <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
-      <div>
+      <div class="col-span-2 md:col-span-1">
         <div class="flex items-center gap-2 mb-4">
-          <span class="text-xl font-serif text-rb-accent italic">𝕽</span>
-          <span class="font-semibold text-rb-text">Ravenburst</span>
+          <img src="/brand/raven.svg" alt="" width="24" height="28" class="h-7 w-auto" />
+          <span class="font-serif font-semibold text-rb-text">Ravenburst</span>
         </div>
         <p class="text-rb-muted text-sm leading-relaxed">
-          AI-powered writing environment for serious authors.
+          A writing studio for novelists, screenwriters and playwrights.
         </p>
       </div>
       <div>
-        <h4 class="text-sm font-semibold text-rb-text mb-3">Product</h4>
+        <h2 class="text-sm font-semibold text-rb-text mb-3 font-sans">Product</h2>
         <ul class="space-y-2 text-sm text-rb-muted">
           <li><a href="/features" class="hover:text-rb-text transition-colors">Features</a></li>
           <li><a href="/pricing" class="hover:text-rb-text transition-colors">Pricing</a></li>
@@ -23,14 +23,15 @@ const year = new Date().getFullYear()
         </ul>
       </div>
       <div>
-        <h4 class="text-sm font-semibold text-rb-text mb-3">Company</h4>
+        <h2 class="text-sm font-semibold text-rb-text mb-3 font-sans">Help</h2>
         <ul class="space-y-2 text-sm text-rb-muted">
-          <li><a href="/about" class="hover:text-rb-text transition-colors">About</a></li>
+          <li><a href="/docs" class="hover:text-rb-text transition-colors">Documentation</a></li>
           <li><a href="/support" class="hover:text-rb-text transition-colors">Support</a></li>
+          <li><a href="/about" class="hover:text-rb-text transition-colors">About</a></li>
         </ul>
       </div>
       <div>
-        <h4 class="text-sm font-semibold text-rb-text mb-3">Legal</h4>
+        <h2 class="text-sm font-semibold text-rb-text mb-3 font-sans">Legal</h2>
         <ul class="space-y-2 text-sm text-rb-muted">
           <li><a href="/legal/privacy" class="hover:text-rb-text transition-colors">Privacy Policy</a></li>
           <li><a href="/legal/terms" class="hover:text-rb-text transition-colors">Terms of Service</a></li>
@@ -39,9 +40,7 @@ const year = new Date().getFullYear()
     </div>
     <div class="border-t border-rb-border pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
       <p class="text-rb-muted text-sm">© {year} Ravenburst. All rights reserved.</p>
-      <p class="text-rb-muted text-xs">
-        AI that edits. Never writes. <span class="text-rb-accent">Your story. Your words.</span>
-      </p>
+      <p class="text-rb-muted text-xs">Your story. <span class="text-rb-accent">Your words.</span></p>
     </div>
   </div>
 </footer>

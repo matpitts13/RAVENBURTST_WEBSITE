@@ -1,105 +1,126 @@
 ---
 import DocsLayout from '../../layouts/DocsLayout.astro'
-const mod = 'Ctrl'
-const shortcuts = [
+
+// Mirrors the app's own list (Help → Keyboard Shortcuts, ShortcutsPanel.tsx
+// in the app repo). Keep the two in step when shortcuts change.
+const shortcuts: { section: string; items: [string, string][] }[] = [
   {
     section: 'File',
     items: [
-      [mod+'+N', 'New Project'],
-      [mod+'+O', 'Open Project'],
-      [mod+'+S', 'Save'],
-      [mod+'+Shift+E', 'Compile / Export'],
-      [mod+'+P', 'Print'],
-    ]
+      ['Ctrl+N', 'New Document'],
+      ['Ctrl+Shift+N', 'New Project'],
+      ['Ctrl+Shift+D', 'New Chapter Folder'],
+      ['Ctrl+O', 'Open Project'],
+      ['Ctrl+S', 'Save'],
+      ['Ctrl+Shift+S', 'Save Snapshot'],
+      ['Ctrl+Shift+E', 'Compile / Export'],
+      ['Ctrl+P', 'Print'],
+    ],
   },
   {
     section: 'Edit',
     items: [
-      [mod+'+Z', 'Undo'],
-      [mod+'+Shift+Z', 'Redo'],
-      [mod+'+X', 'Cut'],
-      [mod+'+C', 'Copy'],
-      [mod+'+V', 'Paste'],
-      [mod+'+A', 'Select All'],
-      [mod+'+F', 'Find in document'],
-      [mod+'+Shift+F', 'Find in project'],
-    ]
+      ['Ctrl+Z', 'Undo'],
+      ['Ctrl+Shift+Z', 'Redo'],
+      ['Ctrl+X', 'Cut'],
+      ['Ctrl+C', 'Copy'],
+      ['Ctrl+V', 'Paste'],
+      ['Ctrl+Shift+V', 'Paste and Match Style'],
+      ['Ctrl+A', 'Select All'],
+      ['Ctrl+F', 'Find in Document'],
+      ['Ctrl+G', 'Find Next'],
+      ['Ctrl+Shift+G', 'Find Previous'],
+      ['Ctrl+H', 'Find & Replace'],
+      ['Ctrl+Shift+F', 'Find in Project'],
+      ['Esc', 'Close Find Bar'],
+    ],
   },
   {
-    section: 'Format — Character',
+    section: 'Character Formatting',
     items: [
-      [mod+'+B', 'Bold'],
-      [mod+'+I', 'Italic'],
-      [mod+'+U', 'Underline'],
-      [mod+'+Shift+X', 'Strikethrough'],
-      [mod+'+Shift+=', 'Superscript'],
-      [mod+'+Shift+-', 'Subscript'],
-      [mod+'+'+'\\', 'Clear Formatting'],
-    ]
+      ['Ctrl+B', 'Bold'],
+      ['Ctrl+I', 'Italic'],
+      ['Ctrl+U', 'Underline'],
+      ['Ctrl+Shift+X', 'Strikethrough'],
+      ['Ctrl+Shift+=', 'Superscript'],
+      ['Ctrl+Shift+-', 'Subscript'],
+      ['Ctrl+\\', 'Clear Formatting'],
+    ],
   },
   {
-    section: 'Format — Paragraph',
+    section: 'Paragraph Formatting',
     items: [
-      [mod+'+Alt+0', 'Normal paragraph'],
-      [mod+'+Alt+1', 'Heading 1'],
-      [mod+'+Alt+2', 'Heading 2'],
-      [mod+'+Alt+3', 'Heading 3'],
-      [mod+'+Shift+L', 'Align Left'],
-      [mod+'+Shift+E', 'Align Centre'],
-      [mod+'+Shift+R', 'Align Right'],
-      [mod+'+Shift+J', 'Justify'],
-      [mod+'+Shift+7', 'Numbered List'],
-      [mod+'+Shift+8', 'Bullet List'],
-    ]
+      ['Ctrl+Shift+L', 'Align Left'],
+      ['Ctrl+Shift+C', 'Align Centre'],
+      ['Ctrl+Shift+R', 'Align Right'],
+      ['Ctrl+Shift+J', 'Justify'],
+      ['Ctrl+Shift+8', 'Bullet List'],
+      ['Ctrl+Shift+7', 'Numbered List'],
+      ['Tab', 'Increase Indent'],
+      ['Shift+Tab', 'Decrease Indent'],
+      ['Ctrl+Alt+1', 'Heading 1'],
+      ['Ctrl+Alt+2', 'Heading 2'],
+      ['Ctrl+Alt+3', 'Heading 3'],
+    ],
   },
   {
     section: 'Insert',
     items: [
-      [mod+'+Shift+F', 'Insert Footnote'],
-    ]
+      ['Ctrl+Shift+K', 'Inline Comment / Note'],
+      ['Ctrl+Shift+B', 'Resume Note (pick up here)'],
+      ['Ctrl+Alt+F', 'Footnote'],
+    ],
   },
   {
     section: 'View',
     items: [
-      [mod+'+=', 'Zoom In'],
-      [mod+'+'-'', 'Zoom Out'],
-      [mod+'+0', 'Reset Zoom'],
-      [mod+'+Shift+T', 'Typewriter Mode'],
+      ['Ctrl+=', 'Zoom In'],
+      ['Ctrl+-', 'Zoom Out'],
+      ['Ctrl+0', 'Reset Zoom (100%)'],
+      ['Ctrl+1', 'Single Document View'],
+      ['Ctrl+2', 'Split View'],
+      ['Ctrl+3', 'Corkboard'],
+      ['Ctrl+4', 'Outline'],
+      ['Ctrl+Shift+[', 'Open / Close Navigator'],
+      ['Ctrl+Shift+]', 'Open / Close Inspector'],
       ['F11', 'Fullscreen'],
-    ]
-  },
-  {
-    section: 'Snapshots',
-    items: [
-      [mod+'+Shift+S', 'Save Snapshot'],
-    ]
+    ],
   },
   {
     section: 'Navigation',
     items: [
-      [mod+'+[', 'Previous Document'],
-      [mod+'+]', 'Next Document'],
-      [mod+'+Shift+/', 'Keyboard Shortcuts'],
-      [mod+'+,', 'Preferences'],
-    ]
+      ['Ctrl+[', 'Previous Document'],
+      ['Ctrl+]', 'Next Document'],
+      ['Alt+←', 'Back (History)'],
+      ['Alt+→', 'Forward (History)'],
+      ['Ctrl+Shift+M', 'Jump to Manuscript'],
+      ['Ctrl+D', 'Add Bookmark'],
+    ],
   },
   {
-    section: 'Help',
+    section: 'Tools',
     items: [
-      [mod+'+Shift+'+'/', 'Keyboard Shortcuts'],
-    ]
+      ['Ctrl+,', 'Preferences'],
+      ['Ctrl+Shift+/', 'Keyboard Shortcuts'],
+      ['Ctrl+Alt+T', 'Project Targets'],
+    ],
   },
 ]
 ---
 <DocsLayout title="Keyboard Shortcuts" description="Every Ravenburst keyboard shortcut in one place.">
   <h1 class="text-4xl font-serif font-bold text-rb-text mb-2">Keyboard Shortcuts</h1>
-  <p class="text-rb-muted mb-10">All shortcuts use <kbd class="bg-rb-surface border border-rb-border text-rb-text px-1.5 py-0.5 rounded text-xs">Ctrl</kbd> on Windows/Linux and <kbd class="bg-rb-surface border border-rb-border text-rb-text px-1.5 py-0.5 rounded text-xs">Cmd</kbd> on macOS.</p>
+  <p class="text-rb-muted mb-3">
+    Shown for Windows and Linux. On macOS, use <kbd class="bg-rb-surface border border-rb-border text-rb-text px-1.5 py-0.5 rounded text-xs">⌘ Cmd</kbd>
+    in place of Ctrl and <kbd class="bg-rb-surface border border-rb-border text-rb-text px-1.5 py-0.5 rounded text-xs">⌥ Option</kbd> in place of Alt.
+  </p>
+  <p class="text-rb-muted mb-10">In the app, <strong class="text-rb-text">Help → Keyboard Shortcuts</strong> (Ctrl+Shift+/) shows this list any time.</p>
 
   <div class="space-y-8">
     {shortcuts.map(group => (
       <section>
-        <h2 class="text-sm uppercase tracking-widest text-rb-muted font-semibold mb-3 border-b border-rb-border pb-2">{group.section}</h2>
+        <h2 class="text-sm uppercase tracking-widest text-rb-muted font-semibold mb-3 border-b border-rb-border pb-2 font-sans">{group.section}</h2>
         <table class="w-full text-sm">
+          <caption class="sr-only">{group.section} shortcuts</caption>
           <tbody>
             {group.items.map(([key, action]) => (
               <tr class="border-b border-rb-border/50">

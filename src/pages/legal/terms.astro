@@ -2,24 +2,74 @@
 import Base from '../../layouts/Base.astro'
 import Nav from '../../components/Nav.astro'
 import Footer from '../../components/Footer.astro'
+
+// Change this date whenever the terms' substance changes (not on every build).
+const LAST_UPDATED = 'October 4, 2026'
 ---
-<Base title="Terms of Service">
+<Base title="Terms of Service" description="The terms for using Ravenburst, in plain language: your writing is yours.">
   <Nav />
-  <main class="pt-32 pb-20 px-6 max-w-2xl mx-auto">
-    <h1 class="text-4xl font-serif font-bold mb-8">Terms of Service</h1>
-    <p class="text-rb-muted text-sm mb-8">Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
-    <div class="space-y-6 text-rb-muted leading-relaxed text-sm">
-      <p><strong class="text-rb-text">Plain language summary:</strong> Buy the app, use it honestly, don't redistribute it, your writing is yours.</p>
-      <h2 class="text-rb-text text-xl font-semibold">License</h2>
-      <p>Purchasing Ravenburst grants you a personal, non-transferable license to install and use the software on up to 3 devices. You may not redistribute, resell, or reverse-engineer the application.</p>
-      <h2 class="text-rb-text text-xl font-semibold">Your content</h2>
-      <p>Everything you write in Ravenburst belongs entirely to you. We claim no rights to your content. Your files are stored locally on your device.</p>
-      <h2 class="text-rb-text text-xl font-semibold">Refunds</h2>
-      <p>We offer a full refund within 30 days of purchase, no questions asked. Email support@ravenburst.com.</p>
-      <h2 class="text-rb-text text-xl font-semibold">Warranty disclaimer</h2>
-      <p>Ravenburst is provided "as is." We do our best to make it reliable, but we are not liable for data loss. Back up your .ravenburst files regularly.</p>
-      <h2 class="text-rb-text text-xl font-semibold">Contact</h2>
-      <p><a href="mailto:support@ravenburst.com" class="text-rb-accent">support@ravenburst.com</a></p>
+  <main id="main" class="pt-32 pb-20 px-6 max-w-3xl mx-auto">
+    <h1 class="text-4xl font-serif font-bold mb-3">Terms of Service</h1>
+    <p class="text-rb-muted text-sm mb-10">Last updated: {LAST_UPDATED}</p>
+
+    <div class="space-y-10 text-rb-muted leading-relaxed">
+      <section class="bg-rb-surface border border-rb-border rounded-xl p-6">
+        <p class="text-rb-text"><strong>In plain language:</strong> buy the app, use it honestly, don’t redistribute it — and your writing is always yours.</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-serif font-semibold text-rb-text mb-3">Your license</h2>
+        <p>
+          Buying Ravenburst gives you a personal, non-transferable license to install and use it on up to 3 computers.
+          You may not redistribute, resell or reverse-engineer it, or share your activation code.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-serif font-semibold text-rb-text mb-3">Your writing</h2>
+        <p>
+          Everything you write in Ravenburst belongs entirely to you. We claim no rights to your content, and it is
+          stored on your own computer and wherever you choose to back it up.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-serif font-semibold text-rb-text mb-3">Trial</h2>
+        <p>
+          The free trial lasts 7 days. When it ends you can still open, write in and save your projects; exporting
+          is paused until you activate a license.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-serif font-semibold text-rb-text mb-3">Refunds</h2>
+        <p>
+          You can have a full refund within 30 days of purchase, no questions asked — email
+          <a href="mailto:support@ravenburst.com" class="text-rb-accent hover:underline">support@ravenburst.com</a>.
+          Once refunded, the license is deactivated. Kickstarter pledges follow Kickstarter’s own rules.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-serif font-semibold text-rb-text mb-3">Test features</h2>
+        <p>
+          Features marked as test features, such as Google Drive backup, are offered early and may change or be
+          removed. Don’t rely on them as your only backup.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-serif font-semibold text-rb-text mb-3">No warranty</h2>
+        <p>
+          Ravenburst is provided “as is”. We work hard to make it reliable, but we can’t be liable for lost work or
+          other damages. Keep backups of your projects — the app’s snapshots and Git Backup are there to help.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-serif font-semibold text-rb-text mb-3">Contact</h2>
+        <p><a href="mailto:support@ravenburst.com" class="text-rb-accent hover:underline">support@ravenburst.com</a></p>
+      </section>
     </div>
   </main>
   <Footer />

@@ -2,41 +2,49 @@
 import Base from '../layouts/Base.astro'
 import Nav from '../components/Nav.astro'
 import Footer from '../components/Footer.astro'
+import SignupForm from '../components/SignupForm.astro'
+
+const platforms = [
+  { name: 'Windows', detail: 'Windows 10 or 11, 64-bit' },
+  { name: 'macOS', detail: 'macOS 13 Ventura or later · Apple silicon and Intel' },
+  { name: 'Linux', detail: '64-bit · AppImage, .deb and .rpm' },
+]
 ---
-<Base title="Download" description="Download Ravenburst for Windows, macOS, or Linux. 7-day free trial, no credit card required.">
+<Base title="Download" description="Ravenburst installers for Windows, macOS and Linux arrive with the Kickstarter launch. Join the list to hear first.">
   <Nav />
-  <main class="pt-32 pb-20 px-6 max-w-3xl mx-auto text-center">
-    <h1 class="text-4xl md:text-5xl font-serif font-bold mb-4">Download Ravenburst</h1>
-    <p class="text-rb-muted text-xl mb-12">7-day free trial. No credit card. Install and write.</p>
+  <main id="main" class="pt-32 pb-20 px-6 max-w-3xl mx-auto">
+    <div class="text-center mb-14">
+      <h1 class="text-4xl md:text-5xl font-serif font-bold mb-4">Download Ravenburst</h1>
+      <p class="text-rb-muted text-xl max-w-xl mx-auto">
+        Ravenburst isn’t available to download just yet. It launches on Kickstarter first — join the list
+        and we’ll email you the day it’s ready.
+      </p>
+    </div>
 
-    <div class="grid md:grid-cols-3 gap-6 mb-12">
-      {[
-        { os: 'Windows', icon: '🪟', sub: 'Windows 10/11 (64-bit)', ext: '.exe', disabled: true },
-        { os: 'macOS',   icon: '🍎', sub: 'macOS 10.15+ (Intel & Apple Silicon)', ext: '.dmg', disabled: true },
-        { os: 'Linux',   icon: '🐧', sub: 'Ubuntu 20.04+ / AppImage', ext: '.AppImage', disabled: true },
-      ].map(d => (
-        <div class:list={['bg-rb-surface border border-rb-border rounded-2xl p-8', d.disabled ? 'opacity-60' : '']}>
-          <div class="text-4xl mb-3">{d.icon}</div>
-          <div class="font-semibold text-rb-text mb-1">{d.os}</div>
-          <div class="text-rb-muted text-xs mb-6">{d.sub}</div>
-          <button disabled={d.disabled}
-            class="w-full bg-rb-accent text-white py-3 rounded-lg font-medium disabled:opacity-50 disabled:cursor-not-allowed">
-            {d.disabled ? 'Coming Soon' : `Download ${d.ext}`}
-          </button>
-        </div>
+    <div class="max-w-md mx-auto mb-16">
+      <SignupForm id="signup-download" source="download" />
+    </div>
+
+    <ul class="grid md:grid-cols-3 gap-4 mb-14">
+      {platforms.map(p => (
+        <li class="bg-rb-surface border border-rb-border rounded-xl p-6 text-center">
+          <div class="font-semibold text-rb-text mb-1">{p.name}</div>
+          <div class="text-xs text-rb-muted">{p.detail}</div>
+          <div class="mt-4 text-xs uppercase tracking-wider text-rb-muted">Coming soon</div>
+        </li>
       ))}
-    </div>
+    </ul>
 
-    <div class="bg-rb-surface border border-rb-border rounded-xl p-6 text-left text-sm text-rb-muted max-w-lg mx-auto">
-      <h3 class="text-rb-text font-semibold mb-3">Minimum requirements</h3>
-      <ul class="space-y-1">
-        <li><span class="text-rb-text">OS:</span> Windows 10, macOS 10.15 Catalina, Ubuntu 20.04</li>
-        <li><span class="text-rb-text">RAM:</span> 4GB (8GB recommended for AI features)</li>
-        <li><span class="text-rb-text">Storage:</span> 300MB app + 2GB for Ollama AI models (optional)</li>
-        <li><span class="text-rb-text">Display:</span> 1280×768 minimum</li>
-      </ul>
-      <p class="mt-4 text-xs">AI features use Ollama locally — no GPU required, though one dramatically improves speed.</p>
-    </div>
+    <section class="bg-rb-surface border border-rb-border rounded-2xl p-8" aria-labelledby="req">
+      <h2 id="req" class="text-xl font-serif font-semibold mb-4">System requirements</h2>
+      <dl class="grid sm:grid-cols-[8rem_1fr] gap-x-6 gap-y-3 text-sm">
+        <dt class="text-rb-text">Operating system</dt><dd class="text-rb-muted">Windows 10 or 11 (64-bit), macOS 13 or later, or 64-bit Linux</dd>
+        <dt class="text-rb-text">Memory</dt><dd class="text-rb-muted">4 GB RAM</dd>
+        <dt class="text-rb-text">Disk space</dt><dd class="text-rb-muted">About 500 MB, plus room for your projects</dd>
+        <dt class="text-rb-text">Display</dt><dd class="text-rb-muted">1280 × 768 or larger</dd>
+        <dt class="text-rb-text">Internet</dt><dd class="text-rb-muted">Only to start the trial, activate a license and for a brief monthly license check</dd>
+      </dl>
+    </section>
   </main>
   <Footer />
 </Base>
