@@ -1,0 +1,20 @@
+{
+  "specVersion": "mla-9-2021.1",
+  "spec": {
+    "name": "MLA",
+    "version": "MLA 9th Edition (2021)",
+    "font": "Times New Roman",
+    "fontSize": 12,
+    "lineSpacing": 2.0,
+    "marginTop": 72,
+    "marginBottom": 72,
+    "marginLeft": 72,
+    "marginRight": 72,
+    "headerFormat": "LastName #",
+    "titlePage": false,
+    "abstract": false,
+    "runningHead": false,
+    "referencesLabel": "Works Cited",
+    "noteStyle": "endnote"
+  }
+}

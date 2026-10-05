@@ -1,90 +1,120 @@
 ---
 import DocsLayout from '../../layouts/DocsLayout.astro'
 ---
-<DocsLayout title="Compile Options" description="Control how your manuscript is assembled when you export — separators, page breaks, and document selection.">
-  <h1 class="text-4xl font-serif font-bold text-rb-text mb-2">Compile Options</h1>
-  <p class="text-rb-muted mb-10">Everything you can control when compiling your project for export.</p>
+<DocsLayout title="Compiling" description="How Ravenburst assembles your project into one file: what's included, in what order, and the options in the Compile dialog.">
+  <h1>Compiling</h1>
+  <p class="lede">Compiling turns the documents in your project into one finished file: a manuscript, a paperback interior, an e-book, a script.</p>
 
-  <div class="space-y-12 text-sm text-rb-muted leading-relaxed">
+  <nav class="toc" aria-label="On this page">
+    <p>On this page</p>
+    <ul>
+      <li><a href="#open">Opening the Compile dialog</a></li>
+      <li><a href="#included">What gets included</a></li>
+      <li><a href="#order">Reading order</a></li>
+      <li><a href="#options">Options</a></li>
+      <li><a href="#front-back">Front and back matter</a></li>
+      <li><a href="#titles">Chapter and part titles</a></li>
+      <li><a href="#after">After you export</a></li>
+    </ul>
+  </nav>
 
-    <section>
-      <h2 class="text-xl font-semibold text-rb-text mb-4">Opening Compile</h2>
-      <p>Go to <strong class="text-rb-text">File → Compile / Export</strong> or press <strong class="text-rb-text">Ctrl+Shift+E</strong>. The compile dialog shows all available formats and options for the selected format.</p>
-    </section>
-
-    <section>
-      <h2 class="text-xl font-semibold text-rb-text mb-4">Document Selection</h2>
-      <p class="mb-3">The <strong class="text-rb-text">Include</strong> panel lists every document marked for compile. You can uncheck individual documents here without touching the compile checkbox in the Navigator — useful for one-off exports where you want a subset of chapters.</p>
-      <p>The panel shows the title, word count, and total included word count so you can see exactly what you're exporting before you click Export.</p>
-    </section>
-
-    <section>
-      <h2 class="text-xl font-semibold text-rb-text mb-4">Scene Separator</h2>
-      <p class="mb-3">When you have multiple scene documents inside a chapter, the scene separator controls what appears between them in the compiled output.</p>
-      <div class="bg-rb-surface border border-rb-border rounded-lg overflow-hidden mb-4">
-        <table class="w-full text-xs">
-          <thead class="border-b border-rb-border">
-            <tr>
-              <th class="text-left px-4 py-2 text-rb-text font-semibold">Option</th>
-              <th class="text-left px-4 py-2 text-rb-text font-semibold">Result</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-rb-border">
-            {[
-              ['None', 'Scenes run together with no gap'],
-              ['Extra blank line', 'A single blank line between scenes (default)'],
-              ['* * *', 'Three centred asterisks — a common scene-break convention'],
-              ['— em-dash —', 'Em-dash separator, common in commercial fiction'],
-              ['Custom', 'Any text you type — centred between scenes'],
-            ].map(([opt, result]) => (
-              <tr>
-                <td class="px-4 py-2 font-medium text-rb-text">{opt}</td>
-                <td class="px-4 py-2">{result}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      <p>The separator is applied between scenes within a chapter. It does not appear between chapters.</p>
-    </section>
-
-    <section>
-      <h2 class="text-xl font-semibold text-rb-text mb-4">Chapter Start</h2>
-      <p class="mb-3">Controls whether each chapter starts on a new page in the compiled output.</p>
-      <ul class="space-y-2 list-disc list-inside mb-3">
-        <li><strong class="text-rb-text">New page (default)</strong> — each chapter begins on its own page. Standard for novels and most long-form prose.</li>
-        <li><strong class="text-rb-text">Continuous</strong> — chapters flow directly after the previous one, separated only by the chapter heading. Useful for short story collections or documents where page breaks would waste space.</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2 class="text-xl font-semibold text-rb-text mb-4">Author Name</h2>
-      <p>The author name appears in headers, title pages, and cover sheets depending on the format. It defaults to the project name if left blank.</p>
-    </section>
-
-    <section>
-      <h2 class="text-xl font-semibold text-rb-text mb-4">Chapter Numbering</h2>
-      <p>When enabled, chapters are numbered automatically in the output (<em>Chapter 1, Chapter 2…</em>) using your project's chapter label. Disable this if your chapters have unique names and you don't want a number prefix.</p>
-    </section>
-
-    <section>
-      <h2 class="text-xl font-semibold text-rb-text mb-4">Compile Order</h2>
-      <p class="mb-3">The compile order is always:</p>
-      <ol class="space-y-1 list-decimal list-inside">
-        <li>Front Matter (in Navigator order)</li>
-        <li>Prologue (if present and marked for compile)</li>
-        <li>Manuscript chapters and scenes (in Navigator order)</li>
-        <li>Epilogue (if present and marked for compile)</li>
-        <li>Back Matter (in Navigator order)</li>
-      </ol>
-      <p class="mt-3">The Navigator order is the compile order — drag documents to reorder them.</p>
-    </section>
-
-    <section>
-      <h2 class="text-xl font-semibold text-rb-text mb-4">Format Updates</h2>
-      <p class="mb-3">Some export formats (APA, MLA, and others with specific style-guide rules) can receive updates without a full app update. Go to <strong class="text-rb-text">Help → Check for Format Updates</strong> to check for updated format specs.</p>
-      <p>This is useful when a style guide releases a new edition — you'll get the correct formatting without waiting for a new app release.</p>
-    </section>
-
+  <h2 id="open">Opening the Compile dialog</h2>
+  <p>Choose <span class="menu">File → Compile / Export…</span> or press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>E</kbd> (<kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>E</kbd> on a Mac). The dialog has three parts: the <strong>Format</strong> list, the <strong>Include</strong> list, and <strong>Options</strong>. Pick a format, check the list, then click <strong>Export →</strong> and choose where to save the file.</p>
+  <p>Ravenburst saves the document you're working on before it compiles, so the export always has your latest words.</p>
+  <div class="note">
+    <p>Compiling needs an active trial or license. If the trial has ended, the dialog shows an <strong>Enter License Code</strong> button instead. Writing and saving keep working either way.</p>
   </div>
+
+  <h2 id="included">What gets included</h2>
+  <p>The <strong>Include</strong> list shows every Manuscript document that is ticked to go into the final draft: parts, chapters, scenes, and a prologue, epilogue, dedication or epigraph if you have them. Above the list is a running total, for example <em>Include (12 of 14 documents — 61,240 words)</em>.</p>
+  <ul>
+    <li><strong>To leave something out of every export</strong>, untick it in the Navigator (right-click → <span class="menu">Exclude from Compile</span>). It stays in your project.</li>
+    <li><strong>To leave something out of this export only</strong>, untick it in the Include list. The Navigator is unchanged.</li>
+    <li>Characters, Places, Notes, Reference and Template documents are never compiled. They are for you, not your readers.</li>
+    <li>A chapter or scene with no text in it is skipped, so empty placeholders don't become blank pages.</li>
+  </ul>
+  <p>New projects create the Prologue and Epilogue unticked. Until you tick <strong>Include in Final Draft</strong> they open read-only, so they can't be written in or compiled by accident.</p>
+
+  <h2 id="order">Reading order</h2>
+  <p>The compiled file follows the Navigator from top to bottom. Drag documents in the Navigator to change the order. Within the Manuscript, these always keep their place:</p>
+  <ol>
+    <li>Dedication, then Epigraph, then Prologue, at the start</li>
+    <li>Parts, chapters and scenes, in Navigator order</li>
+    <li>Epilogue, at the end</li>
+  </ol>
+  <p>Front matter comes before all of it and back matter after it. See <a href="#front-back">Front and back matter</a>.</p>
+
+  <h2 id="options">Options</h2>
+  <p>Only the options that make sense for the chosen format are shown.</p>
+
+  <h3>Author Name</h3>
+  <p>Used in running headers, on the built-in title page and in the file's details. It starts as the author set for the project and can be changed for one export. If you leave it blank, exports say “Unknown Author”.</p>
+
+  <h3>Chapter numbering</h3>
+  <p>On (the default): chapter and part headings include their numbers, exactly as the Navigator shows them, for example “Chapter Three — The Storm”. Off: only the chapter's own name is printed (“The Storm”). A chapter called just “Chapter 3” then gets no heading text at all.</p>
+
+  <h3>Include page numbers</h3>
+  <p>Adds the running header with page numbers to Manuscript and Paperback exports. Proof PDFs always have it.</p>
+
+  <h3>Scene Separator</h3>
+  <p>What goes between two scenes of the same chapter. Shown for Manuscript, Paperback, Proof and EPUB.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Option</th><th>Result</th></tr></thead>
+      <tbody>
+        <tr><td>None (no separator)</td><td>The scenes run straight on.</td></tr>
+        <tr><td>Extra blank line</td><td>One empty line between scenes. The default.</td></tr>
+        <tr><td>* * *</td><td>Three centred asterisks.</td></tr>
+        <tr><td>— em-dash —</td><td>A centred em dash.</td></tr>
+        <tr><td>Custom…</td><td>Any text you type, centred, for example <code>#</code> or <code>~</code>.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>The separator only goes between scenes that have text; nothing is added before a chapter's first scene. The dialog starts on the project's own choice, which you can set from any scene's right-click menu with <span class="menu">Scene Break Style…</span>. A horizontal rule you inserted yourself (<span class="menu">Insert → Horizontal Rule</span>) is always printed as * * *.</p>
+
+  <h3>Chapter Start</h3>
+  <p>Shown for Manuscript, Paperback and Proof.</p>
+  <ul>
+    <li><strong>New page (default):</strong> every chapter starts on a fresh page.</li>
+    <li><strong>Continuous (no page break):</strong> each chapter follows the one before on the same page, after a little space. Parts, dedications and epigraphs still get pages of their own, and the chapter after them starts a new page.</li>
+  </ul>
+  <p>EPUB has no fixed pages: each chapter is its own section and the reader's device decides the page breaks.</p>
+
+  <h2 id="front-back">Front and back matter</h2>
+  <p>The Front Matter section of the Navigator holds one folder per kind of book: <strong>Manuscript Format</strong>, <strong>Paperback</strong>, <strong>Ebook</strong>, <strong>Screenplay</strong> and <strong>TV Script</strong>. Which folders you have depends on the project type. Each export uses the folder that matches it:</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Export</th><th>Front matter folder used</th></tr></thead>
+      <tbody>
+        <tr><td>Manuscript (DOCX, PDF), Stage Play (US, UK)</td><td>Manuscript Format</td></tr>
+        <tr><td>Paperback, Proof PDF, Children's Book</td><td>Paperback</td></tr>
+        <tr><td>EPUB eBook</td><td>Ebook</td></tr>
+        <tr><td>Screenplay (PDF)</td><td>Screenplay</td></tr>
+        <tr><td>Documentary Script (PDF)</td><td>TV Script</td></tr>
+        <tr><td>Academic Paper (APA, MLA), Essay (Chicago), Fountain files</td><td>None. These use their style guide's own title page, or have none.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Each page in the folder becomes a page of the export, in folder order. If the folder is missing, the export prints a simple title page of its own instead.</p>
+  <p>Front and back matter pages can use <strong>merge fields</strong>, which are filled in when you compile:</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Field</th><th>Becomes</th></tr></thead>
+      <tbody>
+        <tr><td><code>{'{{title}}'}</code></td><td>The book title set for the project, or the project name if none is set</td></tr>
+        <tr><td><code>{'{{author}}'}</code></td><td>The project's author</td></tr>
+        <tr><td><code>{'{{wordcount}}'}</code></td><td>The number of words in the export</td></tr>
+        <tr><td><code>{'{{year}}'}</code></td><td>The year set for the project, or the current year</td></tr>
+        <tr><td><code>{'{{date}}'}</code></td><td>Today's date</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Every page in Back Matter (for example <em>About the Author</em>) comes after the manuscript in every export that supports back matter. Right-click a front or back matter page and choose <span class="menu">Reset to Default</span> to get the original wording back.</p>
+
+  <h2 id="titles">Chapter and part titles</h2>
+  <p>Headings in the export match the Navigator: the label word (Chapter, Act, Section, Part…), the number style (1, I or One), the separator between number and name, and whether the number is shown at all. See <a href="/docs/navigator#titles">Navigator &amp; Structure</a> for how to set them.</p>
+
+  <h2 id="after">After you export</h2>
+  <p>When the file is written, the dialog shows where it went, with a <strong>Show in Folder</strong> button. Exports are suggested to <code>Documents/Ravenburst/Exports</code>, but you can save them anywhere.</p>
+  <p>See <a href="/docs/export-formats">Export Formats</a> for what each format looks like.</p>
 </DocsLayout>

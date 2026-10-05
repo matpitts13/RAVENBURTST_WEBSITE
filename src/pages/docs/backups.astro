@@ -1,0 +1,68 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro'
+---
+<DocsLayout title="Backups" description="Back up a Ravenburst project with Git Backup (on your computer, optionally online) or Google Drive, and restore an earlier copy.">
+  <h1>Backups</h1>
+  <p class="lede">Your project is one file on your computer. A backup keeps dated copies of it somewhere else, so a lost laptop or a bad afternoon of edits isn't the end of the book.</p>
+
+  <nav class="toc" aria-label="On this page">
+    <p>On this page</p>
+    <ul>
+      <li><a href="#choose">Choosing where backups go</a></li>
+      <li><a href="#git">Git Backup</a></li>
+      <li><a href="#online">Keeping a copy online</a></li>
+      <li><a href="#drive">Google Drive (test feature)</a></li>
+      <li><a href="#restore">Restoring</a></li>
+      <li><a href="#manual">Copying the file yourself</a></li>
+    </ul>
+  </nav>
+
+  <h2 id="choose">Choosing where backups go</h2>
+  <p>Each project backs up to one place: <strong>Git Backup</strong> or <strong>Google Drive</strong>. The status bar shows where, and when the last backup was, for example <em>GitHub · 10m</em>. Click it to choose a destination, or click <strong>Back up now</strong> (the circular arrows) to take one immediately. If a backup needs your attention, the status bar says so.</p>
+  <p>Switching a project from one destination to the other stops the old one receiving new copies; the copies already there stay.</p>
+  <div class="note">
+    <p>Backups need an active trial or license.</p>
+  </div>
+
+  <h2 id="git">Git Backup</h2>
+  <p>Git Backup keeps a history of your project in a hidden folder next to the project file, on your own computer. You don't need to know anything about Git, but it does need to be installed: get it free from <a href="https://git-scm.com/downloads">git-scm.com</a>. On a Mac, it's included with Apple's Command Line Tools.</p>
+  <ol>
+    <li>Open <span class="menu">Project → Git Backup…</span>.</li>
+    <li>Click <strong>Turn On Backup</strong>. Ravenburst takes the first backup straight away.</li>
+    <li>Click <strong>Back Up Now</strong> whenever you like, or tick <strong>Back up automatically</strong> and choose how often: every 15 minutes, 30 minutes, hour or 2 hours (30 minutes by default). Automatic backup also runs once more when you quit.</li>
+  </ol>
+  <p>Each backup appears in the panel's list with its date. A backup is only made when something has changed.</p>
+  <p><strong>Advanced</strong> holds the Git controls, for people who want them: a remote address, Push, Pull, and a backup with your own message.</p>
+  <div class="note warn">
+    <p>Git Backup works on the folder that holds your project file. Keep each project in its own folder so their histories stay separate.</p>
+  </div>
+
+  <h2 id="online">Keeping a copy online</h2>
+  <p>A backup on the same computer won't survive the computer. To keep a copy online as well:</p>
+  <ol>
+    <li>Create a free account with GitHub, GitLab, Bitbucket, Codeberg or SourceHut.</li>
+    <li>Create a new, <strong>empty</strong> private repository (don't add a README).</li>
+    <li>In the Git Backup panel, under <strong>Keep a copy online</strong>, paste the repository's address, click <strong>Test</strong>, then <strong>Use This</strong>.</li>
+  </ol>
+  <p>From then on, every backup is also sent there. Sign-in uses your computer's own Git credentials; if Ravenburst can't sign in, install <a href="https://github.com/git-ecosystem/git-credential-manager">Git Credential Manager</a> and try again.</p>
+  <p>If the online copy and your computer have both changed (for example, you wrote on two computers), Ravenburst stops and asks rather than merging. Restore the version you want to keep from the list of backups.</p>
+
+  <h2 id="drive">Google Drive (test feature)</h2>
+  <p>Open <span class="menu">Project → Cloud Storage…</span> and click <strong>Connect Google Drive</strong>. Your browser opens so you can sign in to Google. Ravenburst only asks to see files it creates itself, not the rest of your Drive.</p>
+  <ul>
+    <li><strong>Sync Now</strong> (or <strong>Back up now</strong> in the status bar) uploads the whole project file to a <em>Ravenburst</em> folder in your Drive. Nothing uploads in the background or when you quit.</li>
+    <li>Choose how many copies to keep: the latest, the last 5 (default) or the last 10.</li>
+    <li>If the copy in Drive changed since your last sync (from another computer), you choose: <strong>Upload local (overwrite cloud)</strong> or <strong>Save cloud copy as new file</strong>. Nothing is merged.</li>
+    <li><strong>Disconnect</strong> forgets the connection on this computer. To remove Ravenburst's access completely, also remove it in your Google Account's security settings.</li>
+  </ul>
+  <div class="note warn">
+    <p>Google Drive backup is a test feature. Google may warn that the app is unverified, and may ask you to reconnect from time to time. Keep another backup as well.</p>
+  </div>
+
+  <h2 id="restore">Restoring</h2>
+  <p>In either panel, click <strong>Restore</strong> next to a backup and choose a name and place for it. The backup is saved as a <strong>new project file</strong> (for example <code>My Novel-restored.ravenburst</code>); the project you have open is never overwritten. Open the restored file with <span class="menu">File → Open Project…</span> and copy back what you need.</p>
+  <p>For one document rather than the whole project, <a href="/docs/snapshots">snapshots</a> are quicker.</p>
+
+  <h2 id="manual">Copying the file yourself</h2>
+  <p>Everything in a project is in its <code>.ravenburst</code> file, so copying that file somewhere safe (a USB drive, another computer, a folder that your cloud service syncs) is a complete backup. Close Ravenburst first so the copy is up to date.</p>
+</DocsLayout>

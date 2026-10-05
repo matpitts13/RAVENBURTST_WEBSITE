@@ -1,0 +1,78 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro'
+---
+<DocsLayout title="Views & Layout" description="Corkboard, Outline, Split View, Split Window and Composition Mode, plus moving around your project and arranging the window.">
+  <h1>Views &amp; Layout</h1>
+  <p class="lede">Different ways to see your project, and to arrange the window around the way you work.</p>
+
+  <nav class="toc" aria-label="On this page">
+    <p>On this page</p>
+    <ul>
+      <li><a href="#corkboard">Corkboard</a></li>
+      <li><a href="#outline">Outline</a></li>
+      <li><a href="#split-view">Split View</a></li>
+      <li><a href="#split-window">Split Window</a></li>
+      <li><a href="#composition">Composition Mode</a></li>
+      <li><a href="#moving-around">Moving around</a></li>
+      <li><a href="#layout">Arranging the window</a></li>
+    </ul>
+  </nav>
+  <p>The views are in <span class="menu">View → Editor Layout</span>: <strong>Single Document</strong> (<kbd>Ctrl</kbd>+<kbd>1</kbd>), <strong>Split View</strong> (<kbd>Ctrl</kbd>+<kbd>2</kbd>), <strong>Split Window</strong> (<kbd>Ctrl</kbd>+<kbd>3</kbd>), <strong>Corkboard</strong> (<kbd>Ctrl</kbd>+<kbd>4</kbd>) and <strong>Outline</strong> (<kbd>Ctrl</kbd>+<kbd>5</kbd>).</p>
+
+  <h2 id="corkboard">Corkboard</h2>
+  <p>Your manuscript as index cards: each chapter or part is a heading, and its scenes are cards under it.</p>
+  <ul>
+    <li>Each card shows the scene's title, synopsis, word count and status.</li>
+    <li>Click a synopsis to edit it (up to 600 characters). It's the same synopsis as in the Inspector's Notes tab.</li>
+    <li>Click a card's status to cycle Draft → In Progress → Done → Needs Revision.</li>
+    <li>Drag cards to reorder scenes within their chapter.</li>
+    <li><strong>Back to Editor</strong> returns to writing.</li>
+  </ul>
+
+  <h2 id="outline">Outline</h2>
+  <p>Your manuscript as a list, one row per part, chapter and scene, with:</p>
+  <ul>
+    <li>the title (double-click to rename),</li>
+    <li>the status dot (click to cycle),</li>
+    <li>the word count (a chapter's includes its scenes),</li>
+    <li>an <strong>ON / OFF</strong> switch for whether it's compiled,</li>
+    <li>and its synopsis, which you can edit right there.</li>
+  </ul>
+  <p>It's the quickest way to check the shape of a draft and what's in or out of the next export.</p>
+
+  <h2 id="split-view">Split View</h2>
+  <p>Writes in one pane while showing something else in a second pane beside it. Use the <strong>Compare:</strong> picker above the second pane to choose a manuscript document, a note, a reference item, a character or place sheet, or the Outline.</p>
+  <ul>
+    <li>Documents in the second pane are read-only, so you can't change the wrong one by accident. Character and place sheets and reference tables there can be edited.</li>
+    <li>A document can only be open in one place at a time. If you pick one that's already open, it flashes red and the app tells you where.</li>
+  </ul>
+
+  <h2 id="split-window">Split Window</h2>
+  <p>Opens a second window with its own Navigator and editor. Put it on another monitor and write in both.</p>
+  <ul>
+    <li>The second window has no Inspector or menu bar; menus and shortcuts act on whichever window is in front.</li>
+    <li>A document that's open in the other window is dimmed in the Navigator, and flashes red if you click it.</li>
+    <li>Ravenburst remembers the window's size and position, and reopens it next time if it was open when you quit. Close it with its own close button.</li>
+  </ul>
+
+  <h2 id="composition">Composition Mode</h2>
+  <p><span class="menu">View → Fullscreen / Composition Mode</span> (<kbd>F11</kbd>, or <kbd>Ctrl</kbd>+<kbd>⌘</kbd>+<kbd>F</kbd> on a Mac) fills the screen with your writing: the window goes fullscreen, the text gets a little larger, and everything else fades and blurs. Press <kbd>Esc</kbd> or click a faded panel to come back.</p>
+
+  <h2 id="moving-around">Moving around</h2>
+  <ul>
+    <li><span class="menu">Navigate → Previous Document</span> and <span class="menu">Next Document</span> (<kbd>Ctrl</kbd>+<kbd>[</kbd> and <kbd>Ctrl</kbd>+<kbd>]</kbd>) step through the manuscript in reading order. The ◀ ▶ buttons above the editor do the same.</li>
+    <li><span class="menu">Back</span> and <span class="menu">Forward</span> (<kbd>Alt</kbd>+<kbd>←</kbd> / <kbd>Alt</kbd>+<kbd>→</kbd>) retrace the documents you've opened in this session, like a web browser.</li>
+    <li><span class="menu">Navigate → Jump to Manuscript</span> (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>M</kbd>), Characters, Places, Reference or Trash.</li>
+    <li><strong>Bookmarks</strong> (<kbd>Ctrl</kbd>+<kbd>D</kbd>): see <a href="/docs/snapshots#bookmarks">Snapshots &amp; Bookmarks</a>.</li>
+  </ul>
+
+  <h2 id="layout">Arranging the window</h2>
+  <ul>
+    <li><span class="menu">View → Show / Hide</span>: Navigator Panel (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>[</kbd>), Inspector Panel (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>]</kbd>), Format Bar, Status Bar and Line Numbers.</li>
+    <li>Drag the edge of the Navigator or Inspector to resize it.</li>
+    <li><span class="menu">Window → Move Navigator Left / Right</span> (<kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>[</kbd> / <kbd>]</kbd>).</li>
+    <li><span class="menu">View → Appearance</span>: Light, Dark, High Contrast or System (follows your computer).</li>
+    <li><span class="menu">Window → Reset Window Layout</span> puts panel sizes, the Navigator's side and the zoom back to their defaults and shows every bar again.</li>
+  </ul>
+  <p>Ravenburst remembers your layout, the open project and document, and the view you were in, and restores them when you next open it. It never hides a panel on its own.</p>
+</DocsLayout>

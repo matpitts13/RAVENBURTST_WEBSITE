@@ -1,86 +1,105 @@
 ---
 import DocsLayout from '../../layouts/DocsLayout.astro'
-const formats = [
-  {
-    group: 'Manuscript',
-    items: [
-      { name: 'Manuscript DOCX', desc: 'Standard manuscript format. Times New Roman 12pt, double-spaced, 1" margins, chapter breaks, page numbers, author name in header. Opens in Microsoft Word or any DOCX-compatible editor.' },
-      { name: 'Manuscript PDF', desc: 'Same formatting as Manuscript DOCX, exported as a PDF.' },
-    ]
-  },
-  {
-    group: 'Paperback / Print',
-    items: [
-      { name: 'Paperback 5×7', desc: 'KDP-ready interior PDF at 5"×7" trim size. Correct margins for Amazon KDP paperback submission.' },
-      { name: 'Paperback 6×9', desc: 'KDP-ready interior PDF at 6"×9" trim size. The most common paperback format.' },
-      { name: 'Proof 5×7 / 6×9', desc: 'Same as paperback, intended for ordering a physical proof copy.' },
-    ]
-  },
-  {
-    group: 'Screenplay & Stage Play',
-    items: [
-      { name: 'Screenplay PDF', desc: 'WGA-standard format. Courier 12pt, scene headings in caps, action blocks, character names centred above dialogue, parentheticals.' },
-      { name: 'Screenplay Fountain', desc: 'Exports your screenplay as a .fountain file — readable in Highland, Fade In, and other Fountain-compatible apps.' },
-      { name: 'Stage Play PDF (US)', desc: 'Samuel French / Dramatists Play Service format. Character names centred, dialogue indented, stage directions in italics.' },
-      { name: 'Stage Play PDF (UK)', desc: 'UK format as used by the RSC and major London venues. Slightly different margin and layout conventions from the US format.' },
-    ]
-  },
-  {
-    group: "Children's Book",
-    items: [
-      { name: "Children's Book — Square (8.5\"×8.5\")", desc: 'Classic square picture book format. KDP-compliant with 0.125" bleed and 0.25" safe zone. Images extend to bleed edge; text stays within safe zone.' },
-      { name: "Children's Book — Portrait (8.5\"×11\")", desc: 'Taller portrait format for more illustration space.' },
-      { name: "Children's Book — Landscape (11\"×8.5\")", desc: 'Wide panoramic format. Great for sweeping scenes and double-page spreads.' },
-    ]
-  },
-  {
-    group: 'Academic',
-    items: [
-      { name: 'Academic APA — DOCX', desc: 'APA 7th Edition (2019). Double-spaced, Times New Roman 12pt, running head, title page, abstract, References section label. Format specs are user-editable via Help → Check for Format Updates.' },
-      { name: 'Academic APA — PDF', desc: 'Same formatting as APA DOCX, exported as PDF.' },
-      { name: 'Academic MLA — DOCX', desc: 'MLA 9th Edition (2021). Double-spaced, Times New Roman 12pt, LastName # header, Works Cited label.' },
-      { name: 'Academic MLA — PDF', desc: 'Same as MLA DOCX, exported as PDF.' },
-    ]
-  },
-  {
-    group: 'Documentary',
-    items: [
-      { name: 'Documentary Script PDF', desc: 'Documentary and factual film script format. Segments and scenes with voice-over (V/O) and on-camera cues.' },
-    ]
-  },
-  {
-    group: 'Essay',
-    items: [
-      { name: 'Essay — Chicago 17th (DOCX)', desc: 'Chicago Manual of Style 17th Edition. Supports footnotes or endnotes, bibliography, and standard margin conventions.' },
-      { name: 'Essay — Chicago 17th (PDF)', desc: 'Same formatting as Chicago DOCX, exported as PDF.' },
-    ]
-  },
-  {
-    group: 'Other',
-    items: [
-      { name: 'EPUB', desc: 'Standard e-book format. Compatible with Calibre, Apple Books, Kobo, and most e-readers.' },
-      { name: 'Print', desc: 'Sends the current document to your system printer via the OS print dialog.' },
-    ]
-  },
-]
 ---
-<DocsLayout title="Export Formats" description="Every export format Ravenburst supports, documented.">
-  <h1 class="text-4xl font-serif font-bold text-rb-text mb-2">Export Formats</h1>
-  <p class="text-rb-muted mb-10">Access all formats via <strong class="text-rb-text">File → Compile / Export</strong>.</p>
+<DocsLayout title="Export Formats" description="Every format Ravenburst exports to — manuscripts, paperback interiors, e-books, scripts, academic papers and picture books — and what each looks like.">
+  <h1>Export Formats</h1>
+  <p class="lede">All formats are in <span class="menu">File → Compile / Export…</span>. This page describes what each one produces. For choosing what's included, see <a href="/docs/compile-options">Compiling</a>.</p>
 
-  <div class="space-y-10 text-sm text-rb-muted">
-    {formats.map(group => (
-      <section>
-        <h2 class="text-base font-semibold text-rb-text mb-4 border-b border-rb-border pb-2">{group.group}</h2>
-        <div class="space-y-4">
-          {group.items.map(item => (
-            <div class="bg-rb-surface rounded-lg p-4 border border-rb-border">
-              <div class="font-medium text-rb-text mb-1">{item.name}</div>
-              <div class="leading-relaxed">{item.desc}</div>
-            </div>
-          ))}
-        </div>
-      </section>
-    ))}
+  <nav class="toc" aria-label="On this page">
+    <p>On this page</p>
+    <ul>
+      <li><a href="#manuscript">Manuscript</a></li>
+      <li><a href="#paperback">Paperback and Proof</a></li>
+      <li><a href="#epub">EPUB e-book</a></li>
+      <li><a href="#scripts">Screenplay, TV and documentary</a></li>
+      <li><a href="#plays">Stage plays</a></li>
+      <li><a href="#academic">Academic papers and essays</a></li>
+      <li><a href="#childrens">Children's books</a></li>
+      <li><a href="#print">Print</a></li>
+      <li><a href="#footnotes">Footnotes and images</a></li>
+    </ul>
+  </nav>
+
+  <h2 id="manuscript">Manuscript (DOCX, PDF)</h2>
+  <p>Standard manuscript format for sending to agents, editors and publishers.</p>
+  <ul>
+    <li>US Letter, 1″ margins, Courier 12 pt, double-spaced, first lines indented.</li>
+    <li>Running header on every page of the text: <em>Author / TITLE / page</em>.</li>
+    <li>Each chapter starts on a new page with its heading centred (or runs on, with Chapter Start set to Continuous). Parts get a page of their own.</li>
+    <li>Front matter from the <strong>Manuscript Format</strong> folder (a title page with your word count by default).</li>
+  </ul>
+
+  <h2 id="paperback">Paperback and Proof PDF</h2>
+  <p>Print-ready interiors for print-on-demand services such as Amazon KDP and IngramSpark.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Format</th><th>Trim size</th><th>Use it for</th></tr></thead>
+      <tbody>
+        <tr><td>Paperback 5.06″ × 7.81″</td><td>5.06 × 7.81 in (mass-market)</td><td>Uploading the interior</td></tr>
+        <tr><td>Paperback 6″ × 9″</td><td>6 × 9 in (trade)</td><td>Uploading the interior</td></tr>
+        <tr><td>Proof PDF 5.06″ × 7.81″ / 6″ × 9″</td><td>Same, plus bleed and crop marks</td><td>Checking the layout yourself, or at a print shop</td></tr>
+      </tbody>
+    </table>
   </div>
+  <ul>
+    <li>Times 11 pt, justified, with a running header: page number and author on even pages, title and page number on odd pages.</li>
+    <li>The first paragraph after a heading or scene break isn't indented, as in printed books.</li>
+    <li>Front matter from the <strong>Paperback</strong> folder: title page, copyright, disclaimer, dedication and a blank page.</li>
+    <li>Proof PDFs carry a faint <em>PROOF</em> watermark and crop marks on every page. Don't upload them as your final interior.</li>
+  </ul>
+
+  <h2 id="epub">EPUB e-book</h2>
+  <p>A standard EPUB 3 e-book for Apple Books, Kobo, Google Play Books and Barnes &amp; Noble, and for Amazon KDP, which accepts EPUB uploads. To read it on a Kindle yourself, convert it with the free Calibre app.</p>
+  <ul>
+    <li>Each chapter is its own section, listed in the e-book's table of contents.</li>
+    <li>Front matter from the <strong>Ebook</strong> folder comes first and back matter last; neither is listed in the table of contents.</li>
+    <li>Text formatting, colours and tables are kept. Images are not included in EPUB files yet.</li>
+  </ul>
+
+  <h2 id="scripts">Screenplay, TV and documentary</h2>
+  <ul>
+    <li><strong>Screenplay (PDF):</strong> US Letter, Courier 12 pt, 1.5″ left margin. Headings become scene headings in capitals; short lines in capitals become character names (or transitions, if they end in a colon, like <code>CUT TO:</code>); the lines after a character name become dialogue; lines in brackets become parentheticals; everything else is action. Front matter comes from the <strong>Screenplay</strong> folder.</li>
+    <li><strong>Screenplay (.fountain):</strong> the same script as a Fountain plain-text file, which screenwriting apps such as Final Draft, Highland and Fade In can open.</li>
+    <li><strong>Documentary Script (PDF / Fountain):</strong> documentary format with voice-over (V/O) and on-camera cues. The PDF uses the <strong>TV Script</strong> front matter folder.</li>
+  </ul>
+  <p>Use the <em>Screenplay Scene</em> or <em>TV Scene</em> template in the Templates section for a page that's already laid out the way the export expects.</p>
+
+  <h2 id="plays">Stage plays</h2>
+  <ul>
+    <li><strong>Stage Play (PDF):</strong> US format (Samuel French / Dramatists Play Service). Act headings in words (“Act One”), stage directions in italics and brackets.</li>
+    <li><strong>Stage Play UK (PDF):</strong> RSC / BBC style. Act headings in Roman numerals (“ACT I”), stage directions in italics without brackets.</li>
+  </ul>
+  <p>Both are US Letter, Courier 12 pt, with front matter from the <strong>Manuscript Format</strong> folder.</p>
+
+  <h2 id="academic">Academic papers and essays</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Format</th><th>What it sets up</th></tr></thead>
+      <tbody>
+        <tr><td>Academic Paper — APA 7th (DOCX, PDF)</td><td>Times New Roman 12 pt, double-spaced, 1″ margins, title page, abstract, running head, <em>References</em>.</td></tr>
+        <tr><td>Academic Paper — MLA 9th (DOCX, PDF)</td><td>Times New Roman 12 pt, double-spaced, 1″ margins, <em>Surname page</em> header, <em>Works Cited</em>.</td></tr>
+        <tr><td>Essay — Chicago 17th (DOCX, PDF)</td><td>Times New Roman 12 pt, double-spaced, title page, page numbers from page 2. Notes-bibliography style (footnotes and a <em>Bibliography</em>) by default; author-date style puts citations in brackets and ends with <em>References</em>.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>These formats use the style guide's own title page, not your front matter folders. You can adjust fonts, margins, labels and other settings in <a href="/docs/preferences#academic">Preferences → Academic</a>.</p>
+
+  <h2 id="childrens">Children's books</h2>
+  <p>Picture-book PDFs at <strong>8.5″ × 8.5″</strong> (square), <strong>8.5″ × 11″</strong> (portrait) or <strong>11″ × 8.5″</strong> (landscape).</p>
+  <ul>
+    <li>Each page document in your manuscript becomes one page of the book.</li>
+    <li>The first image on a page fills its part of the page out to the bleed (0.125″). The text stays inside a 0.25″ safe zone, so nothing important gets trimmed.</li>
+    <li>The text size adjusts to how much is on the page, from 18 pt for a line or two down to 10 pt for long passages.</li>
+    <li>Choose whether the picture goes above or below the text for each page in the Inspector, under <strong>Image Position</strong>.</li>
+    <li>Front matter comes from the <strong>Paperback</strong> folder, kept inside the safe zone.</li>
+  </ul>
+
+  <h2 id="print">Print</h2>
+  <p>The <strong>Print</strong> option in the Compile dialog, and <span class="menu">File → Print…</span> (<kbd>Ctrl</kbd>+<kbd>P</kbd>), open your computer's print dialog for what's on screen. <span class="menu">File → Print…</span> also works after the trial ends.</p>
+
+  <h2 id="footnotes">Footnotes and images</h2>
+  <div class="note warn">
+    <p><strong>Footnotes</strong> are included in the APA, MLA and Chicago exports (as real footnotes in DOCX, and as numbered notes in PDF). The other formats leave footnotes out, so if your manuscript relies on them, use one of those formats or keep the notes in the text.</p>
+  </div>
+  <p><strong>Images</strong> are included in Manuscript DOCX and children's books, but not in EPUB.</p>
 </DocsLayout>

@@ -1,0 +1,140 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro'
+---
+<DocsLayout title="The Editor" description="Formatting, inserting, comments, footnotes, resume notes, find and replace, spelling and text cleanup in the Ravenburst editor.">
+  <h1>The Editor</h1>
+  <p class="lede">Where the writing happens. This page covers everything from bold text to finding a word across the whole project.</p>
+
+  <nav class="toc" aria-label="On this page">
+    <p>On this page</p>
+    <ul>
+      <li><a href="#format-bar">The Format Bar</a></li>
+      <li><a href="#paragraphs">Paragraphs and indents</a></li>
+      <li><a href="#colours">Colours and highlights</a></li>
+      <li><a href="#right-click">The right-click menu</a></li>
+      <li><a href="#insert">Inserting</a></li>
+      <li><a href="#tables-images">Tables and images</a></li>
+      <li><a href="#comments">Comments</a></li>
+      <li><a href="#footnotes">Footnotes</a></li>
+      <li><a href="#resume">Resume notes</a></li>
+      <li><a href="#find">Find and replace</a></li>
+      <li><a href="#spelling">Spelling and word lookup</a></li>
+      <li><a href="#cleanup">Text cleanup</a></li>
+      <li><a href="#screen">Zoom, line numbers and the status bar</a></li>
+    </ul>
+  </nav>
+
+  <h2 id="format-bar">The Format Bar</h2>
+  <p>The two rows above the editor. Hide or show it with <span class="menu">View → Show / Hide → Format Bar</span>.</p>
+  <h3>Top row</h3>
+  <ul>
+    <li><strong>Paragraph style</strong>: Normal, Heading 1, Heading 2, Heading 3, Blockquote or Code Block.</li>
+    <li><strong>Font</strong>: serif fonts (Georgia, Times New Roman, Garamond, Palatino, Merriweather, Lora, EB Garamond, Libre Baskerville, Crimson Pro, Playfair Display), sans-serif fonts (Arial, Helvetica, Inter, Lato, the system font) and Courier New.</li>
+    <li><strong>Size</strong>: 8 to 72 pt.</li>
+    <li><strong>Bold</strong>, <strong>Italic</strong>, <strong>Underline</strong>, <strong>Strikethrough</strong>, <strong>Superscript</strong>, <strong>Subscript</strong>. Hover over any button to see its shortcut.</li>
+    <li><strong>Text colour</strong> and <strong>highlight</strong> swatches, and <strong>Custom</strong>. See <a href="#colours">Colours</a>.</li>
+  </ul>
+  <h3>Bottom row</h3>
+  <ul>
+    <li><strong>Alignment</strong>: left, centre, right, justify.</li>
+    <li><strong>Bullet list</strong> and <strong>Numbered list</strong>.</li>
+    <li><strong>Decrease / Increase indent</strong>: nests a list item, or moves a paragraph's left edge in steps (up to eight).</li>
+    <li><strong>Line spacing</strong>: 1.0, 1.15, 1.5, 2.0 or 2.5, for the paragraphs you've selected.</li>
+    <li><strong>Horizontal rule</strong>, a <strong>table</strong> grid (pick up to 8 × 8), and the <strong>Resume Note</strong> pin.</li>
+  </ul>
+  <p>Selecting text also shows a small bar with bold, italic, underline, strikethrough and alignment, right where you're working.</p>
+  <p>Everything on the Format Bar is also in the <span class="menu">Format</span> menu.</p>
+
+  <h2 id="paragraphs">Paragraphs and indents</h2>
+  <ul>
+    <li><kbd>Tab</kbd> at the start of a paragraph adds a half-inch first-line indent; <kbd>Shift</kbd>+<kbd>Tab</kbd> or <kbd>Backspace</kbd> removes it. Pressing <kbd>Enter</kbd> carries the indent onto the next paragraph, and new scenes start indented.</li>
+    <li>Quotes and dashes become typographic as you type: straight quotes turn into curly ones, and two hyphens into a dash. Nothing else is changed for you: there's no autocorrect and no autocomplete.</li>
+    <li><span class="menu">Format → Character Formatting → Clear Formatting</span> (<kbd>Ctrl</kbd>+<kbd>\</kbd>) removes formatting from the selection.</li>
+    <li><span class="menu">Edit → Paste and Match Style</span> (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>V</kbd>) pastes text without its original fonts and colours.</li>
+  </ul>
+
+  <h2 id="colours">Colours and highlights</h2>
+  <ul>
+    <li><strong>Text colours</strong>: black, red, orange, green, blue and purple, plus a button that resets to the normal text colour.</li>
+    <li><strong>Highlights</strong>: yellow, green, cyan, pink and orange. Click an active highlight's swatch again to remove it.</li>
+    <li><strong>Custom</strong> opens a colour picker with a hex box. Choose <strong>Text</strong> or <strong>Highlight</strong> to apply the colour and save it to that palette for this project (up to eight of each). Right-click a saved colour to apply it either way, edit it or remove it.</li>
+  </ul>
+  <p><span class="menu">Format → Font Color…</span> and <span class="menu">Highlight Color…</span> open the same picker.</p>
+
+  <h2 id="right-click">The right-click menu</h2>
+  <ul>
+    <li>On a misspelled word: up to five suggestions, <strong>Add to Dictionary</strong> and <strong>Ignore All</strong> (for this session).</li>
+    <li>Cut, Copy and Paste. Paste uses whatever you copied most recently, keeping formatting when you copied from Ravenburst.</li>
+    <li>Inline Comment / Note (with text selected) and Resume Note.</li>
+    <li>Bold, Italic, Underline, Strikethrough; Normal and Heading 1–3; lists, Indent and Outdent.</li>
+    <li>Inside a table: add or delete rows and columns, delete the table, and copy the table with or without its contents (then <strong>Paste Table</strong> elsewhere).</li>
+    <li>For the word under the pointer: a dictionary definition, synonyms and antonyms. These work offline.</li>
+  </ul>
+
+  <h2 id="insert">Inserting</h2>
+  <p>The <span class="menu">Insert</span> menu has:</p>
+  <ul>
+    <li><strong>Image…</strong>, <strong>Horizontal Rule</strong>, <strong>Page Break</strong> and <strong>Table…</strong></li>
+    <li><strong>Special Characters</strong>: em dash, en dash, ellipsis, non-breaking space, curly double and single quotes, ©, ®, ™ and §.</li>
+    <li><strong>Inline Comment / Note</strong> (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>K</kbd>) and <strong>Footnote</strong> (<kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>F</kbd>).</li>
+    <li><strong>Current Date</strong>: <em>June 15, 2026</em>, <em>15 June 2026</em>, <em>06/15/2026</em> or <em>15/06/2026</em>.</li>
+    <li><strong>Current Time</strong>: <em>2:30 PM</em> or <em>14:30</em>.</li>
+    <li><strong>Word Count (inline)</strong>: types the document's current word count, such as “2,431 words”.</li>
+  </ul>
+
+  <h2 id="tables-images">Tables and images</h2>
+  <h3>Tables</h3>
+  <p><span class="menu">Insert → Table…</span> adds a 3 × 3 table with a header row; the Format Bar's grid lets you pick the size. With the cursor in a table, a toolbar appears for adding and removing rows and columns, header and stripe colours, and borders (all, outer, inner or none, at 1, 2, 3 or 5 px). Drag a column edge to resize it. <kbd>Enter</kbd> moves to the cell below.</p>
+  <h3>Images</h3>
+  <p><span class="menu">Insert → Image…</span> accepts JPEG, PNG, GIF, WebP, BMP and SVG files. The image is stored inside your project, so moving the project file never breaks it. Click an image and drag its corner handle to resize it; the alignment buttons position it. Very large photos make the project file larger, so resize them first if you can.</p>
+
+  <h2 id="comments">Comments</h2>
+  <ol>
+    <li>Select the text you want to comment on.</li>
+    <li>Choose <span class="menu">Insert → Inline Comment / Note</span> (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>K</kbd>) or right-click → <strong>Inline Comment / Note</strong>.</li>
+    <li>Type the note and press <kbd>Enter</kbd> (<kbd>Shift</kbd>+<kbd>Enter</kbd> for a new line).</li>
+  </ol>
+  <p>Commented text is highlighted. Click it to <strong>Edit</strong>, <strong>Resolve</strong> (it turns grey and crossed out) or <strong>Delete</strong> the note. Comments are never exported.</p>
+
+  <h2 id="footnotes">Footnotes</h2>
+  <p><span class="menu">Insert → Footnote</span> (<kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>F</kbd>) adds a numbered marker at the cursor and a matching note in the <em>Notes</em> area at the bottom of the document, where you type the note.</p>
+  <div class="note warn">
+    <p>Footnotes are exported only by the APA, MLA and Chicago formats. Other formats leave them out. Numbers are set when you insert a footnote, so if you delete one, check the numbering of the rest.</p>
+  </div>
+
+  <h2 id="resume">Resume notes</h2>
+  <p>A resume note is a 📍 pin you leave for yourself where you stopped: “pick up here, fix the timeline”. Press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>B</kbd>, click the pin on the Format Bar, or right-click → <strong>Resume Note</strong>, then type what to pick up. Click a pin later to edit or delete it. Pins never appear in exports.</p>
+  <p>Separately, Ravenburst remembers where you were in every document and returns you to that spot when you open it again. If you come back after a break of 15 minutes or more, a <em>Welcome back</em> banner says what you were working on.</p>
+
+  <h2 id="find">Find and replace</h2>
+  <ul>
+    <li><kbd>Ctrl</kbd>+<kbd>F</kbd> opens the find bar for this document, and <kbd>Ctrl</kbd>+<kbd>H</kbd> opens it with replace. It shows the number of matches; <kbd>Ctrl</kbd>+<kbd>G</kbd> and <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>G</kbd> move between them. The <strong>Aa</strong> button makes the search match capitals exactly. <strong>Replace</strong> and <strong>Replace All</strong> work on this document.</li>
+    <li><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>F</kbd> searches the whole project, ignoring capitals: manuscript, notes, reference, characters' text and more, but not Templates or Trash. Results are listed by document, most matches first, with a snippet; click one to open it. There's no replace across the project.</li>
+  </ul>
+  <p>The find bar searches each run of formatting separately, so a phrase that's half italic may not be found as a whole.</p>
+
+  <h2 id="spelling">Spelling and word lookup</h2>
+  <ul>
+    <li>Spelling is checked as you type, in US English. Misspelled words get a red underline; right-click for suggestions.</li>
+    <li>Turn it on or off with the <strong>ABC</strong> button in the status bar or <span class="menu">Edit → Spelling &amp; Grammar → Toggle Spellcheck</span>.</li>
+    <li><strong>Add to Dictionary</strong> keeps a word for good, in every project. Manage your words in <span class="menu">Preferences → Spellcheck</span> (also <span class="menu">Edit → Spelling &amp; Grammar → Manage Custom Dictionary…</span>).</li>
+    <li>Your characters' and places' names are always treated as correctly spelled, without adding them to the dictionary.</li>
+    <li>The right-click menu shows a definition, synonyms and antonyms for the word under the pointer.</li>
+  </ul>
+
+  <h2 id="cleanup">Text cleanup</h2>
+  <p><span class="menu">Edit → Text Cleanup</span> works on the open document and reports what it changed:</p>
+  <ul>
+    <li><strong>Replace Multiple Spaces with Single Space</strong></li>
+    <li><strong>Remove Empty Lines Between Paragraphs</strong></li>
+    <li><strong>Delete Struck-Through Text</strong>: removes everything you've crossed out. Handy if you strike out text while revising instead of deleting it.</li>
+  </ul>
+  <p>Each can be undone with <kbd>Ctrl</kbd>+<kbd>Z</kbd>.</p>
+
+  <h2 id="screen">Zoom, line numbers and the status bar</h2>
+  <ul>
+    <li><strong>Zoom</strong>: 50% to 200%, with <kbd>Ctrl</kbd>+<kbd>=</kbd> / <kbd>Ctrl</kbd>+<kbd>-</kbd>, <kbd>Ctrl</kbd> + mouse wheel, <span class="menu">View → Zoom</span>, or the − and + buttons in the status bar (double-click the percentage to reset).</li>
+    <li><strong>Line numbers</strong> (<span class="menu">View → Show / Hide → Line Numbers</span>) number every line as it appears on screen, including wrapped lines. Useful for workshops and proofreading.</li>
+    <li><strong>The status bar</strong> shows, from left to right: zoom, spellcheck, the document's word count (and the selection's), save status, the project's word count and target progress, short messages from the app, backup status, the document's own target if it has one, and a theme button that cycles Light, Dark, High Contrast and System.</li>
+  </ul>
+</DocsLayout>

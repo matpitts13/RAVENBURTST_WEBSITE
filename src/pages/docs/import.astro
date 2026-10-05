@@ -1,0 +1,34 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro'
+---
+<DocsLayout title="Importing" description="Bring Word, plain text, Markdown and Fountain files into a Ravenburst project.">
+  <h1>Importing</h1>
+  <p class="lede">Bring writing you started elsewhere into your project.</p>
+
+  <h2 id="how">How to import</h2>
+  <ol>
+    <li>Open the project you want to import into.</li>
+    <li>Choose <span class="menu">File → Import…</span>.</li>
+    <li>Pick the kind of file, then click <strong>Choose File &amp; Import</strong> and select it.</li>
+  </ol>
+  <p>The file becomes a new scene at the top level of the Manuscript, included in the final draft, and opens straight away. Its name comes from the file: the first heading of a Word or Markdown file, the first line of a text file, or a Fountain file's title. Rename it, drag it into a chapter, or split it up from there.</p>
+
+  <h2 id="formats">What you can import</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Format</th><th>Files</th><th>What's kept</th></tr></thead>
+      <tbody>
+        <tr><td>Word Document</td><td><code>.docx</code></td><td>Headings, bold, italic and lists</td></tr>
+        <tr><td>Plain Text</td><td><code>.txt</code></td><td>Each paragraph becomes a paragraph</td></tr>
+        <tr><td>Markdown</td><td><code>.md</code>, <code>.markdown</code></td><td>Headings, lists, bold and italic</td></tr>
+        <tr><td>Fountain Screenplay</td><td><code>.fountain</code>, <code>.spmd</code></td><td>Scene headings, action and dialogue</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Older Word files (<code>.doc</code>), RTF and other formats can't be imported directly. Open them in a word processor and save as <code>.docx</code> first.</p>
+
+  <h2 id="tips">Tips</h2>
+  <ul>
+    <li>Importing a whole book gives you one long scene. To break it into chapters, select text and cut it into new scenes, or import one chapter at a time.</li>
+  </ul>
+</DocsLayout>

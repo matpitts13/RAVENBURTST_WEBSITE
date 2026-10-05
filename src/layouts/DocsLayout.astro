@@ -2,83 +2,105 @@
 import Base from './Base.astro'
 import Nav from '../components/Nav.astro'
 import Footer from '../components/Footer.astro'
+import { DOCS_NAV, ALL_DOCS, isCurrent } from '../data/docsNav'
 
 interface Props {
   title: string
-  description?: string
+  description: string
 }
 const { title, description } = Astro.props
-const current = Astro.url.pathname
+const path = Astro.url.pathname
 
-const sections = [
-  {
-    heading: 'Getting Started',
-    links: [
-      { href: '/docs', label: 'Overview' },
-      { href: '/docs/getting-started', label: 'First Launch' },
-      { href: '/docs/project-templates', label: 'Project Templates' },
-    ],
-  },
-  {
-    heading: 'Writing',
-    links: [
-      { href: '/docs/features', label: 'Features Guide' },
-      { href: '/docs/navigator', label: 'Navigator & Structure' },
-      { href: '/docs/writing-targets', label: 'Targets & Statistics' },
-      { href: '/docs/keyboard-shortcuts', label: 'Keyboard Shortcuts' },
-    ],
-  },
-  {
-    heading: 'Exporting',
-    links: [
-      { href: '/docs/compile-options', label: 'Compile Options' },
-      { href: '/docs/export-formats', label: 'Export Formats' },
-    ],
-  },
-  {
-    heading: 'License & Account',
-    links: [
-      { href: '/docs/license', label: 'License & Activation' },
-    ],
-  },
-]
+const index = ALL_DOCS.findIndex((l) => isCurrent(l.href, path))
+const prev = index > 0 ? ALL_DOCS[index - 1] : null
+const next = index >= 0 && index < ALL_DOCS.length - 1 ? ALL_DOCS[index + 1] : null
+const currentLabel = index >= 0 ? ALL_DOCS[index].label : title
 ---
-<Base title={`${title} — Docs`} description={description}>
+<Base title={`${title} — Ravenburst Docs`} description={description}>
   <Nav />
-  <div class="pt-24 max-w-6xl mx-auto px-6 flex gap-10 pb-20 min-h-screen">
+  <div class="pt-24 max-w-6xl mx-auto px-4 sm:px-6 md:flex md:gap-10 pb-20 min-h-screen">
 
-    <!-- Sidebar -->
-    <aside class="hidden md:block w-56 shrink-0 pt-8">
-      <div class="sticky top-28">
-        <p class="text-xs uppercase tracking-widest text-rb-muted font-semibold mb-4">Documentation</p>
-        {sections.map(s => (
-          <div class="mb-6">
-            <p class="text-xs uppercase tracking-wider text-rb-muted mb-2">{s.heading}</p>
-            <ul class="space-y-1">
-              {s.links.map(l => (
+    <!-- Phone and tablet: the contents as a disclosure above the page -->
+    <details class="md:hidden mt-6 mb-2 border border-rb-border rounded-xl bg-rb-surface group">
+      <summary class="cursor-pointer list-none px-4 py-3 text-sm text-rb-text flex items-center justify-between gap-3">
+        <span><span class="text-rb-muted">Docs:</span> {currentLabel}</span>
+        <span aria-hidden="true" class="text-rb-muted transition-transform group-open:rotate-180">▾</span>
+      </summary>
+      <nav aria-label="Documentation" class="px-4 pb-4">
+        {DOCS_NAV.map((s) => (
+          <div class="mt-3">
+            <p class="text-xs uppercase tracking-wider text-rb-muted mb-1">{s.heading}</p>
+            <ul class="space-y-0.5">
+              {s.links.map((l) => (
                 <li>
                   <a
                     href={l.href}
+                    aria-current={isCurrent(l.href, path) ? 'page' : undefined}
                     class:list={[
-                      'block text-sm px-2 py-1 rounded transition-colors',
-                      (current === l.href || (l.href !== '/docs' && current.startsWith(l.href)))
-                        ? 'text-rb-text bg-rb-surface font-medium'
-                        : 'text-rb-muted hover:text-rb-text',
+                      'block text-sm px-2 py-1.5 rounded',
+                      isCurrent(l.href, path) ? 'text-rb-text bg-rb-bg font-medium' : 'text-rb-muted hover:text-rb-text',
                     ]}
-                  >
-                    {l.label}
-                  </a>
+                  >{l.label}</a>
                 </li>
               ))}
             </ul>
           </div>
         ))}
-      </div>
+      </nav>
+    </details>
+
+    <!-- Desktop sidebar -->
+    <aside class="hidden md:block w-56 shrink-0 pt-8">
+      <nav aria-label="Documentation" class="sticky top-28 max-h-[calc(100vh-8rem)] overflow-y-auto pr-2">
+        {DOCS_NAV.map((s) => (
+          <div class="mb-6">
+            <p class="text-xs uppercase tracking-wider text-rb-muted mb-2">{s.heading}</p>
+            <ul class="space-y-1">
+              {s.links.map((l) => (
+                <li>
+                  <a
+                    href={l.href}
+                    aria-current={isCurrent(l.href, path) ? 'page' : undefined}
+                    class:list={[
+                      'block text-sm px-2 py-1 rounded transition-colors',
+                      isCurrent(l.href, path) ? 'text-rb-text bg-rb-surface font-medium' : 'text-rb-muted hover:text-rb-text',
+                    ]}
+                  >{l.label}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </nav>
     </aside>
 
-    <!-- Main content -->
     <main id="main" class="flex-1 pt-8 min-w-0">
-      <slot />
+      <article class="doc">
+        <slot />
+      </article>
+
+      {(prev || next) && (
+        <nav aria-label="Previous and next pages" class="mt-16 pt-6 border-t border-rb-border grid sm:grid-cols-2 gap-4 text-sm">
+          {prev ? (
+            <a href={prev.href} class="block border border-rb-border rounded-xl p-4 hover:border-rb-accent transition-colors">
+              <span class="block text-xs text-rb-muted mb-1">← Previous</span>
+              <span class="text-rb-text font-medium">{prev.label}</span>
+            </a>
+          ) : <span></span>}
+          {next && (
+            <a href={next.href} class="block border border-rb-border rounded-xl p-4 hover:border-rb-accent transition-colors sm:text-right">
+              <span class="block text-xs text-rb-muted mb-1">Next →</span>
+              <span class="text-rb-text font-medium">{next.label}</span>
+            </a>
+          )}
+        </nav>
+      )}
+
+      <p class="mt-10 text-sm text-rb-muted">
+        Something here doesn't match what you see in the app? Email
+        <a href="mailto:support@ravenburst.com" class="text-rb-accent underline underline-offset-2">support@ravenburst.com</a>
+        and we'll fix the page.
+      </p>
     </main>
   </div>
   <Footer />

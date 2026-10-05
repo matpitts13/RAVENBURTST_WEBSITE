@@ -1,0 +1,60 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro'
+---
+<DocsLayout title="Troubleshooting" description="Fixes for common Ravenburst problems — trials, activation, missing projects, exports, backups and spelling — and how to contact support.">
+  <h1>Troubleshooting</h1>
+  <p class="lede">Answers to the things that most often go wrong. If yours isn't here, <a href="#contact">get in touch</a>.</p>
+
+  <h2 id="trial">The trial bar says “Connect to the internet once to start your free trial”</h2>
+  <p>Ravenburst hasn't been able to reach our server to start your trial. Check your connection, and that a firewall or proxy isn't blocking <code>api.ravenburst.com</code>, then close and reopen Ravenburst. You can keep writing meanwhile.</p>
+
+  <h2 id="activation">My activation code isn't accepted</h2>
+  <ul>
+    <li>Use the email address you bought with; the code only works with that one.</li>
+    <li>Paste the whole code, starting with <code>RAVENBURST-</code>. Spaces around it don't matter.</li>
+    <li><strong>“Already activated on 3 devices”</strong>: deactivate the license on a computer you no longer use (<span class="menu">Help → Deactivate License on This Device</span>), or email us if you can't.</li>
+    <li>After three wrong attempts, wait five minutes before trying again.</li>
+  </ul>
+
+  <h2 id="missing">“Project Not Found” when Ravenburst opens</h2>
+  <p>The project you last had open has moved, been renamed, or is on a drive that isn't connected. Choose <strong>Browse for Project…</strong> to find it, <strong>New Project</strong>, or <strong>Skip</strong>. Nothing has been deleted.</p>
+
+  <h2 id="export-missing">Something is missing from my export</h2>
+  <ul>
+    <li>Is it ticked to compile? Check its checkbox in the Navigator, and the <strong>Include</strong> list in the Compile dialog.</li>
+    <li>A prologue or epilogue must be included in the final draft (its checkbox, or the <strong>Include in Final Draft</strong> button on the page).</li>
+    <li>Empty chapters and scenes are skipped.</li>
+    <li>Footnotes are only exported by the APA, MLA and Chicago formats, and images aren't included in EPUB yet. See <a href="/docs/export-formats#footnotes">Export Formats</a>.</li>
+    <li>The wrong title page? Each export uses its own front matter folder. See <a href="/docs/compile-options#front-back">Front and back matter</a>.</li>
+  </ul>
+
+  <h2 id="export-locked">The Compile dialog shows a lock</h2>
+  <p>Your trial has ended, or hasn't started yet. See <a href="/docs/license#after-trial">When the trial ends</a>. Your writing is safe and still editable.</p>
+
+  <h2 id="git">Git Backup says Git isn't installed, or can't sign in</h2>
+  <ul>
+    <li>Install Git from <a href="https://git-scm.com/downloads">git-scm.com</a> and reopen Ravenburst.</li>
+    <li>For an online copy, the repository must exist and be empty when you connect it, and your computer must be signed in. Installing <a href="https://github.com/git-ecosystem/git-credential-manager">Git Credential Manager</a> sorts out most sign-in problems.</li>
+    <li>“Needs your attention” means the online copy and this computer have both changed. Restore the version you want from the list of backups. See <a href="/docs/backups#restore">Restoring</a>.</li>
+  </ul>
+
+  <h2 id="drive">Google says the app is unverified</h2>
+  <p>Google Drive backup is a test feature and isn't verified by Google yet. You can continue past the warning if you're comfortable; Ravenburst can only see the files it creates. Or use Git Backup instead.</p>
+
+  <h2 id="spelling">A correct word is underlined</h2>
+  <p>Right-click it and choose <strong>Add to Dictionary</strong>. Spelling is checked in US English; characters' and places' names are never underlined.</p>
+
+  <h2 id="layout">A panel has disappeared</h2>
+  <p>Use <span class="menu">View → Show / Hide</span>, or <span class="menu">Window → Reset Window Layout</span> to put everything back.</p>
+
+  <h2 id="lost-words">I deleted something by mistake</h2>
+  <ul>
+    <li>Just now: <kbd>Ctrl</kbd>+<kbd>Z</kbd>.</li>
+    <li>A whole document: it's in Trash. Right-click → <span class="menu">Restore</span>.</li>
+    <li>An earlier version of a document: <span class="menu">File → Browse Snapshots…</span></li>
+    <li>An earlier version of the whole project: restore from a <a href="/docs/backups">backup</a>.</li>
+  </ul>
+
+  <h2 id="contact">Contact us</h2>
+  <p><span class="menu">Help → Report a Bug</span> starts an email to <a href="mailto:support@ravenburst.com">support@ravenburst.com</a> with your app version and system already filled in. Tell us what you did, what you expected and what happened instead; a screenshot helps.</p>
+</DocsLayout>

@@ -1,71 +1,71 @@
 ---
 import DocsLayout from '../../layouts/DocsLayout.astro'
 ---
-<DocsLayout title="License & Activation" description="How to activate, manage, and understand your Ravenburst license.">
-  <h1 class="text-4xl font-serif font-bold text-rb-text mb-2">License & Activation</h1>
-  <p class="text-rb-muted mb-10">Everything about your Ravenburst license.</p>
+<DocsLayout title="License & Activation" description="How the Ravenburst free trial works, what changes when it ends, and how to activate, move and deactivate your license.">
+  <h1>License &amp; Activation</h1>
+  <p class="lede">A 7-day free trial, then a one-time license that works on up to three of your computers.</p>
 
-  <div class="space-y-10 text-sm text-rb-muted leading-relaxed">
+  <nav class="toc" aria-label="On this page">
+    <p>On this page</p>
+    <ul>
+      <li><a href="#trial">The free trial</a></li>
+      <li><a href="#after-trial">When the trial ends</a></li>
+      <li><a href="#activate">Activating</a></li>
+      <li><a href="#devices">Your devices</a></li>
+      <li><a href="#offline">Working offline</a></li>
+      <li><a href="#status">Checking your license</a></li>
+      <li><a href="#problems">Problems</a></li>
+    </ul>
+  </nav>
 
-    <section>
-      <h2 class="text-xl font-semibold text-rb-text mb-4">Free Trial</h2>
-      <p class="mb-3">Ravenburst includes a <strong class="text-rb-text">7-day free trial</strong>. No account, no credit card required. On first launch, the app registers your machine with our server and starts the trial automatically.</p>
-      <ul class="space-y-1 list-disc list-inside">
-        <li>The trial countdown is shown in the status bar</li>
-        <li>All features are available during the trial</li>
-        <li>If you're offline when you first launch, the trial starts once you connect</li>
-        <li>When the trial expires, writing and reading continue — only saving and exporting are paused until you activate</li>
-      </ul>
-    </section>
+  <h2 id="trial">The free trial</h2>
+  <ul>
+    <li>Starts automatically the first time Ravenburst opens with an internet connection. No account, no card.</li>
+    <li>Lasts <strong>7 days</strong> on that computer. Every feature is available.</li>
+    <li>A bar at the top of the window shows the days left, with <strong>Enter License Code</strong> and <strong>Buy Now</strong> buttons.</li>
+    <li>A trial belongs to the computer, so reinstalling Ravenburst doesn't start a new one.</li>
+  </ul>
 
-    <section>
-      <h2 class="text-xl font-semibold text-rb-text mb-4">Activating Your License</h2>
-      <p class="mb-3">After purchasing at <a href="/pricing" class="text-rb-accent">ravenburst.com/pricing</a>, you'll receive an activation code by email within a few minutes.</p>
-      <ol class="space-y-2 list-decimal list-inside">
-        <li>Open Ravenburst</li>
-        <li>Go to <strong class="text-rb-text">Help → Enter Activation Code</strong></li>
-        <li>Enter the email address you used to purchase</li>
-        <li>Paste your activation code</li>
-        <li>Click <strong class="text-rb-text">Activate</strong></li>
-      </ol>
-      <p class="mt-3">Activation requires an internet connection to register your device.</p>
-    </section>
+  <h2 id="after-trial">When the trial ends</h2>
+  <p>You keep your work and can keep writing. <strong>Writing, editing, saving, opening projects and File → Print all keep working.</strong> These need a license:</p>
+  <ul>
+    <li>Compile / Export, including the Print format in the Compile dialog</li>
+    <li>Git Backup</li>
+    <li>Cloud Storage (Google Drive)</li>
+  </ul>
+  <p>Everything you write is in your own project file on your own computer, licensed or not. See <a href="/docs/data-privacy">Your Files &amp; Privacy</a>.</p>
 
-    <section>
-      <h2 class="text-xl font-semibold text-rb-text mb-4">Multiple Devices</h2>
-      <p class="mb-3">One license covers <strong class="text-rb-text">up to 3 devices</strong>. If you get a new computer, deactivate your old one first to free up a slot.</p>
-      <p>Go to <strong class="text-rb-text">Help → Deactivate License on This Device</strong>. You can then activate on your new machine using the same code.</p>
-    </section>
+  <h2 id="activate">Activating</h2>
+  <p>When you buy Ravenburst you receive an activation code by email. It starts with <code>RAVENBURST-</code> and is tied to the email address you bought with.</p>
+  <ol>
+    <li>Choose <span class="menu">Help → Enter Activation Code…</span>, or click <strong>Enter License Code</strong> in the trial bar.</li>
+    <li>Enter the <strong>email address</strong> you bought with.</li>
+    <li>Paste the <strong>activation code</strong>.</li>
+    <li>Click <strong>Activate</strong>.</li>
+  </ol>
+  <p>Activation registers the computer as one of your devices, so connect to the internet if you can. If you can't, the code is still checked and accepted on the computer itself, and the device is registered the next time Ravenburst checks in.</p>
+  <p>After three wrong attempts in a row, the dialog waits five minutes before letting you try again.</p>
 
-    <section>
-      <h2 class="text-xl font-semibold text-rb-text mb-4">Lost Your Activation Code?</h2>
-      <p>Email <a href="mailto:support@ravenburst.com" class="text-rb-accent">support@ravenburst.com</a> with the email address you used to purchase. We'll resend your code within 48 hours.</p>
-    </section>
+  <h2 id="devices">Your devices</h2>
+  <p>One license covers <strong>up to 3 computers</strong>. To move it to a new computer, free up a slot on the old one first:</p>
+  <ol>
+    <li>On the old computer, choose <span class="menu">Help → Deactivate License on This Device</span> and confirm.</li>
+    <li>On the new computer, enter your email and code as above.</li>
+  </ol>
+  <p>Ravenburst recognises a computer from details such as its name and hardware. Renaming the computer or replacing major parts can make it look like a new device. If that uses up your slots, email us and we'll reset them.</p>
 
-    <section>
-      <h2 class="text-xl font-semibold text-rb-text mb-4">Offline Use</h2>
-      <p class="mb-3">Once activated, Ravenburst works almost entirely offline. The only things that require internet are:</p>
-      <ul class="space-y-1 list-disc list-inside">
-        <li>Initial trial registration</li>
-        <li>Activating your license code</li>
-        <li>The 30-day license heartbeat (a silent background check — if offline, the app continues normally)</li>
-      </ul>
-    </section>
+  <h2 id="offline">Working offline</h2>
+  <p>Once activated, Ravenburst works without the internet. About every 30 days it quietly checks in to confirm the license is still valid. If you're offline, nothing happens: the check simply waits until next time.</p>
+  <p>If a license is cancelled (for example after a refund), the next check-in shows a banner, and export, Git Backup and Cloud Storage stop working three days later. If you see that banner and think it's a mistake, email <a href="mailto:support@ravenburst.com">support@ravenburst.com</a>.</p>
 
-    <section>
-      <h2 class="text-xl font-semibold text-rb-text mb-4">Upgrades</h2>
-      <ul class="space-y-2 list-disc list-inside">
-        <li>Your license includes <strong class="text-rb-text">free updates through v2</strong> — all patches and minor versions at no cost</li>
-        <li>Future major versions (v3+) will be available at a discounted upgrade price (~$10–15)</li>
-        <li>You are never forced to upgrade — your current version keeps working</li>
-        <li>Kickstarter backers receive free updates through v3</li>
-      </ul>
-    </section>
+  <h2 id="status">Checking your license</h2>
+  <p><span class="menu">Help → License Status</span> opens <span class="menu">Preferences → License</span>, which shows whether you're licensed or on a trial (and how many days are left), the email the license belongs to, and the versions it covers.</p>
 
-    <section>
-      <h2 class="text-xl font-semibold text-rb-text mb-4">Refunds</h2>
-      <p>We offer a full refund within 30 days of purchase, no questions asked. Email <a href="mailto:support@ravenburst.com" class="text-rb-accent">support@ravenburst.com</a>. Upon refund, your activation code will be deactivated and the app will revert to an expired state.</p>
-    </section>
-
-  </div>
+  <h2 id="problems">Problems</h2>
+  <ul>
+    <li><strong>Lost your code?</strong> Email <a href="mailto:support@ravenburst.com">support@ravenburst.com</a> from the address you bought with and we'll send it again.</li>
+    <li><strong>“Already activated on 3 devices”</strong>: deactivate an old computer, or email us if you no longer have it.</li>
+    <li><strong>The trial bar says to connect to the internet</strong>: Ravenburst hasn't been able to start your trial yet. Connect once and reopen it.</li>
+  </ul>
+  <p>Pricing, upgrades and refunds are on the <a href="/pricing">Pricing page</a>.</p>
 </DocsLayout>

@@ -1,0 +1,49 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro'
+---
+<DocsLayout title="Characters & Places" description="Character and place sheets in Ravenburst: the fields on each tab, portraits and image galleries.">
+  <h1>Characters &amp; Places</h1>
+  <p class="lede">A sheet for everyone and everywhere in your story, kept alongside the manuscript but never printed in it.</p>
+
+  <h2 id="adding">Adding and removing</h2>
+  <ul>
+    <li>Click the <strong>+</strong> next to Characters or Places in the Navigator. Click a name to open its sheet.</li>
+    <li>Right-click → <span class="menu">Move to Trash</span> removes a sheet; it can be restored from Trash.</li>
+    <li>Sheets save themselves a moment after you stop typing.</li>
+    <li>The names of your characters and places are never marked as spelling mistakes.</li>
+  </ul>
+
+  <h2 id="characters">Character sheets</h2>
+  <p>At the top: a <strong>portrait</strong> (click to choose an image; right-click to view it full size or remove it), the <strong>name</strong>, <strong>Character Type</strong> (Protagonist, Antagonist, Supporting, Minor, Extra / Walk-on) and <strong>Alignment</strong> (Good, Neutral, Evil).</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Tab</th><th>Fields</th></tr></thead>
+      <tbody>
+        <tr><td>Identity</td><td>Name, Age</td></tr>
+        <tr><td>Physical</td><td>Physical Description</td></tr>
+        <tr><td>Psychology</td><td>Personality, Strengths, Fears</td></tr>
+        <tr><td>Narrative</td><td>Backstory, Goals, Arc, Flaw, Wound</td></tr>
+        <tr><td>Voice</td><td>Speech Patterns</td></tr>
+        <tr><td>Notes</td><td>Notes, and an <strong>Images</strong> gallery (Add Image)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="places">Place sheets</h2>
+  <p>At the top: an <strong>image</strong>, the <strong>name</strong> and a <strong>type</strong>: City, Building, Region, Country, Natural, Fictional or Other.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Tab</th><th>Fields</th></tr></thead>
+      <tbody>
+        <tr><td>Overview</td><td>Name, Description, Significance to Story</td></tr>
+        <tr><td>World</td><td>Geography, Climate, Culture</td></tr>
+        <tr><td>History</td><td>History</td></tr>
+        <tr><td>Notes</td><td>Notes, and an <strong>Images</strong> gallery</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="side-by-side">Keeping a sheet in view</h2>
+  <p>Open a character or place in <a href="/docs/views#split-view">Split View</a> to see it beside the scene you're writing, and edit it there too. <span class="menu">Navigate → Jump to Characters</span> and <span class="menu">Jump to Places</span> take you straight to the lists.</p>
+  <p>Images are stored inside your project file, like everything else.</p>
+</DocsLayout>

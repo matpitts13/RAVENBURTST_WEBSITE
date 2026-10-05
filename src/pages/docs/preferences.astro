@@ -1,0 +1,44 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro'
+---
+<DocsLayout title="Preferences" description="Every setting in Ravenburst's Preferences: theme, text size, editor font and spacing, autosave, spelling, academic formats and license.">
+  <h1>Preferences</h1>
+  <p class="lede">Open <span class="menu">File → Preferences…</span> (<kbd>Ctrl</kbd>+<kbd>,</kbd>; on a Mac, <span class="menu">Ravenburst → Preferences…</span> or <kbd>⌘</kbd>+<kbd>,</kbd>). Changes apply straight away; click <strong>Done</strong> to close.</p>
+
+  <h2 id="appearance">Appearance</h2>
+  <ul>
+    <li><strong>Theme</strong>: Light, Dark, System (follow OS) or High Contrast (ADA). Also in <span class="menu">View → Appearance</span>, and the theme button in the status bar cycles through them.</li>
+    <li><strong>Accessibility — UI Text Size</strong>: 100%, 115%, 130% or 150%. Scales the menus, panels and labels; for the writing itself, use the editor font size or zoom.</li>
+  </ul>
+
+  <h2 id="editor">Editor</h2>
+  <ul>
+    <li><strong>Editor Font</strong>: Georgia, Times New Roman, Garamond, Palatino Linotype, Courier New, Arial, Helvetica or your system's font.</li>
+    <li><strong>Font Size</strong>: 10 to 20 pt.</li>
+    <li><strong>Line Spacing</strong>: 1.0 (single), 1.15, 1.5 or 2.0 (double).</li>
+    <li><strong>Autosave Interval</strong>: how long after you stop typing Ravenburst saves: 1, 3 (default), 5, 10 or 30 seconds. Compiling always saves first, whatever this is set to.</li>
+  </ul>
+  <p>These set how text looks while you write. Exports use their own fonts and spacing (see <a href="/docs/export-formats">Export Formats</a>).</p>
+
+  <h2 id="spellcheck">Spellcheck</h2>
+  <ul>
+    <li><strong>Enable Spellcheck</strong> turns the red underlines on or off.</li>
+    <li><strong>Custom Dictionary</strong>: type a word and click <strong>Add</strong>, or click × to remove one. Words you add from the right-click menu appear here too. The dictionary is shared by all your projects.</li>
+  </ul>
+  <p>Ravenburst never autocorrects or autocompletes, by design.</p>
+
+  <h2 id="academic">Academic</h2>
+  <p>Fine-tune the APA 7th, MLA 9th and Chicago 17th exports. Choose a style, click <strong>Load</strong>, edit its settings and click <strong>Save</strong>. <strong>Reset to Default</strong> undoes your changes.</p>
+  <p>You can change the font, font size, line spacing, margins (in points: 72 points is one inch), header format, whether there's a title page, abstract and running head, the label of the reference list, footnotes or endnotes, and for Chicago, notes-bibliography or author-date citations. Changes apply to your next export.</p>
+  <p><span class="menu">Help → Check for Format Updates…</span> looks for newer official APA and MLA settings from Ravenburst and offers to apply them. Applying an update replaces any changes you made here.</p>
+
+  <h2 id="license">License</h2>
+  <p>Shows whether Ravenburst is licensed or on a trial (with days left), the email the license belongs to and which versions it covers, with buttons to enter an activation code or see pricing. <span class="menu">Help → License Status</span> opens this tab. See <a href="/docs/license">License &amp; Activation</a>.</p>
+
+  <h2 id="elsewhere">Settings that live elsewhere</h2>
+  <ul>
+    <li><strong>Project settings</strong> (title, author, chapter labels, scene breaks, word target): in the Inspector with no document selected. See <a href="/docs/navigator#inspector">The Inspector</a>.</li>
+    <li><strong>Panels and layout</strong>: the <span class="menu">View</span> and <span class="menu">Window</span> menus. See <a href="/docs/views#layout">Arranging the window</a>.</li>
+    <li><strong>Backups</strong>: <span class="menu">Project → Git Backup…</span> and <span class="menu">Cloud Storage…</span>.</li>
+  </ul>
+</DocsLayout>

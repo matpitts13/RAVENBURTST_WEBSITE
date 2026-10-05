@@ -1,0 +1,36 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro'
+---
+<DocsLayout title="Your Files & Privacy" description="Where Ravenburst keeps your work and settings, and exactly what it sends over the internet and when.">
+  <h1>Your Files &amp; Privacy</h1>
+  <p class="lede">Your writing stays on your computer. Ravenburst has no accounts, no analytics and no tracking.</p>
+
+  <h2 id="files">Where your work lives</h2>
+  <ul>
+    <li><strong>Each project is a single <code>.ravenburst</code> file</strong>: every chapter, note, character sheet, image and snapshot. New projects are suggested to <code>Documents/Ravenburst</code>, but you can keep them anywhere.</li>
+    <li>Exports are suggested to <code>Documents/Ravenburst/Exports</code>.</li>
+    <li>App settings, your custom dictionary and license details are kept in Ravenburst's own settings folder on your computer, separate from your projects.</li>
+    <li>Git Backup adds a hidden <code>.git</code> folder and a <code>.gitignore</code> file next to your project.</li>
+  </ul>
+  <p>Project files are SQLite databases, an open format, so your work is never locked into Ravenburst. You can always export it to Word, PDF, EPUB or plain text.</p>
+
+  <h2 id="network">What Ravenburst sends, and when</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>When</th><th>To</th><th>What's sent</th></tr></thead>
+      <tbody>
+        <tr><td>Starting the free trial</td><td>api.ravenburst.com</td><td>A fingerprint of this computer: a one-way code made from details such as its name, processor and memory. It can't be turned back into those details.</td></tr>
+        <tr><td>Activating, checking (about every 30 days) or deactivating a license</td><td>api.ravenburst.com</td><td>The fingerprint, and a one-way code made from your activation code. Not your email address, and never your writing.</td></tr>
+        <tr><td>Help → Check for Format Updates…</td><td>ravenburst.com</td><td>Nothing; it only downloads the latest APA and MLA settings.</td></tr>
+        <tr><td>Google Drive backup, if you connect it</td><td>Google</td><td>Your project file, to your own Drive.</td></tr>
+        <tr><td>Git Backup online copy, if you set one up</td><td>The host you chose</td><td>Your project file, to your own repository.</td></tr>
+        <tr><td>Help → See Docs, Buy Now and similar</td><td>ravenburst.com</td><td>Opens the page in your browser.</td></tr>
+        <tr><td>Help → Report a Bug / Send Feedback</td><td>Your email app</td><td>Opens a new email to us. Report a Bug fills in the app version and your system details; you see everything before you send it.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>That's everything. Ravenburst doesn't check for app updates in the background, and doesn't collect usage statistics or crash reports. Your writing is never sent to us.</p>
+
+  <h2 id="more">More</h2>
+  <p>The full <a href="/legal/privacy">Privacy Policy</a> covers the website and mailing list too.</p>
+</DocsLayout>

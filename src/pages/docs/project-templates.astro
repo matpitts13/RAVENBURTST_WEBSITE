@@ -1,134 +1,80 @@
 ---
 import DocsLayout from '../../layouts/DocsLayout.astro'
 
-const templates = [
+const groups = [
   {
-    name: 'Novel',
-    icon: '📖',
-    desc: 'The default template for long-form fiction. Chapter folders nest Scene documents. Chapters can be numbered, titled, or both.',
-    structure: 'Part (optional) → Chapter → Scene',
-    formats: 'Manuscript DOCX/PDF, Paperback 5×7 and 6×9, EPUB',
+    heading: 'Prose',
+    items: [
+      { name: 'Novel', starts: 'Prologue (off), Chapter 1 with Scene 1, Epilogue (off)', label: 'Chapter', front: 'Manuscript Format, Paperback, Ebook', exports: 'Manuscript, Paperback, Proof, EPUB' },
+      { name: 'Non-Fiction', starts: 'Chapter 1 with Section 1', label: 'Chapter (numbered)', front: 'Manuscript Format, Paperback, Ebook', exports: 'Manuscript, Paperback, Proof, EPUB' },
+      { name: 'Short Story / Essay', starts: 'Scene 1, no chapters', label: 'Section', front: 'Manuscript Format, Paperback, Ebook', exports: 'Manuscript, EPUB' },
+    ],
   },
   {
-    name: 'Non-Fiction',
-    icon: '📚',
-    desc: 'For narrative non-fiction, biography, memoir, and similar long-form works. Identical structure to Novel, with numbered chapters by default.',
-    structure: 'Part (optional) → Chapter → Section',
-    formats: 'Manuscript DOCX/PDF, Paperback',
+    heading: "Children's books",
+    items: [
+      { name: "Children's Book (Square)", starts: 'Page 1', label: 'Page', front: 'Manuscript Format, Paperback', exports: "Children's Book 8.5″ × 8.5″" },
+      { name: "Children's Book (Portrait)", starts: 'Page 1', label: 'Page', front: 'Manuscript Format, Paperback', exports: "Children's Book 8.5″ × 11″" },
+      { name: "Children's Book (Landscape)", starts: 'Page 1', label: 'Page', front: 'Manuscript Format, Paperback', exports: "Children's Book 11″ × 8.5″" },
+    ],
   },
   {
-    name: 'Screenplay',
-    icon: '🎬',
-    desc: 'For feature films and TV pilots. Acts contain Scenes. Exports to WGA-standard Courier format or the open .fountain format.',
-    structure: 'Act → Scene',
-    formats: 'Screenplay PDF, Screenplay (.fountain)',
+    heading: 'Academic',
+    items: [
+      { name: 'Academic Paper (APA 7th)', starts: 'An empty manuscript', label: 'Section', front: 'Manuscript Format', exports: 'APA 7th (DOCX, PDF)' },
+      { name: 'Academic Paper (MLA 9th)', starts: 'An empty manuscript', label: 'Section', front: 'Manuscript Format', exports: 'MLA 9th (DOCX, PDF)' },
+      { name: 'Essay (Chicago 17th)', starts: 'An empty manuscript', label: 'Section', front: 'Manuscript Format', exports: 'Chicago 17th (DOCX, PDF)' },
+    ],
   },
   {
-    name: 'Stage Play',
-    icon: '🎭',
-    desc: 'For stage plays using the standard US format (Samuel French / Dramatists Play Service). Character names centred, dialogue indented, stage directions in italics.',
-    structure: 'Act → Scene',
-    formats: 'Stage Play PDF',
+    heading: 'Scripts',
+    items: [
+      { name: 'Screenplay', starts: 'Act One, Two and Three, each with Scene 1', label: 'Act', front: 'Screenplay', exports: 'Screenplay PDF, Fountain' },
+      { name: 'TV Script', starts: 'Cold Open, Act One, Act Two, Tag', label: 'Act', front: 'TV Script', exports: 'Screenplay PDF, Fountain' },
+      { name: 'Documentary Script', starts: 'Segment 1 and 2, each with Scene 1', label: 'Segment', front: 'TV Script', exports: 'Documentary PDF, Fountain' },
+      { name: 'Stage Play (US)', starts: 'Act One and Two, each with Scene 1', label: 'Act', front: 'Manuscript Format', exports: 'Stage Play (US) PDF' },
+      { name: 'Stage Play (UK)', starts: 'Act One and Two, each with Scene 1', label: 'Act', front: 'Manuscript Format', exports: 'Stage Play UK PDF' },
+    ],
   },
   {
-    name: 'Stage Play (UK)',
-    icon: '🎭',
-    desc: 'UK stage play format as used by the RSC and major London venues. Slightly different margin conventions from the US format.',
-    structure: 'Act → Scene',
-    formats: 'Stage Play UK PDF',
-  },
-  {
-    name: 'Stage Play (US)',
-    icon: '🎭',
-    desc: 'US stage play format (Samuel French / Dramatists Play Service). Identical to the Stage Play template but labelled for clarity when working alongside a UK version.',
-    structure: 'Act → Scene',
-    formats: 'Stage Play PDF',
-  },
-  {
-    name: 'Documentary Script',
-    icon: '🎥',
-    desc: 'For documentary and factual film scripts. Segments contain Scenes. Supports voice-over (V/O) and on-camera cues in the editor.',
-    structure: 'Segment → Scene',
-    formats: 'Documentary PDF',
-  },
-  {
-    name: 'Short Story / Essay',
-    icon: '✍️',
-    desc: 'Minimal structure — no chapter folders. Scene documents sit directly at the top level. Good for single-piece works that don\'t need nesting.',
-    structure: 'Section (flat)',
-    formats: 'Manuscript DOCX/PDF',
-  },
-  {
-    name: 'Essay (Chicago 17th)',
-    icon: '🎓',
-    desc: 'For essays using Chicago Manual of Style (17th edition). Sections map to major essay divisions. Exports with footnotes or endnotes depending on your citation style.',
-    structure: 'Section',
-    formats: 'Essay Chicago DOCX/PDF',
-  },
-  {
-    name: "Children's Book (Square)",
-    icon: '🖼️',
-    desc: 'Classic square 8.5 x 8.5 in picture book format. Each Page document is one spread. KDP-compliant with bleed and safe zone.',
-    structure: 'Page (flat)',
-    formats: "Children's Book Square PDF",
-  },
-  {
-    name: "Children's Book (Portrait)",
-    icon: '🖼️',
-    desc: 'Taller 8.5 x 11 in portrait format. More vertical space for tall illustrations.',
-    structure: 'Page (flat)',
-    formats: "Children's Book Portrait PDF",
-  },
-  {
-    name: "Children's Book (Landscape)",
-    icon: '🖼️',
-    desc: 'Wide 11 x 8.5 in panoramic format. Great for sweeping scenes and double-page spreads.',
-    structure: 'Page (flat)',
-    formats: "Children's Book Landscape PDF",
-  },
-  {
-    name: 'Academic Paper (APA 7th)',
-    icon: '🎓',
-    desc: 'APA 7th Edition (2019). Double-spaced, Times New Roman 12pt, running head, title page, abstract, References label.',
-    structure: 'Section',
-    formats: 'Academic APA DOCX/PDF',
-  },
-  {
-    name: 'Academic Paper (MLA 9th)',
-    icon: '🎓',
-    desc: 'MLA 9th Edition (2021). Double-spaced, Times New Roman 12pt, LastName # header, Works Cited label.',
-    structure: 'Section',
-    formats: 'Academic MLA DOCX/PDF',
-  },
-  {
-    name: 'Blank Project',
-    icon: '📄',
-    desc: 'An empty project with no pre-built structure. Build your own from scratch. Good for projects that do not fit a standard template.',
-    structure: 'Your choice',
-    formats: 'All formats available',
+    heading: 'Other',
+    items: [
+      { name: 'Blank', starts: 'An empty manuscript', label: 'Chapter', front: 'All five folders', exports: 'Any' },
+    ],
   },
 ]
 ---
-<DocsLayout title="Project Templates" description="Every project template in Ravenburst and when to use each one.">
-  <h1 class="text-4xl font-serif font-bold text-rb-text mb-2">Project Templates</h1>
-  <p class="text-rb-muted mb-4">When you create a new project, Ravenburst asks you to choose a template. The template sets the default chapter label, chapter format, and Navigator structure — you can change any of it afterwards.</p>
-  <p class="text-rb-muted mb-10">Templates do not lock you into a specific export format. Any project can be exported to any compatible format from the Compile dialog.</p>
+<DocsLayout title="Project Templates" description="The 15 project types in Ravenburst and what each one sets up for you.">
+  <h1>Project Templates</h1>
+  <p class="lede">When you create a project you choose what kind of work it is. That sets up a starting structure, the word used for chapters, the line spacing, and front matter for the formats you're likely to export.</p>
 
-  <div class="space-y-4 text-sm text-rb-muted">
-    {templates.map(t => (
-      <div class="bg-rb-surface border border-rb-border rounded-xl p-5">
-        <div class="flex items-start gap-3 mb-2">
-          <span class="text-2xl">{t.icon}</span>
-          <div>
-            <div class="font-semibold text-rb-text text-base">{t.name}</div>
-            <div class="leading-relaxed mt-1">{t.desc}</div>
-          </div>
-        </div>
-        <div class="mt-3 flex flex-wrap gap-x-8 gap-y-1 text-xs">
-          <div><span class="text-rb-text font-medium">Structure: </span>{t.structure}</div>
-          <div><span class="text-rb-text font-medium">Exports to: </span>{t.formats}</div>
-        </div>
-      </div>
-    ))}
+  <div class="note">
+    <p>A template is only a starting point. You can add, rename and reorder anything afterwards, and any project can be exported to any format in the <a href="/docs/compile-options">Compile</a> dialog.</p>
   </div>
+
+  {groups.map((g) => (
+    <section>
+      <h2>{g.heading}</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Template</th><th>Starts with</th><th>Chapters are called</th><th>Front matter folders</th><th>Made for</th></tr>
+          </thead>
+          <tbody>
+            {g.items.map((t) => (
+              <tr><td><strong>{t.name}</strong></td><td>{t.starts}</td><td>{t.label}</td><td>{t.front}</td><td>{t.exports}</td></tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  ))}
+
+  <h2>Also set by the template</h2>
+  <ul>
+    <li><strong>Line spacing:</strong> double for prose, children's books and academic work (standard submission format); single for scripts and plays; 1.5 for Blank.</li>
+    <li><strong>Back matter:</strong> Novel, Non-Fiction and Short Story start with an <em>About the Author</em> page. Other types start with none, and you can add pages yourself.</li>
+    <li><strong>Templates:</strong> starter documents in the Templates section, such as <em>Blank Scene</em>, <em>Scene with Synopsis Block</em>, <em>Chapter Opening</em>, <em>Screenplay Scene</em>, <em>TV Scene</em> and <em>Reference Note</em>, depending on the type. See <a href="/docs/navigator#templates">Templates</a>.</li>
+  </ul>
+  <p>The Novel's Prologue and Epilogue start switched off, marked “(off)” above. Tick <strong>Include in Final Draft</strong> to write in them and compile them, or ignore them if your book doesn't need them.</p>
 </DocsLayout>

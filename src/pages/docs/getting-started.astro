@@ -1,50 +1,63 @@
 ---
 import DocsLayout from '../../layouts/DocsLayout.astro'
 ---
-<DocsLayout title="First Launch" description="Install Ravenburst and create your first project.">
-  <h1 class="text-4xl font-serif font-bold text-rb-text mb-2">First Launch</h1>
-  <p class="text-rb-muted mb-10">Get up and running in under 5 minutes.</p>
+<DocsLayout title="First Launch" description="Install Ravenburst, start the free trial, create your first project and find your way around the window.">
+  <h1>First Launch</h1>
+  <p class="lede">From installing to writing your first scene in a few minutes.</p>
 
-  <div class="space-y-10 text-sm text-rb-muted leading-relaxed">
+  <nav class="toc" aria-label="On this page">
+    <p>On this page</p>
+    <ul>
+      <li><a href="#install">Install</a></li>
+      <li><a href="#trial">Your free trial</a></li>
+      <li><a href="#project">Create a project</a></li>
+      <li><a href="#window">The window</a></li>
+      <li><a href="#saving">Saving</a></li>
+      <li><a href="#next">Where next</a></li>
+    </ul>
+  </nav>
 
-    <section>
-      <h2 class="text-xl font-semibold text-rb-text mb-4">1. Download & Install</h2>
-      <p class="mb-3">Download the installer for your platform from the <a href="/download" class="text-rb-accent">Download page</a>.</p>
-      <ul class="space-y-2 list-disc list-inside">
-        <li><strong class="text-rb-text">Windows:</strong> Run the <code class="bg-rb-surface px-1 rounded">.exe</code> installer. Ravenburst installs to your user directory — no admin rights needed.</li>
-        <li><strong class="text-rb-text">macOS:</strong> Open the <code class="bg-rb-surface px-1 rounded">.dmg</code> and drag Ravenburst to Applications.</li>
-        <li><strong class="text-rb-text">Linux:</strong> Make the <code class="bg-rb-surface px-1 rounded">.AppImage</code> executable (<code class="bg-rb-surface px-1 rounded">chmod +x</code>) and run it.</li>
-      </ul>
-    </section>
+  <h2 id="install">Install</h2>
+  <p>Ravenburst runs on Windows 10 and 11, macOS 13 or later, and 64-bit Linux. Installers will be on the <a href="/download">Download page</a> at launch.</p>
+  <ul>
+    <li><strong>Windows:</strong> run the <code>.exe</code> installer.</li>
+    <li><strong>macOS:</strong> open the <code>.dmg</code> and drag Ravenburst to Applications.</li>
+    <li><strong>Linux:</strong> make the <code>.AppImage</code> file executable and run it.</li>
+  </ul>
 
-    <section>
-      <h2 class="text-xl font-semibold text-rb-text mb-4">2. Start Your Free Trial</h2>
-      <p class="mb-3">On first launch, Ravenburst connects to our server to register a <strong class="text-rb-text">7-day free trial</strong> for your machine. No account, no credit card required.</p>
-      <p>If you're offline, the app will start in offline mode — the trial begins once you connect to the internet.</p>
-    </section>
+  <h2 id="trial">Your free trial</h2>
+  <p>The first time Ravenburst opens with an internet connection, it starts a <strong>7-day free trial</strong> on that computer. There's no account to create and no card to enter. A bar at the top of the window counts down the days.</p>
+  <p>If the computer is offline the first time, the bar says <em>Connect to the internet once to start your free trial</em>. You can write in the meantime; the trial starts the next time Ravenburst can reach the internet.</p>
+  <p>See <a href="/docs/license">License &amp; Activation</a> for what changes when the trial ends.</p>
 
-    <section>
-      <h2 class="text-xl font-semibold text-rb-text mb-4">3. Create Your First Project</h2>
-      <p class="mb-3">Click <strong class="text-rb-text">File → New Project</strong> or use the startup screen. You'll be asked to:</p>
-      <ol class="space-y-2 list-decimal list-inside">
-        <li>Choose a <strong class="text-rb-text">project type</strong> — Novel, Screenplay, Academic Paper, Children's Book, and more</li>
-        <li>Name your project</li>
-        <li>Choose where to save the <code class="bg-rb-surface px-1 rounded">.wrytr</code> file</li>
-      </ol>
-      <p class="mt-3">Ravenburst creates a pre-structured project based on your template — chapters, scenes, characters, and reference sections all ready to go.</p>
-    </section>
+  <h2 id="project">Create a project</h2>
+  <p>A project holds one piece of work: a novel, a screenplay, a paper. Everything in it (chapters, notes, character sheets, research, snapshots) is saved in a single <code>.ravenburst</code> file.</p>
+  <ol>
+    <li>Choose <span class="menu">File → New Project…</span> (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>N</kbd>), or <strong>New Project</strong> on the start screen.</li>
+    <li>Choose a name and a place to save it. Ravenburst suggests <code>Documents/Ravenburst</code>. Names can use letters, numbers, spaces, hyphens and underscores.</li>
+    <li>Pick a <strong>project type</strong>, for example Novel, Screenplay or Academic Paper (APA 7th). See <a href="/docs/project-templates">Project Templates</a> for all 15.</li>
+  </ol>
+  <p>Ravenburst sets the project up for that kind of work: a first chapter and scene, front matter pages for the formats you're likely to export, and starter templates.</p>
 
-    <section>
-      <h2 class="text-xl font-semibold text-rb-text mb-4">4. Start Writing</h2>
-      <p class="mb-3">Click any document in the Navigator on the left to open it in the editor. Everything saves automatically every 3 seconds.</p>
-      <p>The status bar at the bottom shows your word count, save status, zoom level, and license status at a glance.</p>
-    </section>
+  <h2 id="window">The window</h2>
+  <ul>
+    <li><strong>Navigator</strong> (left): every part of your project, from the manuscript to your trash. Click anything to open it. See <a href="/docs/navigator">Navigator &amp; Structure</a>.</li>
+    <li><strong>Editor</strong> (centre): where you write, with the <strong>Format Bar</strong> above it. See <a href="/docs/editor">The Editor</a>.</li>
+    <li><strong>Inspector</strong> (right): details of the selected document: its status, word target, label colour and synopsis. With nothing selected it shows <strong>Project Settings</strong>.</li>
+    <li><strong>Status bar</strong> (bottom): zoom, spellcheck, word counts, save status, backup status and the theme.</li>
+  </ul>
+  <p>Show or hide any of these from <span class="menu">View → Show / Hide</span>. To put the Navigator on the right, use <span class="menu">Window → Move Navigator Right</span>.</p>
 
-    <section>
-      <h2 class="text-xl font-semibold text-rb-text mb-4">5. Activate Your License</h2>
-      <p class="mb-3">When you're ready to buy, go to <a href="/pricing" class="text-rb-accent">Pricing</a>. After purchase you'll receive an activation code by email.</p>
-      <p>Enter it via <strong class="text-rb-text">Help → Enter Activation Code</strong>. Your license works on up to 3 devices.</p>
-    </section>
+  <h2 id="saving">Saving</h2>
+  <p>Ravenburst saves by itself a few seconds after you stop typing (3 seconds unless you change it in <a href="/docs/preferences">Preferences</a>). The status bar shows <em>Saved</em>, <em>Saving…</em> or <em>Unsaved changes</em>. <span class="menu">File → Save</span> (<kbd>Ctrl</kbd>+<kbd>S</kbd>) saves at once.</p>
+  <p>When you open Ravenburst again, it reopens the project and document you were last working on.</p>
 
-  </div>
+  <h2 id="next">Where next</h2>
+  <ul>
+    <li><a href="/docs/navigator">Organise your manuscript</a> into parts, chapters and scenes.</li>
+    <li><a href="/docs/compile-options">Compile</a> your project into a manuscript, paperback or e-book.</li>
+    <li><a href="/docs/backups">Set up a backup</a> so your work is safe somewhere else too.</li>
+    <li><a href="/docs/keyboard-shortcuts">Learn the shortcuts</a>, or press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>/</kbd> in the app.</li>
+  </ul>
+  <p>On a Mac, use <kbd>⌘</kbd> wherever these pages say <kbd>Ctrl</kbd>, and <kbd>⌥ Option</kbd> for <kbd>Alt</kbd>.</p>
 </DocsLayout>

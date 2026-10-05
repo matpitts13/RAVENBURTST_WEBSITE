@@ -1,0 +1,33 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro'
+---
+<DocsLayout title="Snapshots & Bookmarks" description="Save versions of a document as snapshots and restore them, and bookmark documents you want to come back to.">
+  <h1>Snapshots &amp; Bookmarks</h1>
+  <p class="lede">Snapshots let you try a big rewrite without fear. Bookmarks get you back to the scene you keep returning to.</p>
+
+  <h2 id="snapshots">Snapshots</h2>
+  <p>A snapshot is a saved copy of one document at one moment. Snapshots live inside your project file.</p>
+  <h3>Taking a snapshot</h3>
+  <ul>
+    <li><span class="menu">File → Save as Snapshot</span> (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd>) saves one straight away. The status bar confirms it.</li>
+    <li>To give it a name, use <span class="menu">File → Browse Snapshots…</span>, type a label such as “before cutting the subplot”, and click <strong>Save Snapshot</strong>.</li>
+    <li>Ravenburst also takes an automatic snapshot, labelled <em>Auto-save</em>, every 50 saves of a document.</li>
+  </ul>
+  <h3>Browsing and restoring</h3>
+  <p><span class="menu">File → Browse Snapshots…</span> lists the open document's snapshots with their label, word count and date. Click one to preview its beginning.</p>
+  <ul>
+    <li><strong>Restore</strong> puts the snapshot's text back, after asking. If your current text is different, Ravenburst first saves it as a snapshot called <em>Before restore</em>, so restoring never loses anything.</li>
+    <li><strong>Delete</strong> removes a snapshot, after asking.</li>
+  </ul>
+  <p>Snapshots are kept until you delete them, or until you permanently delete their document.</p>
+  <div class="note">
+    <p>Snapshots are stored in the project file, so they don't protect against losing the file itself. For that, see <a href="/docs/backups">Backups</a>.</p>
+  </div>
+
+  <h2 id="bookmarks">Bookmarks</h2>
+  <ul>
+    <li><span class="menu">Navigate → Bookmarks → Add Bookmark</span> (<kbd>Ctrl</kbd>+<kbd>D</kbd>) bookmarks the open document; press it again to remove the bookmark. The bookmark button above the editor does the same.</li>
+    <li><span class="menu">Navigate → Bookmarks → Manage Bookmarks…</span> lists them. Click one to open it, or × to remove it.</li>
+    <li>Bookmarks last until you close Ravenburst. For something to come back to another day, a <a href="/docs/editor#resume">resume note</a> or a <a href="/docs/navigator#status">label colour</a> stays put.</li>
+  </ul>
+</DocsLayout>

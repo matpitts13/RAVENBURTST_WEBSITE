@@ -1,0 +1,40 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro'
+---
+<DocsLayout title="Accessibility" description="High contrast, text size, zoom, keyboard-only use, screen reader support and reduced motion in Ravenburst.">
+  <h1>Accessibility</h1>
+  <p class="lede">Ravenburst is built to be used comfortably with low vision, with a keyboard alone, and with a screen reader. In the app, <span class="menu">Help → Accessibility</span> summarises the options.</p>
+
+  <h2 id="seeing">Seeing the screen</h2>
+  <ul>
+    <li><strong>High Contrast theme</strong>: <span class="menu">Preferences → Appearance</span> or <span class="menu">View → Appearance</span>. Strong text and borders, and wider scrollbars.</li>
+    <li><strong>UI text size</strong>: <span class="menu">Preferences → Appearance → Accessibility — UI Text Size</span> scales menus, panels and labels to 115%, 130% or 150%. At 130% and above, scrollbars get wider too.</li>
+    <li><strong>Editor zoom</strong>: 50% to 200% with <kbd>Ctrl</kbd>+<kbd>=</kbd> and <kbd>Ctrl</kbd>+<kbd>-</kbd>, separate from the UI size.</li>
+    <li><strong>Editor font and size</strong>: <span class="menu">Preferences → Editor</span>.</li>
+    <li>Windows <strong>contrast themes</strong> (forced colours) are respected.</li>
+  </ul>
+
+  <h2 id="keyboard">Using the keyboard</h2>
+  <ul>
+    <li>Every menu command can be reached from the keyboard, and most have shortcuts. Press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>/</kbd> for the list, or see <a href="/docs/keyboard-shortcuts">Keyboard Shortcuts</a>.</li>
+    <li>Use the arrow keys to move through the Navigator and reference tables.</li>
+    <li>Focus is always visible.</li>
+    <li>In dialogs, <kbd>Tab</kbd> stays inside the dialog, <kbd>Esc</kbd> closes it, and focus returns to where you were.</li>
+    <li><kbd>Esc</kbd> also leaves Composition Mode.</li>
+  </ul>
+
+  <h2 id="screen-readers">Screen readers</h2>
+  <ul>
+    <li>The window is divided into labelled regions (navigator, editor, inspector, status bar), so you can jump between them.</li>
+    <li>The editor is announced as a multi-line text area.</li>
+    <li>Icon buttons have labels.</li>
+    <li>Saving is announced politely (“Saved”), without interrupting your reading.</li>
+  </ul>
+  <p>If something doesn't work well with your screen reader, please tell us which one and what happened.</p>
+
+  <h2 id="motion">Motion</h2>
+  <p>If your computer is set to reduce motion, Ravenburst turns off its animations.</p>
+
+  <h2 id="contact">Tell us</h2>
+  <p>If anything in Ravenburst is hard to use with your setup, email <a href="mailto:support@ravenburst.com">support@ravenburst.com</a>. We treat accessibility problems as bugs.</p>
+</DocsLayout>

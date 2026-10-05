@@ -6,6 +6,7 @@
 //    promise or mention them (word-boundary matches, case-insensitive)
 //  - internal links / assets that don't resolve to a built file
 //  - pages without a <title> or meta description
+//  - docs pages missing from the docs menu, or menu entries with no page
 import fs from "node:fs";
 import path from "node:path";
 
@@ -79,6 +80,21 @@ for (const file of files) {
 
   if (!/<title>[^<]+<\/title>/.test(html)) problems.push(`${rel}: missing <title>`);
   if (!/<meta name="description" content="[^"]+"/.test(html)) problems.push(`${rel}: missing meta description`);
+}
+
+// Every docs page is in the docs menu (src/data/docsNav.ts), and every menu
+// entry is a real page - so no page is unreachable and no link goes nowhere.
+const navSource = fs.readFileSync(path.resolve("src/data/docsNav.ts"), "utf8");
+const navHrefs = new Set([...navSource.matchAll(/href:\s*'([^']+)'/g)].map((m) => m[1]));
+const docPages = files
+  .map((f) => "/" + path.relative(DIST, f).replace(/\\/g, "/").replace(/(^|\/)index\.html$/, "").replace(/\.html$/, ""))
+  .map((p) => p.replace(/\/$/, ""))
+  .filter((p) => p === "/docs" || p.startsWith("/docs/"));
+for (const page of docPages) {
+  if (!navHrefs.has(page)) problems.push(`${page}: docs page missing from src/data/docsNav.ts`);
+}
+for (const href of navHrefs) {
+  if (!docPages.includes(href)) problems.push(`src/data/docsNav.ts: ${href} has no page`);
 }
 
 if (problems.length) {

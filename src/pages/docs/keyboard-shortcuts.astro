@@ -1,8 +1,7 @@
 ---
 import DocsLayout from '../../layouts/DocsLayout.astro'
-
 // Mirrors the app's own list (Help → Keyboard Shortcuts, ShortcutsPanel.tsx
-// in the app repo). Keep the two in step when shortcuts change.
+// in the app repo), which a test there keeps in step with the menus.
 const shortcuts: { section: string; items: [string, string][] }[] = [
   {
     section: 'File',
@@ -12,9 +11,10 @@ const shortcuts: { section: string; items: [string, string][] }[] = [
       ['Ctrl+Shift+D', 'New Chapter Folder'],
       ['Ctrl+O', 'Open Project'],
       ['Ctrl+S', 'Save'],
-      ['Ctrl+Shift+S', 'Save Snapshot'],
+      ['Ctrl+Shift+S', 'Save as Snapshot'],
       ['Ctrl+Shift+E', 'Compile / Export'],
       ['Ctrl+P', 'Print'],
+      ['Ctrl+,', 'Preferences'],
     ],
   },
   {
@@ -32,11 +32,11 @@ const shortcuts: { section: string; items: [string, string][] }[] = [
       ['Ctrl+Shift+G', 'Find Previous'],
       ['Ctrl+H', 'Find & Replace'],
       ['Ctrl+Shift+F', 'Find in Project'],
-      ['Esc', 'Close Find Bar'],
+      ['Esc', 'Close the find bar'],
     ],
   },
   {
-    section: 'Character Formatting',
+    section: 'Character formatting',
     items: [
       ['Ctrl+B', 'Bold'],
       ['Ctrl+I', 'Italic'],
@@ -48,16 +48,16 @@ const shortcuts: { section: string; items: [string, string][] }[] = [
     ],
   },
   {
-    section: 'Paragraph Formatting',
+    section: 'Paragraph formatting',
     items: [
       ['Ctrl+Shift+L', 'Align Left'],
-      ['Ctrl+Shift+C', 'Align Centre'],
+      ['Ctrl+Shift+C', 'Align Center'],
       ['Ctrl+Shift+R', 'Align Right'],
       ['Ctrl+Shift+J', 'Justify'],
       ['Ctrl+Shift+8', 'Bullet List'],
       ['Ctrl+Shift+7', 'Numbered List'],
-      ['Tab', 'Increase Indent'],
-      ['Shift+Tab', 'Decrease Indent'],
+      ['Tab', 'Indent the first line (or nest a list item)'],
+      ['Shift+Tab', 'Remove the indent (or un-nest a list item)'],
       ['Ctrl+Alt+1', 'Heading 1'],
       ['Ctrl+Alt+2', 'Heading 2'],
       ['Ctrl+Alt+3', 'Heading 3'],
@@ -77,62 +77,67 @@ const shortcuts: { section: string; items: [string, string][] }[] = [
       ['Ctrl+=', 'Zoom In'],
       ['Ctrl+-', 'Zoom Out'],
       ['Ctrl+0', 'Reset Zoom (100%)'],
-      ['Ctrl+1', 'Single Document View'],
+      ['Ctrl+1', 'Single Document'],
       ['Ctrl+2', 'Split View'],
-      ['Ctrl+3', 'Corkboard'],
-      ['Ctrl+4', 'Outline'],
-      ['Ctrl+Shift+[', 'Open / Close Navigator'],
-      ['Ctrl+Shift+]', 'Open / Close Inspector'],
-      ['F11', 'Fullscreen'],
+      ['Ctrl+3', 'Split Window'],
+      ['Ctrl+4', 'Corkboard'],
+      ['Ctrl+5', 'Outline'],
+      ['Ctrl+Shift+[', 'Show / Hide Navigator'],
+      ['Ctrl+Shift+]', 'Show / Hide Inspector'],
+      ['F11', 'Fullscreen / Composition Mode (Ctrl+⌘+F on a Mac)'],
     ],
   },
   {
-    section: 'Navigation',
+    section: 'Navigate',
     items: [
       ['Ctrl+[', 'Previous Document'],
       ['Ctrl+]', 'Next Document'],
-      ['Alt+←', 'Back (History)'],
-      ['Alt+→', 'Forward (History)'],
+      ['Alt+←', 'Back (⌘+⌥+← on a Mac)'],
+      ['Alt+→', 'Forward (⌘+⌥+→ on a Mac)'],
       ['Ctrl+Shift+M', 'Jump to Manuscript'],
       ['Ctrl+D', 'Add Bookmark'],
     ],
   },
   {
-    section: 'Tools',
+    section: 'Project & window',
     items: [
-      ['Ctrl+,', 'Preferences'],
-      ['Ctrl+Shift+/', 'Keyboard Shortcuts'],
       ['Ctrl+Alt+T', 'Project Targets'],
+      ['Ctrl+Alt+[', 'Move Navigator Left'],
+      ['Ctrl+Alt+]', 'Move Navigator Right'],
+      ['Ctrl+M', 'Minimize'],
+      ['Ctrl+Shift+/', 'Keyboard Shortcuts'],
     ],
   },
 ]
 ---
-<DocsLayout title="Keyboard Shortcuts" description="Every Ravenburst keyboard shortcut in one place.">
-  <h1 class="text-4xl font-serif font-bold text-rb-text mb-2">Keyboard Shortcuts</h1>
-  <p class="text-rb-muted mb-3">
-    Shown for Windows and Linux. On macOS, use <kbd class="bg-rb-surface border border-rb-border text-rb-text px-1.5 py-0.5 rounded text-xs">⌘ Cmd</kbd>
-    in place of Ctrl and <kbd class="bg-rb-surface border border-rb-border text-rb-text px-1.5 py-0.5 rounded text-xs">⌥ Option</kbd> in place of Alt.
-  </p>
-  <p class="text-rb-muted mb-10">In the app, <strong class="text-rb-text">Help → Keyboard Shortcuts</strong> (Ctrl+Shift+/) shows this list any time.</p>
+<DocsLayout title="Keyboard Shortcuts" description="Every Ravenburst keyboard shortcut in one place, for Windows, Linux and macOS.">
+  <h1>Keyboard Shortcuts</h1>
+  <p class="lede">Shown for Windows and Linux. On a Mac, use <kbd>⌘ Cmd</kbd> in place of <kbd>Ctrl</kbd> and <kbd>⌥ Option</kbd> in place of <kbd>Alt</kbd>, except where noted.</p>
+  <p>In the app, <span class="menu">Help → Keyboard Shortcuts</span> (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>/</kbd>) shows this list, with your computer's own keys.</p>
 
-  <div class="space-y-8">
-    {shortcuts.map(group => (
-      <section>
-        <h2 class="text-sm uppercase tracking-widest text-rb-muted font-semibold mb-3 border-b border-rb-border pb-2 font-sans">{group.section}</h2>
-        <table class="w-full text-sm">
+  {shortcuts.map((group) => (
+    <section>
+      <h2>{group.section}</h2>
+      <div class="table-wrap">
+        <table>
           <caption class="sr-only">{group.section} shortcuts</caption>
+          <thead><tr><th scope="col">Keys</th><th scope="col">Action</th></tr></thead>
           <tbody>
             {group.items.map(([key, action]) => (
-              <tr class="border-b border-rb-border/50">
-                <td class="py-2 pr-6 w-52">
-                  <kbd class="bg-rb-surface border border-rb-border text-rb-text px-2 py-0.5 rounded text-xs font-mono">{key}</kbd>
-                </td>
-                <td class="py-2 text-rb-muted">{action}</td>
-              </tr>
+              <tr><td><kbd>{key}</kbd></td><td>{action}</td></tr>
             ))}
           </tbody>
         </table>
-      </section>
-    ))}
-  </div>
+      </div>
+    </section>
+  ))}
+
+  <h2>Mouse and other keys</h2>
+  <ul>
+    <li><kbd>Ctrl</kbd> + mouse wheel zooms the editor.</li>
+    <li>Double-click the zoom percentage in the status bar to go back to 100%.</li>
+    <li>In the Navigator, <kbd>F2</kbd> or a double-click renames the selected item.</li>
+    <li><kbd>Esc</kbd> closes any dialog and leaves Composition Mode.</li>
+    <li>In a table, <kbd>Enter</kbd> moves to the cell below.</li>
+  </ul>
 </DocsLayout>

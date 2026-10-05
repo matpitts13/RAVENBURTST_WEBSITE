@@ -1,112 +1,118 @@
 ---
 import DocsLayout from '../../layouts/DocsLayout.astro'
 ---
-<DocsLayout title="Navigator & Project Structure" description="How the Navigator works and how to organise your project in Ravenburst.">
-  <h1 class="text-4xl font-serif font-bold text-rb-text mb-2">Navigator & Project Structure</h1>
-  <p class="text-rb-muted mb-10">The Navigator is the spine of your project — every document, character, and piece of research lives here.</p>
+<DocsLayout title="Navigator & Structure" description="How the Navigator organises your project: parts, chapters and scenes, front and back matter, notes, templates and trash.">
+  <h1>Navigator &amp; Structure</h1>
+  <p class="lede">The Navigator is the list down the side of the window. Everything in your project lives there.</p>
 
-  <div class="space-y-12 text-sm text-rb-muted leading-relaxed">
+  <nav class="toc" aria-label="On this page">
+    <p>On this page</p>
+    <ul>
+      <li><a href="#sections">The sections</a></li>
+      <li><a href="#manuscript">Manuscript</a></li>
+      <li><a href="#titles">Chapter and part titles</a></li>
+      <li><a href="#rows">Working with rows</a></li>
+      <li><a href="#status">Status and labels</a></li>
+      <li><a href="#front-back">Front and back matter</a></li>
+      <li><a href="#templates">Templates</a></li>
+      <li><a href="#moving">Duplicating and moving</a></li>
+      <li><a href="#trash">Trash</a></li>
+      <li><a href="#inspector">The Inspector</a></li>
+    </ul>
+  </nav>
 
-    <section>
-      <h2 class="text-xl font-semibold text-rb-text mb-4">Overview</h2>
-      <p class="mb-3">The Navigator panel sits on the left (or right — you can move it). Every section collapses and expands independently. Drag documents to reorder them. Double-click any title to rename it inline.</p>
-      <p>Right-click any document for context menu options: rename, duplicate, move to trash, change status, toggle compile inclusion, and more.</p>
-    </section>
-
-    <section>
-      <h2 class="text-xl font-semibold text-rb-text mb-4">Manuscript</h2>
-      <p class="mb-3">The Manuscript section holds your main prose. The structure is flexible:</p>
-      <ul class="space-y-2 list-disc list-inside mb-4">
-        <li><strong class="text-rb-text">Chapter folders</strong> — group scenes under a named chapter</li>
-        <li><strong class="text-rb-text">Scene documents</strong> — the actual writing lives here, either inside a chapter or at the top level</li>
-        <li><strong class="text-rb-text">Parts</strong> — optional top-level grouping above chapters (Part I, Part II…)</li>
-      </ul>
-      <p class="mb-3">Click <strong class="text-rb-text">+</strong> next to Manuscript to add a new Chapter. Use the book icon next to it to add a Part. Inside any Chapter, click <strong class="text-rb-text">+</strong> to add a Scene.</p>
-      <p>Each document has a <strong class="text-rb-text">compile checkbox</strong> — uncheck it to exclude that document from any export without deleting it. Useful for cut scenes or notes you want to keep nearby.</p>
-    </section>
-
-    <section>
-      <h2 class="text-xl font-semibold text-rb-text mb-4">Prologue & Epilogue</h2>
-      <p class="mb-3">Prologue and Epilogue are <strong class="text-rb-text">once-only</strong> sections — each project can have at most one of each. Once created, the add button disappears.</p>
-      <ul class="space-y-2 list-disc list-inside mb-3">
-        <li><strong class="text-rb-text">Prologue</strong> — compiles before Chapter 1, regardless of where it sits in the Navigator</li>
-        <li><strong class="text-rb-text">Epilogue</strong> — compiles after the final chapter</li>
-      </ul>
-      <p>These are standard document types: they have word counts, snapshots, statuses, and can be written exactly like any other scene. The only difference is their fixed compile position.</p>
-    </section>
-
-    <section>
-      <h2 class="text-xl font-semibold text-rb-text mb-4">Front Matter</h2>
-      <p class="mb-3">Front Matter appears before the manuscript in your compiled output. Ravenburst auto-creates a set of front matter documents when you create a new project:</p>
-      <ul class="space-y-2 list-disc list-inside mb-3">
-        <li><strong class="text-rb-text">Title Page</strong></li>
-        <li><strong class="text-rb-text">Copyright</strong></li>
-        <li><strong class="text-rb-text">Dedication</strong></li>
-        <li><strong class="text-rb-text">Epigraph</strong> — a quote or poem on a blank page before the story begins</li>
-        <li><strong class="text-rb-text">Table of Contents</strong></li>
-      </ul>
-      <p>You can add more, reorder them, or delete any you don't need. Toggle the compile checkbox to include or exclude each page from export.</p>
-    </section>
-
-    <section>
-      <h2 class="text-xl font-semibold text-rb-text mb-4">Back Matter</h2>
-      <p class="mb-3">Back Matter appears after the manuscript and epilogue in compiled output. Common back matter documents include:</p>
-      <ul class="space-y-2 list-disc list-inside mb-3">
-        <li><strong class="text-rb-text">Acknowledgements</strong></li>
-        <li><strong class="text-rb-text">About the Author</strong></li>
-        <li><strong class="text-rb-text">Afterword</strong></li>
-      </ul>
-      <p>Click <strong class="text-rb-text">+</strong> in the Back Matter section to add any document you need. Like front matter, each item has an individual compile toggle.</p>
-    </section>
-
-    <section>
-      <h2 class="text-xl font-semibold text-rb-text mb-4">Characters & Places</h2>
-      <p class="mb-3">Characters and Places are structured cards, not free-text documents. Each character card has fields for name, role, age, description, backstory, goals, arc, and notes. Place cards have name, type, description, and notes.</p>
-      <p class="mb-3">Names you add to Characters and Places are automatically added to the spellcheck dictionary — so your protagonist's unusual name won't flag as a typo.</p>
-      <p>Character and place cards are for reference only — they don't compile into your manuscript export.</p>
-    </section>
-
-    <section>
-      <h2 class="text-xl font-semibold text-rb-text mb-4">Reference</h2>
-      <p class="mb-3">Store research notes and images here. Reference notes are free-text documents. Reference images are displayed with a dedicated image viewer.</p>
-      <p>Nothing in the Reference section compiles into your export. It's purely for your use while writing.</p>
-    </section>
-
-    <section>
-      <h2 class="text-xl font-semibold text-rb-text mb-4">Notes</h2>
-      <p>Freeform notes not tied to the manuscript structure. Useful for brainstorming, plot ideas, to-do lists, or anything else you want to keep in the project but outside the narrative flow.</p>
-    </section>
-
-    <section>
-      <h2 class="text-xl font-semibold text-rb-text mb-4">Templates</h2>
-      <p class="mb-3">The Templates section holds reusable document templates — pre-formatted scenes, reference structures, screenplay scene blocks, and so on. Click a template to view it; use the context menu to duplicate it into your manuscript.</p>
-      <p>Ravenburst seeds each new project with a default set of templates. You can edit, delete, or add your own.</p>
-    </section>
-
-    <section>
-      <h2 class="text-xl font-semibold text-rb-text mb-4">Trash</h2>
-      <p class="mb-3">Deleted documents go to Trash rather than being permanently removed. They stay there until you explicitly empty the trash.</p>
-      <p>Right-click a trashed document to restore it to its original section, or to delete it permanently.</p>
-    </section>
-
-    <section>
-      <h2 class="text-xl font-semibold text-rb-text mb-4">Document Statuses</h2>
-      <p class="mb-3">Every document has an optional status label you can set via right-click:</p>
-      <ul class="space-y-2 list-disc list-inside">
-        <li><strong class="text-rb-text">Draft</strong> — work in progress</li>
-        <li><strong class="text-rb-text">In Progress</strong> — actively being written</li>
-        <li><strong class="text-rb-text">First Draft Done</strong></li>
-        <li><strong class="text-rb-text">Revised</strong></li>
-        <li><strong class="text-rb-text">Final</strong></li>
-      </ul>
-      <p class="mt-3">Status is visual only — it has no effect on compilation.</p>
-    </section>
-
-    <section>
-      <h2 class="text-xl font-semibold text-rb-text mb-4">Duplicating & Moving Documents</h2>
-      <p class="mb-3">Use <strong class="text-rb-text">Documents → Duplicate</strong> (or the right-click menu) to create an exact copy of the selected document. The copy appears directly below the original with "(copy)" appended to the title.</p>
-      <p>Use <strong class="text-rb-text">Documents → Move To</strong> to move the selected document to a different section (Manuscript, Notes, Research, Templates, or Trash) without deleting and recreating it.</p>
-    </section>
-
+  <h2 id="sections">The sections</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Section</th><th>What goes in it</th></tr></thead>
+      <tbody>
+        <tr><td>Manuscript</td><td>The book itself: parts, chapters, scenes, and optionally a dedication, epigraph, prologue and epilogue.</td></tr>
+        <tr><td>Front Matter</td><td>Title page, copyright, dedication pages and so on, in one folder per kind of export.</td></tr>
+        <tr><td>Back Matter</td><td>Pages after the story, such as About the Author.</td></tr>
+        <tr><td>Characters</td><td>Character sheets. See <a href="/docs/characters-places">Characters &amp; Places</a>.</td></tr>
+        <tr><td>Places</td><td>Place sheets.</td></tr>
+        <tr><td>Notes</td><td>Anything you want to keep but not publish: ideas, to-do lists, cut material.</td></tr>
+        <tr><td>Reference</td><td>Research notes, tables and images. See <a href="/docs/notes-reference">Notes &amp; Reference</a>.</td></tr>
+        <tr><td>Templates</td><td>Documents to start new ones from.</td></tr>
+        <tr><td>Trash</td><td>Things you've deleted, until you delete them for good.</td></tr>
+      </tbody>
+    </table>
   </div>
+  <p>Click a section heading to open or close it; Ravenburst remembers which are open for each project. <span class="menu">Navigate → Jump to…</span> takes you straight to a section, and <span class="menu">Window → Move Navigator Left / Right</span> moves the whole panel. Only the Manuscript, Front Matter and Back Matter ever go into an export; everything else is for you.</p>
+
+  <h2 id="manuscript">Manuscript</h2>
+  <p>The <strong>+</strong> next to Manuscript adds a <strong>Chapter</strong>, a <strong>Part</strong>, a <strong>Dedication</strong> or an <strong>Epigraph</strong>. A project has at most one dedication and one epigraph; once added, they're greyed out in the menu.</p>
+  <ul>
+    <li><strong>Parts</strong> group chapters (Part One, Part Two…). A part is a page of its own in the editor and in exports.</li>
+    <li><strong>Chapters</strong> hold scenes. Clicking a chapter shows its title page and opens its details in the Inspector. To add a scene, right-click the chapter and choose <span class="menu">New Scene Inside</span>.</li>
+    <li><strong>Scenes</strong> are where the writing goes. Right-click a scene for <span class="menu">Add Scene Above</span> or <span class="menu">New Scene Below</span>. <span class="menu">File → New Document</span> (<kbd>Ctrl</kbd>+<kbd>N</kbd>) adds a scene to the selected chapter (or to the top level of the Manuscript if no chapter is selected), and <span class="menu">File → New Chapter Folder</span> (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>D</kbd>) a chapter.</li>
+    <li>The <strong>Dedication</strong> and <strong>Epigraph</strong> always sit at the top, then the <strong>Prologue</strong>; the <strong>Epilogue</strong> always sits at the bottom. They keep those places when you drag other things around, and compile in that order.</li>
+  </ul>
+  <p>Each compilable row has a <strong>compile checkbox</strong>. Untick it to leave that document out of every export without deleting it. A prologue, epilogue, dedication or epigraph that's unticked is also read-only, with an <strong>Include in Final Draft</strong> button above it, so you don't write a whole prologue that will never be printed.</p>
+
+  <h2 id="titles">Chapter and part titles</h2>
+  <p>Double-click a chapter or part (or right-click → <span class="menu">Rename</span>) to open its title dialog:</p>
+  <ul>
+    <li><strong>Include “Chapter N” label</strong>: untick for chapters with a name and no number.</li>
+    <li><strong>Number style</strong>: Numerals (1, 2, 3), Roman numerals (I, II, III) or Words (One, Two, Three).</li>
+    <li><strong>Include word</strong>, with the word itself: Chapter, Act, Section, Book or anything you like.</li>
+    <li><strong>Title</strong>: the chapter's own name, if it has one.</li>
+    <li><strong>Separator</strong> between the number and the name: none, colon, em dash, hyphen, slash, pipe or middle dot.</li>
+    <li><strong>Page break after chapter</strong> (chapters only), and <strong>Return to Default</strong>.</li>
+  </ul>
+  <p>The preview shows the result, for example “Chapter Three — The Storm”. When you reorder chapters, their numbers follow. The default label word and separator for the whole project are in Project Settings (see <a href="#inspector">The Inspector</a>), along with the heading style for every chapter and part.</p>
+
+  <h2 id="rows">Working with rows</h2>
+  <ul>
+    <li><strong>Open</strong> a document by clicking it.</li>
+    <li><strong>Rename</strong> by double-clicking, pressing <kbd>F2</kbd>, or right-click → <span class="menu">Rename</span>. You can also rename the open document by clicking its name in the bar above the editor.</li>
+    <li><strong>Reorder</strong> by dragging. Drop a scene onto a chapter to move it inside. Notes and Reference items reorder within their own section. Drag anything onto the Trash heading to delete it.</li>
+    <li><strong>Word counts</strong> appear when you hover over a row.</li>
+  </ul>
+  <p>The right-click menu has, depending on the row: New Scene Inside, Add Scene Above, New Scene Below, Rename, Include in / Exclude from Compile, the four statuses, Save as Template, Apply Template…, Scene Break Style…, and Move to Trash.</p>
+
+  <h2 id="status">Status and labels</h2>
+  <p>Each document has a status: <strong>Draft</strong>, <strong>In Progress</strong>, <strong>Done</strong> or <strong>Needs Revision</strong>. Set it from the right-click menu, by clicking the coloured dot on a row (which cycles through them), or in the Inspector. The Inspector's <strong>All</strong> button sets the status of many documents at once. Status doesn't affect compiling.</p>
+  <p>A <strong>label colour</strong> (seven colours, or none) colours the left edge of a row. Set it in the Inspector. Use labels for whatever you like: point of view, timeline, subplot.</p>
+
+  <h2 id="front-back">Front and back matter</h2>
+  <p>Front Matter has one folder per kind of book: <strong>Manuscript Format</strong>, <strong>Paperback</strong>, <strong>Ebook</strong>, <strong>Screenplay</strong> and <strong>TV Script</strong>. Your project has the ones that fit its type. Each export uses its matching folder, so your paperback can have a copyright page and dedication while your agent submission has just a title page. See <a href="/docs/compile-options#front-back">Compiling</a> for which export uses which folder.</p>
+  <ul>
+    <li>The <strong>+</strong> next to Front Matter or Back Matter adds a new page.</li>
+    <li>The built-in pages use merge fields such as <code>{'{{title}}'}</code> and <code>{'{{author}}'}</code>, filled in when you compile. While a front matter page is open, the <strong>{'{ }'}</strong> button on the Format Bar inserts one.</li>
+    <li>Front and back matter pages can't be moved to Trash. Right-click → <span class="menu">Reset to Default</span> puts back the original wording.</li>
+  </ul>
+
+  <h2 id="templates">Templates</h2>
+  <p>The Templates section has two groups. <strong>Default</strong> holds the templates that came with your project type, and <strong>Custom</strong> holds your own.</p>
+  <ul>
+    <li><strong>New template:</strong> the <strong>+</strong> next to Templates asks for a name and, optionally, a document to start from.</li>
+    <li><strong>Save as Template</strong> (right-click any document) copies it into Templates as “Template: <em>title</em>”.</li>
+    <li><strong>Apply Template…</strong> (right-click a manuscript document) replaces that document's text with a copy of the template. If the document already has text, you're asked first, and <kbd>Ctrl</kbd>+<kbd>Z</kbd> undoes it.</li>
+  </ul>
+  <p>Templates are copied, not linked: changing a template later doesn't change documents made from it. Built-in templates can't be moved to Trash.</p>
+
+  <h2 id="moving">Duplicating and moving</h2>
+  <ul>
+    <li><span class="menu">Documents → Duplicate</span> copies the selected document and everything inside it, titled “<em>title</em> (copy)”.</li>
+    <li><span class="menu">Documents → Move To</span> and <span class="menu">Copy To</span> send a scene, note, reference note or template to the top of Manuscript, Notes, Reference or Templates. Chapters and parts can't be moved this way; drag them instead.</li>
+    <li><span class="menu">Documents → Move To → Trash</span> asks first, and won't trash the prologue, epilogue, front or back matter, or a built-in template.</li>
+  </ul>
+
+  <h2 id="trash">Trash</h2>
+  <p>Deleted items go to Trash, grouped by where they came from: Manuscript, Front Matter, Back Matter, Notes, References, Templates, Characters, Places.</p>
+  <ul>
+    <li><strong>Restore:</strong> right-click → <span class="menu">Restore</span> puts an item back where it was. You can also drag it onto a section heading.</li>
+    <li><strong>Delete for good:</strong> right-click → <span class="menu">Delete Permanently</span>, after a confirmation. To delete several at once, <kbd>Ctrl</kbd>-click or <kbd>Shift</kbd>-click to select them (or right-click a group → <span class="menu">Select All in…</span>), then click <strong>Delete</strong>. This can't be undone.</li>
+  </ul>
+  <p>Items stay in Trash until you delete them yourself.</p>
+
+  <h2 id="inspector">The Inspector</h2>
+  <p>The panel on the right (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>]</kbd>) has two tabs.</p>
+  <h3>Details</h3>
+  <p>For the selected document: its type, <strong>Include in Final Draft</strong>, word count and <strong>Target Word Count</strong>, <strong>Status</strong>, and <strong>Label</strong> colour. For chapters and parts it also has <strong>Edit Title…</strong> and a <strong>Heading Style</strong> (font, size, bold and italic, subtitle inline or below) that applies to every chapter or every part. Parts can be centred on the page or placed at the top. Children's book pages have <strong>Image Position</strong>.</p>
+  <h3>Notes</h3>
+  <p>A <strong>Synopsis</strong> for the document, which also shows on its Corkboard card and in the Outline.</p>
+  <h3>Project Settings</h3>
+  <p>With no document selected (or from <span class="menu">Project → Project Settings…</span>), the Inspector shows settings for the whole project: <strong>Title</strong>, <strong>Author Name</strong> and <strong>Year</strong> (used by the merge fields and in exports), <strong>Target Word Count</strong>, the chapter and part label words and separators, a <strong>Chapter Title Ornament</strong>, the chapter header format, and <strong>Scene Break Style</strong>.</p>
 </DocsLayout>

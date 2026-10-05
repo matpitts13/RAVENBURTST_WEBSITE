@@ -1,0 +1,20 @@
+{
+  "specVersion": "apa-7-2019.1",
+  "spec": {
+    "name": "APA",
+    "version": "APA 7th Edition (2019)",
+    "font": "Times New Roman",
+    "fontSize": 12,
+    "lineSpacing": 2.0,
+    "marginTop": 72,
+    "marginBottom": 72,
+    "marginLeft": 72,
+    "marginRight": 72,
+    "headerFormat": "SHORTTITLE  #",
+    "titlePage": true,
+    "abstract": true,
+    "runningHead": true,
+    "referencesLabel": "References",
+    "noteStyle": "endnote"
+  }
+}
