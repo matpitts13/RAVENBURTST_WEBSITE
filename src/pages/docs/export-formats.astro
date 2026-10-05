@@ -98,8 +98,11 @@ import DocsLayout from '../../layouts/DocsLayout.astro'
   <p>The <strong>Print</strong> option in the Compile dialog, and <span class="menu">File → Print…</span> (<kbd>Ctrl</kbd>+<kbd>P</kbd>), open your computer's print dialog for what's on screen. <span class="menu">File → Print…</span> also works after the trial ends.</p>
 
   <h2 id="footnotes">Footnotes and images</h2>
-  <div class="note warn">
-    <p><strong>Footnotes</strong> are included in the APA, MLA and Chicago exports (as real footnotes in DOCX, and as numbered notes in PDF). The other formats leave footnotes out, so if your manuscript relies on them, use one of those formats or keep the notes in the text.</p>
-  </div>
+  <p><strong>Footnotes</strong> are numbered afresh in every export, through the whole book in reading order, so deleting or moving one never leaves a gap.</p>
+  <ul>
+    <li><strong>Manuscript DOCX</strong> and the <strong>APA, MLA and Chicago</strong> DOCX exports make real Word footnotes.</li>
+    <li><strong>Manuscript PDF, Paperback, Proof and EPUB</strong> put a number like [3] where each footnote is, and the notes in a numbered <em>Notes</em> list at the end of each chapter. The academic PDFs collect them on a Notes page.</li>
+    <li>Scripts, plays and children's books don't use footnotes.</li>
+  </ul>
   <p><strong>Images</strong> are included in Manuscript DOCX and children's books, but not in EPUB.</p>
 </DocsLayout>

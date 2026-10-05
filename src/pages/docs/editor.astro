@@ -98,9 +98,7 @@ import DocsLayout from '../../layouts/DocsLayout.astro'
 
   <h2 id="footnotes">Footnotes</h2>
   <p><span class="menu">Insert → Footnote</span> (<kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>F</kbd>) adds a numbered marker at the cursor and a matching note in the <em>Notes</em> area at the bottom of the document, where you type the note.</p>
-  <div class="note warn">
-    <p>Footnotes are exported only by the APA, MLA and Chicago formats. Other formats leave them out. Numbers are set when you insert a footnote, so if you delete one, check the numbering of the rest.</p>
-  </div>
+  <p>The numbers you see while writing are set when each footnote is inserted. Exports number them afresh in reading order, so the finished file is always 1, 2, 3… See <a href="/docs/export-formats#footnotes">how each format prints them</a>.</p>
 
   <h2 id="resume">Resume notes</h2>
   <p>A resume note is a 📍 pin you leave for yourself where you stopped: “pick up here, fix the timeline”. Press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>B</kbd>, click the pin on the Format Bar, or right-click → <strong>Resume Note</strong>, then type what to pick up. Click a pin later to edit or delete it. Pins never appear in exports.</p>
@@ -108,7 +106,7 @@ import DocsLayout from '../../layouts/DocsLayout.astro'
 
   <h2 id="find">Find and replace</h2>
   <ul>
-    <li><kbd>Ctrl</kbd>+<kbd>F</kbd> opens the find bar for this document, and <kbd>Ctrl</kbd>+<kbd>H</kbd> opens it with replace. It shows the number of matches; <kbd>Ctrl</kbd>+<kbd>G</kbd> and <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>G</kbd> move between them. The <strong>Aa</strong> button makes the search match capitals exactly. <strong>Replace</strong> and <strong>Replace All</strong> work on this document.</li>
+    <li><kbd>Ctrl</kbd>+<kbd>F</kbd> opens the find bar for this document, and <kbd>Ctrl</kbd>+<kbd>H</kbd> (<kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>H</kbd> on a Mac) opens it with replace. It shows the number of matches; <kbd>Ctrl</kbd>+<kbd>G</kbd> and <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>G</kbd> move between them. The <strong>Aa</strong> button makes the search match capitals exactly. <strong>Replace</strong> and <strong>Replace All</strong> work on this document.</li>
     <li><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>F</kbd> searches the whole project, ignoring capitals: manuscript, notes, reference, characters' text and more, but not Templates or Trash. Results are listed by document, most matches first, with a snippet; click one to open it. There's no replace across the project.</li>
   </ul>
   <p>The find bar searches each run of formatting separately, so a phrase that's half italic may not be found as a whole.</p>
