@@ -4,7 +4,7 @@ import Nav from '../../components/Nav.astro'
 import Footer from '../../components/Footer.astro'
 
 // Change this date whenever the policy's substance changes (not on every build).
-const LAST_UPDATED = 'October 4, 2026'
+const LAST_UPDATED = 'October 9, 2026'
 ---
 <Base title="Privacy Policy" description="What Ravenburst collects, why, and who handles it. Your writing never comes to us.">
   <Nav />
@@ -22,12 +22,18 @@ const LAST_UPDATED = 'October 4, 2026'
       </section>
 
       <section>
+        <h2 class="text-xl font-serif font-semibold text-rb-text mb-3">Who we are</h2>
+        <p>Ravenburst is made by Pitts Family Productions LLC (“we”, “us”), which is responsible for the information described here.</p>
+      </section>
+
+      <section>
         <h2 class="text-xl font-serif font-semibold text-rb-text mb-3">What we collect, and why</h2>
         <ul class="space-y-3 list-disc pl-5">
           <li><strong class="text-rb-text">Trial:</strong> when you start the 7-day trial, the app sends a one-way fingerprint of your computer (a hash, which can’t be turned back into anything about you) so the trial can’t be restarted. No name, no email.</li>
           <li><strong class="text-rb-text">License:</strong> when you activate, and about once a month after, the app sends a one-way hash of your license code and the same computer fingerprint, to enforce the 3-computer limit and to honour refunds. We never receive the code itself.</li>
           <li><strong class="text-rb-text">Purchases:</strong> when sales open, our payment provider handles your payment and billing details as the merchant of record. We receive your email address to send your activation code.</li>
           <li><strong class="text-rb-text">Mailing list:</strong> only if you sign up. We store your email address, when you signed up and confirmed, and which page you signed up from. We use it to tell you about the Kickstarter and Ravenburst news, nothing else. Every email has an unsubscribe link.</li>
+          <li><strong class="text-rb-text">Update checks:</strong> a few times a day the app asks downloads.ravenburst.com whether there’s a newer version, which means our host sees your IP address and the request; it carries nothing about you or your writing. You can switch automatic checks off in Preferences → Updates.</li>
           <li><strong class="text-rb-text">Support:</strong> if you email us, we keep the conversation so we can help you.</li>
         </ul>
       </section>
@@ -65,7 +71,7 @@ const LAST_UPDATED = 'October 4, 2026'
       <section>
         <h2 class="text-xl font-serif font-semibold text-rb-text mb-3">Who handles data for us</h2>
         <ul class="space-y-2 list-disc pl-5">
-          <li><strong class="text-rb-text">Cloudflare</strong> hosts this website, the trial and license service, and the mailing list. Like any web host it briefly processes IP addresses to deliver pages and stop abuse.</li>
+          <li><strong class="text-rb-text">Cloudflare</strong> hosts this website, the trial and license service, app downloads and updates, and the mailing list. Like any web host it briefly processes IP addresses to deliver pages and stop abuse.</li>
           <li><strong class="text-rb-text">Resend</strong> sends our emails, such as confirming your mailing-list signup.</li>
           <li><strong class="text-rb-text">Our payment provider</strong> (from launch) processes purchases under its own privacy policy.</li>
         </ul>
