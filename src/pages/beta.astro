@@ -1,0 +1,121 @@
+---
+// Install guide for beta testers. Unlisted: nothing links here and search
+// engines are told to skip it - testers get the address from us.
+//
+// The download links come from the update feed at build time, so they always
+// match the release that installed copies are being offered. After tagging a
+// release, redeploy the site to refresh them. A feed that can't be read fails
+// the build rather than publishing a page of dead links.
+import Base from '../layouts/Base.astro'
+import Nav from '../components/Nav.astro'
+import Footer from '../components/Footer.astro'
+
+const FEED = 'https://downloads.ravenburst.com'
+
+async function feed(name: string) {
+  const res = await fetch(`${FEED}/${name}`)
+  if (!res.ok) throw new Error(`beta page: ${name} returned ${res.status}`)
+  const text = await res.text()
+  const version = text.match(/^version:\s*(\S+)/m)?.[1]
+  const urls = [...text.matchAll(/^\s*-\s*url:\s*(\S+)/gm)].map((m) => m[1])
+  if (!version || urls.length === 0) throw new Error(`beta page: ${name} has no version or files`)
+  return { version, urls }
+}
+
+const [win, mac, linux] = await Promise.all([feed('latest.yml'), feed('latest-mac.yml'), feed('latest-linux.yml')])
+const pick = (urls: string[], test: (u: string) => boolean) => {
+  const u = urls.find(test)
+  if (!u) throw new Error('beta page: an installer is missing from the feed')
+  return `${FEED}/${u}`
+}
+
+const version = win.version
+const downloads = [
+  { platform: 'Windows 10 or 11', label: 'Installer (.exe)', href: pick(win.urls, (u) => u.endsWith('.exe')) },
+  { platform: 'Mac with Apple silicon (M1 or later)', label: 'Disk image (.dmg)', href: pick(mac.urls, (u) => u.endsWith('-arm64.dmg')) },
+  { platform: 'Mac with an Intel processor', label: 'Disk image (.dmg)', href: pick(mac.urls, (u) => u.endsWith('-x64.dmg')) },
+  { platform: 'Linux, any distribution', label: 'AppImage', href: pick(linux.urls, (u) => u.endsWith('.AppImage')) },
+  { platform: 'Ubuntu, Debian, Mint', label: '.deb package', href: pick(linux.urls, (u) => u.endsWith('.deb')) },
+  { platform: 'Fedora, openSUSE', label: '.rpm package', href: pick(linux.urls, (u) => u.endsWith('.rpm')) },
+]
+const file = (href: string) => href.slice(href.lastIndexOf('/') + 1)
+---
+<Base title="Beta Install Guide" description="How to download, install and update the Ravenburst beta on Windows, macOS and Linux." noindex>
+  <Nav />
+  <main id="main" class="pt-28 pb-20 px-4 sm:px-6 max-w-3xl mx-auto">
+    <article class="doc">
+      <h1>Installing the Ravenburst beta</h1>
+      <p class="lede">Thank you for testing Ravenburst. This page has the current beta ({version}) and what to do about the warnings your computer will show.</p>
+
+      <nav class="toc" aria-label="On this page">
+        <p>On this page</p>
+        <ul>
+          <li><a href="#download">Download</a></li>
+          <li><a href="#why">Why the warnings?</a></li>
+          <li><a href="#windows">Windows</a></li>
+          <li><a href="#mac">Mac</a></li>
+          <li><a href="#linux">Linux</a></li>
+          <li><a href="#trial">Trial and beta key</a></li>
+          <li><a href="#updates">Updates</a></li>
+          <li><a href="#feedback">Reporting problems</a></li>
+        </ul>
+      </nav>
+
+      <h2 id="download">Download</h2>
+      <p>Please keep these links to yourself for now: Ravenburst isn't public yet.</p>
+      <table>
+        <thead><tr><th>Your computer</th><th>Download</th></tr></thead>
+        <tbody>
+          {downloads.map((d) => (
+            <tr>
+              <td>{d.platform}</td>
+              <td><a href={d.href} download>{d.label}</a><br /><code>{file(d.href)}</code></td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <p>Not sure which Mac you have? Open the Apple menu → <span class="menu">About This Mac</span>. If it says <em>Chip: Apple M1</em> (or M2, M3 and so on), use Apple silicon. If it says <em>Processor: … Intel</em>, use Intel.</p>
+
+      <h2 id="why">Why the warnings?</h2>
+      <p>Windows and macOS warn about any app that isn't "code-signed", a paid certificate that tells them who made it. Ravenburst will be signed before it goes on sale; the beta isn't yet. The warnings appear the first time you install or open it, not every time.</p>
+
+      <h2 id="windows">Windows</h2>
+      <ol>
+        <li>Download the installer. If your browser says it <em>isn't commonly downloaded</em>, choose <span class="menu">⋯ → Keep</span>, then <span class="menu">Show more → Keep anyway</span>.</li>
+        <li>Open the installer. When <strong>Windows protected your PC</strong> appears, click <span class="menu">More info</span>, then <span class="menu">Run anyway</span>.</li>
+        <li>Follow the installer. Ravenburst appears in the Start menu.</li>
+      </ol>
+
+      <h2 id="mac">Mac</h2>
+      <p>Ravenburst needs macOS 13 Ventura or later.</p>
+      <ol>
+        <li>Open the downloaded <code>.dmg</code> and drag <strong>Ravenburst</strong> into <strong>Applications</strong>.</li>
+        <li>Open Ravenburst from Applications. macOS says it <em>can't verify</em> the app or that it <em>was not opened</em>. Click <span class="menu">Done</span> (not Move to Trash).</li>
+        <li>Open <span class="menu">System Settings → Privacy &amp; Security</span>, scroll down to the message about Ravenburst and click <span class="menu">Open Anyway</span>. Enter your password if asked, then click <span class="menu">Open Anyway</span> once more.</li>
+      </ol>
+      <p>After that, Ravenburst opens normally.</p>
+      <p>If macOS instead says Ravenburst <em>is damaged and can't be opened</em>, the download is fine: that's how some versions of macOS describe an unsigned app. Open <strong>Terminal</strong> (in Applications → Utilities), paste this line, press Return, then open Ravenburst again:</p>
+      <p><code>xattr -dr com.apple.quarantine /Applications/Ravenburst.app</code></p>
+
+      <h2 id="linux">Linux</h2>
+      <ul>
+        <li><strong>AppImage:</strong> make it executable (right-click → <span class="menu">Properties → Permissions → Allow executing</span>, or <code>chmod +x Ravenburst-*.AppImage</code>) and double-click it. On Ubuntu 22.04 or later, if nothing happens, install FUSE first: <code>sudo apt install libfuse2t64</code> (on 22.04: <code>libfuse2</code>).</li>
+        <li><strong>.deb:</strong> <code>sudo apt install ./ravenburst_*_amd64.deb</code></li>
+        <li><strong>.rpm:</strong> <code>sudo dnf install ./ravenburst-*.x86_64.rpm</code></li>
+      </ul>
+
+      <h2 id="trial">Trial and beta key</h2>
+      <p>The first time Ravenburst opens with an internet connection, it starts a 7-day trial; nothing to sign up for. If you're testing for longer than that, we'll email you a beta activation code. Choose <span class="menu">Help → Enter Activation Code…</span> (or <strong>Enter License Code</strong> in the trial bar), enter the email address we sent it to, paste the code and click <strong>Activate</strong>.</p>
+
+      <h2 id="updates">Updates</h2>
+      <ul>
+        <li><strong>Windows and the Linux AppImage:</strong> Ravenburst downloads new versions by itself. When <strong>Restart to update</strong> appears in the status bar, the update installs the next time you quit.</li>
+        <li><strong>Mac, .deb and .rpm:</strong> <strong>Update available</strong> appears in the status bar. During the beta, come back to this page for the new version (the app's own link points at the public download page, which opens at launch) and install it over the old one. Your projects aren't touched.</li>
+      </ul>
+
+      <h2 id="feedback">Reporting problems</h2>
+      <p>Use <span class="menu">Help → Report a Bug</span> in the app, or email <a href="mailto:support@ravenburst.com">support@ravenburst.com</a>. It helps to say what you were doing, what you expected and what happened instead, plus your computer (for example "Windows 11" or "MacBook Air M2, macOS 15").</p>
+    </article>
+  </main>
+  <Footer />
+</Base>
