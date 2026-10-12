@@ -44,7 +44,7 @@ export const DOCS_NAV: DocSection[] = [
   {
     heading: 'Keeping Work Safe',
     links: [
-      { href: '/docs/backups', label: 'Backups', blurb: 'Git Backup and Google Drive.' },
+      { href: '/docs/backups', label: 'Backups', blurb: 'Git Backup, on your computer and online.' },
       { href: '/docs/data-privacy', label: 'Your Files & Privacy', blurb: 'Where your work lives and what the app sends.' },
     ],
   },
