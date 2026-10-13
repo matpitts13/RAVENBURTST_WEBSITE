@@ -23,17 +23,33 @@ const env = {
   MAIL_FROM: "Ravenburst <hello@ravenburst.com>",
 };
 
-// Through a SQL file, so no value ever passes through a shell command line.
-function d1(sql) {
+function wrangler(args) {
+  const out = execFileSync(
+    process.platform === "win32" ? "npx.cmd" : "npx",
+    ["wrangler", "d1", "execute", "ravenburst-list", "--remote", "--json", ...args],
+    { encoding: "utf8", shell: process.platform === "win32" },
+  );
+  const [result] = JSON.parse(out.slice(out.indexOf("[")));
+  if (!result?.success) throw new Error("D1 query failed");
+  return result.results;
+}
+
+// Reads go inline: with --file, wrangler returns only a summary row
+// ("Total queries executed": 1) instead of the rows, which this script once
+// mistook for a subscriber. Only fixed SQL goes this way, never a value.
+function d1Read(sql) {
+  if (/["%^&|<>]/.test(sql)) throw new Error("d1Read takes fixed SQL only");
+  // On Windows the shell joins arguments unquoted, so quote the query whole.
+  return wrangler(["--command", process.platform === "win32" ? `"${sql}"` : sql]);
+}
+
+// Writes carry email addresses, so they go through a SQL file and never pass
+// through a shell command line. Their summary result is all we need.
+function d1Write(sql) {
   const file = path.join(os.tmpdir(), `ravenburst-d1-${process.pid}.sql`);
   fs.writeFileSync(file, sql);
   try {
-    const out = execFileSync(
-      process.platform === "win32" ? "npx.cmd" : "npx",
-      ["wrangler", "d1", "execute", "ravenburst-list", "--remote", "--json", "--file", file],
-      { encoding: "utf8", shell: process.platform === "win32" },
-    );
-    return JSON.parse(out.slice(out.indexOf("[")))[0].results;
+    wrangler(["--file", file]);
   } finally {
     fs.rmSync(file, { force: true });
   }
@@ -41,7 +57,11 @@ function d1(sql) {
 
 const sqlString = (s) => `'${String(s).replace(/'/g, "''")}'`;
 
-const pending = d1("SELECT email, token FROM subscribers WHERE status = 'pending' AND confirm_sent_at IS NULL;");
+const pending = d1Read("SELECT email, token FROM subscribers WHERE status = 'pending' AND confirm_sent_at IS NULL");
+if (pending.some((r) => typeof r.email !== "string" || typeof r.token !== "string")) {
+  console.error("Unexpected rows from the database; nothing sent.", pending);
+  process.exit(1);
+}
 console.log(`${pending.length} address(es) waiting for a confirmation email.`);
 
 let sent = 0;
@@ -51,7 +71,7 @@ for (const { email, token } of pending) {
     console.error(`  ✗ ${email} - Resend refused it; stopping so nothing is double-sent.`);
     break;
   }
-  d1(`UPDATE subscribers SET confirm_sent_at = datetime('now'), confirm_sends = confirm_sends + 1 WHERE email = ${sqlString(email)};`);
+  d1Write(`UPDATE subscribers SET confirm_sent_at = datetime('now'), confirm_sends = confirm_sends + 1 WHERE email = ${sqlString(email)};`);
   sent++;
   console.log(`  ✓ ${email}`);
   await new Promise((r) => setTimeout(r, 600)); // stay well under Resend's rate limit
