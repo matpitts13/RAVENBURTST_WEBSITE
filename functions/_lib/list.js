@@ -69,7 +69,8 @@ export async function sendConfirmation(env, email, token) {
   if (!env.RESEND_API_KEY) return false;
   try {
     return await sendConfirmationNow(env, email, token);
-  } catch {
+  } catch (err) {
+    console.error(`confirmation email: Resend unreachable: ${err}`);
     return false;
   }
 }
@@ -114,5 +115,9 @@ async function sendConfirmationNow(env, email, token) {
       },
     }),
   });
+  if (!res.ok) {
+    // The status and Resend's reason, never the address: logs aren't private.
+    console.error(`confirmation email: Resend said ${res.status}: ${(await res.text()).slice(0, 300)}`);
+  }
   return res.ok;
 }
