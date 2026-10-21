@@ -47,7 +47,7 @@ const groups = [
     ],
   },
   {
-    heading: 'Publish',
+    heading: 'Format & export',
     items: [
       { title: 'Start from the right template', body: 'Fifteen project templates set up the structure and formatting for you: novel, non-fiction, short story, three picture-book shapes, APA, MLA and Chicago papers, screenplay, TV script, documentary, US and UK stage plays — or start blank.' },
       { title: 'Compile to every format', body: 'Manuscript (PDF or Word), paperback in 5×7 and 6×9 with matching proofs (crop marks and bleed), screenplay and documentary (PDF or Fountain), US and UK stage plays, EPUB, three picture-book shapes, and APA, MLA and Chicago papers (PDF or Word).' },
@@ -66,6 +66,8 @@ const groups = [
     ],
   },
 ]
+// Heading → a valid id: "Stay on track" with its spaces was three ids to aria-labelledby.
+const slug = (t: string) => t.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 ---
 <Base title="Features" description="Everything Ravenburst does: a rich-text editor, corkboard and outline, characters and places, snapshots and automatic backup, and export to manuscript, paperback, screenplay, stage play and EPUB.">
   <Nav />
@@ -78,8 +80,8 @@ const groups = [
     </div>
 
     {groups.map(g => (
-      <section class="mb-16" aria-labelledby={`g-${g.heading}`}>
-        <h2 id={`g-${g.heading}`} class="text-2xl font-serif font-bold mb-6 pb-3 border-b border-rb-border">{g.heading}</h2>
+      <section class="mb-16" aria-labelledby={`g-${slug(g.heading)}`}>
+        <h2 id={`g-${slug(g.heading)}`} class="text-2xl font-serif font-bold mb-6 pb-3 border-b border-rb-border">{g.heading}</h2>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
           {g.items.map(f => (
             <div class="bg-rb-surface border border-rb-border rounded-xl p-6">
