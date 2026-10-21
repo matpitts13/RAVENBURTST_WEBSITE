@@ -17,7 +17,8 @@ export default {
     "Ravenburst opens on the project picker, and you can pin projects to the top",
   ],
   howToGet: [
-    "To update: Ravenburst downloads it by itself. When \"Restart to update\" appears in the status bar at the bottom of the window, click it (your work is saved first), or choose Help → Check for Updates.",
+    "It's out for Windows today. Mac and Linux follow in early November; we'll email you when they're ready.",
+    "To update on Windows: Ravenburst downloads it by itself. When \"Restart to update\" appears in the status bar at the bottom of the window, click it (your work is saved first), or choose Help → Check for Updates.",
     "Installing on another computer? The beta install guide has the downloads: https://ravenburst.com/beta",
     "If anything breaks or feels wrong, Help → Report a Bug sends it straight to us.",
   ],

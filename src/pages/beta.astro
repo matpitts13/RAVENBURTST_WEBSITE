@@ -30,6 +30,12 @@ const pick = (urls: string[], test: (u: string) => boolean) => {
 }
 
 const version = win.version
+// Platforms can be a release apart for a while (beta.3 shipped for Windows
+// first); say so instead of implying every download is the newest.
+const behind = [
+  mac.version !== version && `Mac ${mac.version}`,
+  linux.version !== version && `Linux ${linux.version}`,
+].filter(Boolean).join(" and ")
 const downloads = [
   { platform: 'Windows 10 or 11', label: 'Installer (.exe)', href: pick(win.urls, (u) => u.endsWith('.exe')) },
   { platform: 'Mac with Apple silicon (M1 or later)', label: 'Disk image (.dmg)', href: pick(mac.urls, (u) => u.endsWith('-arm64.dmg')) },
@@ -46,6 +52,7 @@ const file = (href: string) => href.slice(href.lastIndexOf('/') + 1)
     <article class="doc">
       <h1>Installing the Ravenburst beta</h1>
       <p class="lede">Thank you for testing Ravenburst. This page has the current beta ({version}) and what to do about the warnings your computer will show.</p>
+      {behind && <div class="note"><p><strong>{version} is out for Windows.</strong> Mac and Linux follow in early November; until then the downloads below for them are {behind}.</p></div>}
 
       <nav class="toc" aria-label="On this page">
         <p>On this page</p>
