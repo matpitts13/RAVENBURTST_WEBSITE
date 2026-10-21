@@ -10,7 +10,7 @@ import DocsLayout from '../../layouts/DocsLayout.astro'
     <ul>
       <li><a href="#format-bar">The Format Bar</a></li>
       <li><a href="#paragraphs">Paragraphs and indents</a></li>
-      <li><a href="#colours">Colours and highlights</a></li>
+      <li><a href="#colors">Colors and highlights</a></li>
       <li><a href="#right-click">The right-click menu</a></li>
       <li><a href="#insert">Inserting</a></li>
       <li><a href="#tables-images">Tables and images</a></li>
@@ -32,11 +32,11 @@ import DocsLayout from '../../layouts/DocsLayout.astro'
     <li><strong>Font</strong>: serif fonts (Georgia, Times New Roman, Garamond, Palatino, Merriweather, Lora, EB Garamond, Libre Baskerville, Crimson Pro, Playfair Display), sans-serif fonts (Arial, Helvetica, Inter, Lato, the system font) and Courier New.</li>
     <li><strong>Size</strong>: 8 to 72 pt.</li>
     <li><strong>Bold</strong>, <strong>Italic</strong>, <strong>Underline</strong>, <strong>Strikethrough</strong>, <strong>Superscript</strong>, <strong>Subscript</strong>. Hover over any button to see its shortcut.</li>
-    <li><strong>Text colour</strong> and <strong>highlight</strong> swatches, and <strong>Custom</strong>. See <a href="#colours">Colours</a>.</li>
+    <li><strong>Text color</strong> and <strong>highlight</strong> swatches, and <strong>Custom</strong>. See <a href="#colors">Colors</a>.</li>
   </ul>
   <h3>Bottom row</h3>
   <ul>
-    <li><strong>Alignment</strong>: left, centre, right, justify.</li>
+    <li><strong>Alignment</strong>: left, center, right, justify.</li>
     <li><strong>Bullet list</strong> and <strong>Numbered list</strong>.</li>
     <li><strong>Decrease / Increase indent</strong>: nests a list item, or moves a paragraph's left edge in steps (up to eight).</li>
     <li><strong>Line spacing</strong>: 1.0, 1.15, 1.5, 2.0 or 2.5, for the paragraphs you've selected.</li>
@@ -50,14 +50,14 @@ import DocsLayout from '../../layouts/DocsLayout.astro'
     <li><kbd>Tab</kbd> at the start of a paragraph adds a half-inch first-line indent; <kbd>Shift</kbd>+<kbd>Tab</kbd> or <kbd>Backspace</kbd> removes it. Pressing <kbd>Enter</kbd> carries the indent onto the next paragraph, and new scenes start indented.</li>
     <li>Quotes and dashes become typographic as you type: straight quotes turn into curly ones, and two hyphens into a dash. Nothing else is changed for you: there's no autocorrect and no autocomplete.</li>
     <li><span class="menu">Format → Character Formatting → Clear Formatting</span> (<kbd>Ctrl</kbd>+<kbd>\</kbd>) removes formatting from the selection.</li>
-    <li><span class="menu">Edit → Paste and Match Style</span> (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>V</kbd>) pastes text without its original fonts and colours.</li>
+    <li><span class="menu">Edit → Paste and Match Style</span> (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>V</kbd>) pastes text without its original fonts and colors.</li>
   </ul>
 
-  <h2 id="colours">Colours and highlights</h2>
+  <h2 id="colors">Colors and highlights</h2>
   <ul>
-    <li><strong>Text colours</strong>: black, red, orange, green, blue and purple, plus a button that resets to the normal text colour.</li>
+    <li><strong>Text colors</strong>: black, red, orange, green, blue and purple, plus a button that resets to the normal text color.</li>
     <li><strong>Highlights</strong>: yellow, green, cyan, pink and orange. Click an active highlight's swatch again to remove it.</li>
-    <li><strong>Custom</strong> opens a colour picker with a hex box. Choose <strong>Text</strong> or <strong>Highlight</strong> to apply the colour and save it to that palette for this project (up to eight of each). Right-click a saved colour to apply it either way, edit it or remove it.</li>
+    <li><strong>Custom</strong> opens a color picker with a hex box. Choose <strong>Text</strong> or <strong>Highlight</strong> to apply the color and save it to that palette for this project (up to eight of each). Right-click a saved color to apply it either way, edit it or remove it.</li>
   </ul>
   <p><span class="menu">Format → Font Color…</span> and <span class="menu">Highlight Color…</span> open the same picker.</p>
 
@@ -84,7 +84,7 @@ import DocsLayout from '../../layouts/DocsLayout.astro'
 
   <h2 id="tables-images">Tables and images</h2>
   <h3>Tables</h3>
-  <p><span class="menu">Insert → Table…</span> adds a 3 × 3 table with a header row; the Format Bar's grid lets you pick the size. With the cursor in a table, a toolbar appears for adding and removing rows and columns, header and stripe colours, and borders (all, outer, inner or none, at 1, 2, 3 or 5 px). Drag a column edge to resize it. <kbd>Enter</kbd> moves to the cell below.</p>
+  <p><span class="menu">Insert → Table…</span> adds a 3 × 3 table with a header row; the Format Bar's grid lets you pick the size. With the cursor in a table, a toolbar appears for adding and removing rows and columns, header and stripe colors, and borders (all, outer, inner or none, at 1, 2, 3 or 5 px). Drag a column edge to resize it. <kbd>Enter</kbd> moves to the cell below.</p>
   <h3>Images</h3>
   <p><span class="menu">Insert → Image…</span> accepts JPEG, PNG, GIF, WebP, BMP and SVG files. The image is stored inside your project, so moving the project file never breaks it. Click an image and drag its corner handle to resize it; the alignment buttons position it. Very large photos make the project file larger, so resize them first if you can.</p>
 
@@ -94,7 +94,7 @@ import DocsLayout from '../../layouts/DocsLayout.astro'
     <li>Choose <span class="menu">Insert → Inline Comment / Note</span> (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>K</kbd>) or right-click → <strong>Inline Comment / Note</strong>.</li>
     <li>Type the note and press <kbd>Enter</kbd> (<kbd>Shift</kbd>+<kbd>Enter</kbd> for a new line).</li>
   </ol>
-  <p>Commented text is highlighted. Click it to <strong>Edit</strong>, <strong>Resolve</strong> (it turns grey and crossed out) or <strong>Delete</strong> the note. Comments are never exported.</p>
+  <p>Commented text is highlighted. Click it to <strong>Edit</strong>, <strong>Resolve</strong> (it turns gray and crossed out) or <strong>Delete</strong> the note. Comments are never exported.</p>
 
   <h2 id="footnotes">Footnotes</h2>
   <p><span class="menu">Insert → Footnote</span> (<kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>F</kbd>) adds a numbered marker at the cursor and a matching note in the <em>Notes</em> area at the bottom of the document, where you type the note.</p>
