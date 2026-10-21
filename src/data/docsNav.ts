@@ -18,7 +18,7 @@ export const DOCS_NAV: DocSection[] = [
     links: [
       { href: '/docs', label: 'Overview', blurb: 'Where everything is.' },
       { href: '/docs/getting-started', label: 'First Launch', blurb: 'Install, start the trial and create your first project.' },
-      { href: '/docs/project-templates', label: 'Project Templates', blurb: 'The 15 project types and what each one sets up.' },
+      { href: '/docs/project-templates', label: 'Project Templates', blurb: 'The 17 project types and what each one sets up.' },
     ],
   },
   {
@@ -29,6 +29,7 @@ export const DOCS_NAV: DocSection[] = [
       { href: '/docs/views', label: 'Views & Layout', blurb: 'Corkboard, Outline, Split View, Split Window and Composition Mode.' },
       { href: '/docs/characters-places', label: 'Characters & Places', blurb: 'Character and place sheets.' },
       { href: '/docs/notes-reference', label: 'Notes & Reference', blurb: 'Notes, reference tables and images.' },
+      { href: '/docs/tabletop', label: 'Tabletop RPGs', blurb: 'Adventures and campaigns: prep pages, maps, character sheets and your library.' },
       { href: '/docs/snapshots', label: 'Snapshots & Bookmarks', blurb: 'Save versions of a document and mark places to come back to.' },
       { href: '/docs/writing-targets', label: 'Targets & Statistics', blurb: 'Word count goals, statistics and your writing history.' },
     ],

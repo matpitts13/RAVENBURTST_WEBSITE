@@ -9,7 +9,8 @@
     "check": "node scripts/check-site.mjs",
     "deploy": "npm run build && npm run check && wrangler pages deploy",
     "list:export": "node scripts/export-list.mjs",
-    "list:send-confirmations": "node scripts/send-confirmations.mjs"
+    "list:send-confirmations": "node scripts/send-confirmations.mjs",
+    "list:send-update": "node scripts/send-update-email.mjs"
   },
   "dependencies": {
     "astro": "^6.0.0",

@@ -1,0 +1,120 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro'
+---
+<DocsLayout title="Tabletop RPGs" description="Writing adventures and running campaigns in Ravenburst: prep pages, encounter maps, character sheets, your library, and exporting an adventure PDF.">
+  <h1>Tabletop RPGs</h1>
+  <p class="lede">Two project types are made for tabletop roleplaying games: <strong>Tabletop Adventure</strong> for a one-shot or a module, and <strong>Tabletop Campaign</strong> for a game you run week after week. They work with any game; 5E-compatible sheets are included for those who want them.</p>
+
+  <nav class="toc" aria-label="On this page">
+    <p>On this page</p>
+    <ul>
+      <li><a href="#start">Starting a project</a></li>
+      <li><a href="#left-bar">The left bar</a></li>
+      <li><a href="#pages">Prep pages</a></li>
+      <li><a href="#links">Linking pages together</a></li>
+      <li><a href="#encounters">Encounters and difficulty</a></li>
+      <li><a href="#maps">Encounter maps</a></li>
+      <li><a href="#characters">Character sheets</a></li>
+      <li><a href="#items">Items</a></li>
+      <li><a href="#blocks">Tabletop blocks</a></li>
+      <li><a href="#library">Your library</a></li>
+      <li><a href="#export">Exporting and printing</a></li>
+    </ul>
+  </nav>
+
+  <h2 id="start">Starting a project</h2>
+  <p>Choose <span class="menu">File → New Project…</span>, pick <strong>Tabletop Adventure</strong> or <strong>Tabletop Campaign</strong>, then name the project and choose where to save it.</p>
+  <ul>
+    <li><strong>Adventure</strong> starts with an <em>Overview</em> (Introduction, Adventure Hook, Content Warnings), Part 1 and Part 2, an opening encounter and a starting location.</li>
+    <li><strong>Campaign</strong> starts with a <em>Campaign Overview</em> (Premise, Factions &amp; People, Safety Tools), Session 1 and a home base.</li>
+  </ul>
+  <p>Everything starts empty for you to fill in. Ravenburst doesn't add any game's rules text or monsters of its own.</p>
+
+  <h2 id="left-bar">The left bar</h2>
+  <p>Tabletop projects have their own left bar, grouped by what you prep:</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Group</th><th>What goes in it</th></tr></thead>
+      <tbody>
+        <tr><td>Story</td><td>The adventure itself, in parts and scenes, like chapters and scenes in a book.</td></tr>
+        <tr><td>Encounters</td><td>Fights and challenges, each with its foes and live difficulty.</td></tr>
+        <tr><td>Creatures</td><td>Creature sheets.</td></tr>
+        <tr><td>Characters</td><td>Non-player characters, each with a character sheet.</td></tr>
+        <tr><td>Maps</td><td>Grid maps you draw or generate.</td></tr>
+        <tr><td>Locations</td><td>Places. A location can hold others: a castle, then its rooms.</td></tr>
+        <tr><td>Treasure &amp; Items</td><td>Magic items, loot and gear.</td></tr>
+        <tr><td>Handouts</td><td>Letters, clues and maps to give the players.</td></tr>
+        <tr><td>Tables</td><td>Roll tables: random encounters, rumors, loot.</td></tr>
+        <tr><td>Sessions</td><td>Campaign only: each session's prep and recap.</td></tr>
+        <tr><td>Notes, Reference, Trash</td><td>The same as in any project. See <a href="/docs/navigator">Navigator &amp; Structure</a>.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <ul>
+    <li>The <strong>+</strong> on a group adds a page to it. Name it and press <kbd>Enter</kbd>.</li>
+    <li>Hover over a row for its <strong>trash icon</strong>, or right-click for <span class="menu">Rename</span> and <span class="menu">Move to Trash</span>. Both ask first.</li>
+    <li>Rows show a badge where it helps: an encounter's difficulty, a creature's challenge rating, a character's class and level, an item's rarity.</li>
+    <li>Trashed pages wait in Trash in a folder named for their group, and <span class="menu">Restore</span> puts them back.</li>
+  </ul>
+
+  <h2 id="pages">Prep pages</h2>
+  <p>Each prep page is one card with its name across the top, the same name as in the left bar. Rename the page and the card follows, so a printed page always says which encounter, place or character it is.</p>
+  <p>Cards are split into labeled fields to fill in, such as <em>Setup</em>, <em>Tactics</em> and <em>Treasure</em> on an encounter, or <em>Description</em>, <em>Features</em> and <em>Secrets</em> on a location. Fields marked <strong>GM only</strong> are left out of player handouts.</p>
+
+  <h2 id="links">Linking pages together</h2>
+  <p>Type <kbd>@</kbd> anywhere to link to another page: a creature in an encounter, a location in a scene. Click a link to go there. Links follow renames.</p>
+  <p>Above each prep page, <strong>Used in</strong> lists every page that links to it, so you can see where a creature or place turns up.</p>
+
+  <h2 id="encounters">Encounters and difficulty</h2>
+  <p>An encounter's <strong>Foes and difficulty</strong> box lists its creatures and how many of each. Set the <strong>Party size</strong> and <strong>Party level</strong>, and the difficulty updates as you add or remove foes, using the experience budgets from the System Reference Document 5.2.1. The difficulty also shows as a badge on the encounter's row.</p>
+
+  <h2 id="maps">Encounter maps</h2>
+  <p>A new map offers two ways to start: <strong>Generate a map</strong> for random rooms and corridors, or <strong>Draw my own</strong>. Each square is 5 feet.</p>
+  <ul>
+    <li><strong>Build:</strong> Room, Corridor, Water, Erase (drag a box to clear an area) and Select &amp; Move (move a room or part of the map, or nudge it with the arrow keys).</li>
+    <li><strong>Add:</strong> Door (click again for secret, then locked), Stairs, Pillar, Chest, Statue and Number. Numbered rooms are listed in the map's key, where you can name them or link them to a location.</li>
+    <li><strong>GM only:</strong> Trap and Event. They show on the GM map and never on the player map.</li>
+    <li><strong>Add random room</strong> adds to what's there; select an area and choose <strong>Generate here</strong> to fill just that part. Generating a whole new map or clearing it asks first, and <kbd>Ctrl</kbd>+<kbd>Z</kbd> undoes either.</li>
+    <li>Switch between <strong>GM map (everything)</strong> and <strong>Player map (no secrets)</strong> at the top of the map.</li>
+    <li><strong>Print…</strong> prints the map at table size, one inch per square, across as many US Letter or A4 pages as it needs. The page outlines show while the print panel is open.</li>
+  </ul>
+
+  <h2 id="characters">Character sheets</h2>
+  <p>Every page in Characters has a character sheet, and <span class="menu">Insert → Tabletop → Character Sheet</span> adds one anywhere. Two switches at the top change it:</p>
+  <ul>
+    <li><strong>Full sheet</strong> or <strong>Quick NPC</strong>. Quick NPC keeps just what you need to run a character at the table.</li>
+    <li><strong>5e rules</strong> or <strong>Any game</strong>. With 5e rules, the sheet works out proficiency, saving throws, skills, initiative, passive Perception and spell numbers for you. With Any game, you type everything yourself.</li>
+  </ul>
+  <p>The full sheet covers combat, abilities and saves, skills, attacks, spellcasting (shown once the character casts spells), features, gear, coins, roleplaying notes and a portrait. <strong>Secrets</strong> are GM only.</p>
+  <p>Creature sheets come in three kinds from <span class="menu">Insert → Tabletop</span>: free-form, 5E (2024 rules) and 5E (2014 rules).</p>
+
+  <h2 id="items">Items</h2>
+  <p>An item sheet has its type, rarity, attunement, value, charges, a line of flavor, a description, tags and art. <strong>Where it's found</strong> is GM only.</p>
+
+  <h2 id="blocks">Tabletop blocks</h2>
+  <p><span class="menu">Insert → Tabletop</span> adds these anywhere in your text:</p>
+  <ul>
+    <li><strong>Read-Aloud Box</strong> for text to read to the players, and <strong>GM Note</strong> for what only you should see.</li>
+    <li><strong>Tiered Results</strong>, <strong>Encounter Summary</strong> and <strong>Roll Table</strong>.</li>
+    <li><strong>Map with Numbered Areas</strong> (your own map image, numbered) and <strong>Encounter Map (Grid)</strong>.</li>
+    <li><strong>Item</strong>, <strong>Character Sheet</strong> and the creature sheets.</li>
+    <li><strong>Mark as Check</strong> styles a skill check, and <strong>Cross-Reference…</strong> points to another part of the adventure; it becomes a page number in the PDF.</li>
+  </ul>
+
+  <h2 id="library">Your library</h2>
+  <p>Creatures, sheet templates and items you'd like to reuse can be kept in <strong>Your Tabletop Library</strong>, shared by every project on this computer.</p>
+  <ul>
+    <li>On a creature sheet, choose <strong>Save to library</strong>. On an item, choose <strong>Save to compendium</strong>.</li>
+    <li><span class="menu">Insert → Tabletop → From Your Library…</span> opens the library to insert something you saved.</li>
+    <li>To use your library and your custom dictionary on another computer, choose <span class="menu">File → My Library &amp; Dictionary → Export to a File…</span>, then <span class="menu">Import from a File…</span> on the other computer. The library's own <strong>Export all…</strong> and <strong>Import…</strong> buttons do the same. Importing only adds: anything already there is skipped, and a different entry with a name you already use comes in as, for example, “Ghoul (2)”.</li>
+  </ul>
+
+  <h2 id="export">Exporting and printing</h2>
+  <p>In <span class="menu">File → Compile…</span>, tabletop projects default to <strong>Tabletop Adventure (PDF)</strong>, a two-column layout. See <a href="/docs/compile-options">Compiling</a> for the options every export shares. The adventure PDF adds:</p>
+  <ul>
+    <li><strong>Include GM notes</strong>: untick it for a player handout without GM notes and GM-only fields.</li>
+    <li><strong>Add the SRD credit when a 5E creature sheet is used</strong>: the attribution the System Reference Document requires if you publish.</li>
+    <li><strong>Appendices (after the story)</strong>: choose which prep groups print after the story. Creatures, maps and handouts are ticked to begin with.</li>
+  </ul>
+  <p>The <strong>Print item cards</strong> button on Treasure &amp; Items prints your items as cards to cut out and hand to players.</p>
+</DocsLayout>
