@@ -1,9 +1,12 @@
-// The "new version" email for 1.0.0-beta.3. Keep it in step with the
-// changelog entry in src/pages/changelog.astro.
+// The "new version" email for 1.0.0-beta.3, for beta testers only (people
+// who signed up from the beta page). Keep it in step with the changelog
+// entry in src/pages/changelog.astro.
 export default {
-  subject: "Ravenburst 1.0.0-beta.3: tabletop adventures and campaigns",
-  heading: "A new version of Ravenburst is out",
-  intro: "Version 1.0.0-beta.3 is the biggest update yet. The headline: Ravenburst now writes tabletop RPG adventures and runs campaigns, as well as books and scripts.",
+  // Only subscribers whose signup source is this one get it.
+  audience: "beta",
+  subject: "Ravenburst beta 1.0.0-beta.3 is ready",
+  heading: "A new beta is ready",
+  intro: "Thanks for testing Ravenburst. Version 1.0.0-beta.3 is the biggest update yet: Ravenburst now writes tabletop RPG adventures and runs campaigns, as well as books and scripts.",
   items: [
     "Tabletop Adventure and Tabletop Campaign projects, with their own left bar for encounters, creatures, characters, maps, locations, items, handouts, roll tables and sessions",
     "Encounters with live difficulty for your party",
@@ -13,9 +16,9 @@ export default {
     "Take your custom dictionary and library to another computer",
     "Ravenburst opens on the project picker, and you can pin projects to the top",
   ],
-  // Who can get it today, and who has to wait.
   howToGet: [
-    "Beta testers: Ravenburst downloads the update itself. When \"Restart to update\" appears in the status bar at the bottom of the window, click it (your work is saved first), or choose Help → Check for Updates.",
-    "Everyone else: Ravenburst opens to everyone when the Kickstarter launches, and we'll email you that day.",
+    "To update: Ravenburst downloads it by itself. When \"Restart to update\" appears in the status bar at the bottom of the window, click it (your work is saved first), or choose Help → Check for Updates.",
+    "Installing on another computer? The beta install guide has the downloads: https://ravenburst.com/beta",
+    "If anything breaks or feels wrong, Help → Report a Bug sends it straight to us.",
   ],
 };

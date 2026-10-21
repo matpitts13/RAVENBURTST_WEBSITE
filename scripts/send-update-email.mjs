@@ -1,4 +1,5 @@
-// Emails everyone who confirmed their address that a new version is out.
+// Emails confirmed addresses that a new version is out - everyone, or just
+// one signup source (the email's `audience`, e.g. "beta" for testers).
 // The text is in scripts/announcements/<release>.mjs. From this folder:
 //
 //   npm run list:send-update -- v1.0.0-beta.3            (a dry run: counts and a preview, sends nothing)
@@ -88,15 +89,22 @@ const alreadySent = tableExists
   ? ` AND NOT EXISTS (SELECT 1 FROM announcement_sends a WHERE a.release = '${release}' AND a.email = s.email)`
   : "";
 
-// `release` passed the pattern above, so it is safe in fixed SQL.
+// Who it's for: a signup source (e.g. "beta" for testers), or everyone.
+if (mail.audience !== undefined && !/^[a-z0-9-]+$/.test(mail.audience)) {
+  console.error(`Bad audience in the ${release} email: ${mail.audience}`);
+  process.exit(1);
+}
+const audience = mail.audience ? ` AND s.source = '${mail.audience}'` : "";
+
+// `release` and `audience` passed the patterns above, so they are safe in fixed SQL.
 const due = d1Read(
-  `SELECT s.email, s.token FROM subscribers s WHERE s.status = 'confirmed'${alreadySent} ORDER BY s.confirmed_at`,
+  `SELECT s.email, s.token FROM subscribers s WHERE s.status = 'confirmed'${audience}${alreadySent} ORDER BY s.confirmed_at`,
 );
 if (due.some((r) => typeof r.email !== "string" || typeof r.token !== "string")) {
   console.error("Unexpected rows from the database; nothing sent.", due);
   process.exit(1);
 }
-console.log(`${due.length} confirmed address(es) haven't had the ${release} email yet.`);
+console.log(`${due.length} confirmed ${mail.audience ? `"${mail.audience}" ` : ""}address(es) haven't had the ${release} email yet.`);
 
 if (!send) {
   console.log(`\nSubject: ${mail.subject}\n\n${build("PREVIEW-TOKEN").text}\n`);
