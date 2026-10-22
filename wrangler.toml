@@ -8,9 +8,9 @@ compatibility_date = "2026-10-01"
 [vars]
 SITE_URL = "https://ravenburst.com"
 MAIL_FROM = "Ravenburst <hello@ravenburst.com>"
-# Postal address required in marketing email (CAN-SPAM). Set before sending
-# any announcement; confirmation emails are transactional and don't need it.
-MAIL_POSTAL_ADDRESS = ""
+# Postal address required in marketing email (CAN-SPAM); scripts/send-update-email.mjs
+# reads it from here. Confirmation emails are transactional and don't need it.
+MAIL_POSTAL_ADDRESS = "505 20th St North, Suite 1220, Birmingham, AL 35203"
 
 [[d1_databases]]
 binding = "DB"

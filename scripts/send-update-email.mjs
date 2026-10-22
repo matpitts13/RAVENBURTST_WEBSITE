@@ -4,12 +4,12 @@
 //
 //   npm run list:send-update -- v1.0.0-beta.3            (a dry run: counts and a preview, sends nothing)
 //   $env:RESEND_API_KEY = "re_..."
-//   $env:MAIL_POSTAL_ADDRESS = "Your mailing address"
 //   npm run list:send-update -- v1.0.0-beta.3 --send
 //
 // Each address gets each release's email once: sends are recorded in D1, so
 // running it again (after a stop, or for new confirmations) only sends to
 // whoever hasn't had it. Uses your `wrangler login` for the database.
+import { readFileSync } from "node:fs";
 import { d1Read, d1Write, sqlString } from "./d1.mjs";
 
 const release = process.argv[2];
@@ -28,7 +28,9 @@ try {
 
 const SITE = "https://ravenburst.com";
 const FROM = "Ravenburst <hello@ravenburst.com>";
-const postal = (process.env.MAIL_POSTAL_ADDRESS ?? "").trim();
+// MAIL_POSTAL_ADDRESS in wrangler.toml, unless overridden in the environment.
+const tomlPostal = (readFileSync(new URL("../wrangler.toml", import.meta.url), "utf8").match(/^MAIL_POSTAL_ADDRESS\s*=\s*"([^"]*)"/m) || [])[1];
+const postal = (process.env.MAIL_POSTAL_ADDRESS || tomlPostal || "").trim();
 const key = process.env.RESEND_API_KEY;
 if (send && !key) {
   console.error('Set RESEND_API_KEY first, e.g.  $env:RESEND_API_KEY = "re_..."');
@@ -36,7 +38,7 @@ if (send && !key) {
 }
 // Marketing email must carry a postal address (CAN-SPAM).
 if (send && !postal) {
-  console.error('Set MAIL_POSTAL_ADDRESS first (required in announcement email), e.g.  $env:MAIL_POSTAL_ADDRESS = "PO Box 1, Town, ST 00000"');
+  console.error("Set MAIL_POSTAL_ADDRESS in wrangler.toml first (required in announcement email).");
   process.exit(1);
 }
 
