@@ -20,6 +20,11 @@ const BANNED = [
   /\b(Story Bible|Writing Coach|Continuity Check|Reference Assistant)\b/i,
   /\bTypewriter Mode\b/i, // shelved in the app
   /\bOneDrive\b/i, // removed from the app
+  // Tabletop pages stay game-neutral: no publisher, game or VTT names.
+  /\bDungeons\s*(&|and)?\s*Dragons\b/i,
+  /\bD\s?&\s?D\b/,
+  /\bWizards of the Coast\b/i,
+  /\b(Pathfinder|Paizo|Roll20|Foundry VTT)\b/i,
 ];
 
 function htmlFiles(dir) {

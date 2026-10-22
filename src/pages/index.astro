@@ -31,6 +31,7 @@ const formats = [
   ['🖼️', "Children's Book", 'Square, portrait and landscape'],
   ['🎓', 'Academic', 'APA, MLA and Chicago'],
   ['🖨️', 'Proof PDF', 'With crop marks and bleed'],
+  ['🐉', 'Tabletop Adventure', 'Two-column PDF, with or without GM notes'],
 ]
 ---
 <Base title="Ravenburst">
@@ -47,8 +48,8 @@ const formats = [
           <span class="text-gradient">Your words.</span>
         </h1>
         <p class="text-xl text-rb-muted max-w-2xl mb-10 leading-relaxed">
-          Ravenburst is a desktop writing studio for novelists, screenwriters and playwrights.
-          Plan it, write it, and export files ready to send to an agent, print, or self-publish — all from one place,
+          Ravenburst is a desktop writing studio for novelists, screenwriters, playwrights — and game masters.
+          Plan it, write it, and export files ready to send to an agent, print, self-publish or run at the table — all from one place,
           with no subscription and no account.
         </p>
         <div class="max-w-xl" id="join">
@@ -61,6 +62,26 @@ const formats = [
       </div>
       <img src="/brand/raven.svg" alt="The Ravenburst raven: a raven in a top hat and monocle above a fountain pen"
         width="340" height="394" class="hidden md:block w-[300px] lg:w-[340px] h-auto opacity-95" />
+    </section>
+
+    <!-- Tabletop -->
+    <section class="py-20 px-6 border-t border-rb-border" aria-labelledby="tabletop">
+      <div class="max-w-6xl mx-auto grid lg:grid-cols-[2fr_3fr] gap-10 items-center">
+        <div>
+          <div class="inline-block bg-rb-surface border border-rb-border text-rb-accent text-xs px-3 py-1 rounded-full mb-5 tracking-wide">New · Tabletop RPGs</div>
+          <h2 id="tabletop" class="text-3xl md:text-4xl font-serif font-bold mb-5 leading-tight">Write the adventure.<br/>Run the table.</h2>
+          <p class="text-lg text-rb-muted leading-relaxed mb-6">
+            Adventures and campaigns get their own workspace: encounters with live difficulty, generated dungeon maps,
+            character sheets for 5e or any game, and every creature, place and item linked to the story.
+            Then print it as a two-column adventure.
+          </p>
+          <a href="/tabletop" class="inline-block bg-rb-accent hover:opacity-90 text-white px-6 py-3 rounded-xl font-semibold transition-opacity">See Ravenburst for game masters →</a>
+        </div>
+        <a href="/tabletop" aria-label="Ravenburst for tabletop RPGs">
+          <img src="/screens/tt-map.png" alt="A generated dungeon map in Ravenburst with numbered rooms, doors and stairs, beside the adventure’s encounters, creatures and locations."
+            width="1222" height="875" class="w-full h-auto rounded-xl border border-rb-border shadow-2xl" />
+        </a>
+      </div>
     </section>
 
     <!-- Three pillars -->
@@ -97,7 +118,7 @@ const formats = [
         <p class="text-rb-muted text-center mb-12 max-w-xl mx-auto">
           Compile your manuscript for an agent, a printer, a stage or an e-reader without reformatting a thing.
         </p>
-        <ul class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <ul class="grid grid-cols-2 md:grid-cols-3 gap-4">
           {formats.map(([icon, name, sub]) => (
             <li class="bg-rb-surface border border-rb-border rounded-xl p-5 text-center">
               <div class="text-2xl mb-2" aria-hidden="true">{icon}</div>

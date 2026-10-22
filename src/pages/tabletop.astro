@@ -1,0 +1,105 @@
+---
+import Base from '../layouts/Base.astro'
+import Nav from '../components/Nav.astro'
+import Footer from '../components/Footer.astro'
+import SignupForm from '../components/SignupForm.astro'
+
+// Every claim here is checked against the app. Game-neutral wording only:
+// no publisher's names, trade dress or content (see the app repo's
+// SDD/Tabletop_Format_Plan.md).
+const shots = [
+  {
+    src: '/screens/tt-encounter.png',
+    alt: 'An encounter page in Ravenburst: two Barrow Hounds and a Mire Ghast against a party of four level 3 characters, rated Moderate, with read-aloud text, tactics and treasure below.',
+    title: 'Encounters that do the math',
+    body: 'Add foes, set your party’s size and level, and the difficulty updates as you go — Low, Moderate, High or beyond. Read-aloud text, tactics and treasure sit on the same card.',
+  },
+  {
+    src: '/screens/tt-map.png',
+    alt: 'A generated dungeon map in Ravenburst with six numbered rooms, doors and stairs, and the drawing tools above it.',
+    title: 'Maps in a click — or drawn by hand',
+    body: 'Generate a dungeon of rooms and corridors, or draw your own. Add doors, stairs, traps and secrets, number the rooms, and print a GM map or a player map with no secrets at one inch per square.',
+  },
+  {
+    src: '/screens/tt-character.png',
+    alt: 'A character sheet in Ravenburst for Sister Maud, a level 5 cleric, with abilities, saving throws and skills worked out.',
+    title: 'Character sheets for any game',
+    body: 'A full sheet or a quick NPC. With 5e rules it works out proficiency, saves, skills, initiative and spellcasting numbers for you; with Any game, it’s yours to fill in.',
+  },
+]
+
+const more = [
+  ['🗂️', 'Everything in its own place', 'Encounters, creatures, characters, maps, locations, items, handouts, roll tables and sessions, each on its own page.'],
+  ['🔗', 'Linked, not copied', 'Type @ to link any page from anywhere. Every page shows where it’s used, and links follow renames.'],
+  ['📜', 'Ready for the table', 'Read-aloud boxes, GM notes, tiered results, roll tables, skill checks and cross-references.'],
+  ['🐉', 'Your own library', 'Save creatures, sheet templates and items once and use them in every project.'],
+  ['🖨️', 'An adventure PDF', 'A two-column layout with page-numbered cross-references — with the GM notes, or without them for the players.'],
+  ['🎲', 'Campaigns too', 'Session prep and recaps, plus every character, place and encounter your campaign collects.'],
+]
+---
+<Base title="Ravenburst for Tabletop RPGs" description="Write tabletop RPG adventures and run campaigns in Ravenburst: encounters with live difficulty, generated maps, character sheets for any game and a two-column adventure PDF.">
+  <Nav />
+  <main id="main">
+    <section class="pt-36 pb-16 px-6 max-w-4xl mx-auto text-center">
+      <div class="inline-block bg-rb-surface border border-rb-border text-rb-muted text-xs px-3 py-1 rounded-full mb-8 tracking-wide">
+        New in Ravenburst · In beta now
+      </div>
+      <h1 class="text-5xl md:text-6xl font-serif font-bold mb-6 leading-tight">
+        Write the adventure.<br/>
+        <span class="text-gradient">Run the table.</span>
+      </h1>
+      <p class="text-xl text-rb-muted max-w-2xl mx-auto mb-10 leading-relaxed">
+        Ravenburst is a writing studio for game masters, too. Plan a one-shot or a whole campaign:
+        encounters, creatures, maps and characters, all linked to the story — then print it as a finished adventure.
+      </p>
+      <div class="max-w-xl mx-auto">
+        <SignupForm id="signup-tabletop" source="tabletop" />
+        <p class="mt-4 text-sm text-rb-muted">Works with any game · 5e-compatible sheets included</p>
+      </div>
+    </section>
+
+    {shots.map((s, i) => (
+      <section class="py-16 px-6 border-t border-rb-border">
+        <div class:list={['max-w-6xl mx-auto grid lg:grid-cols-[2fr_3fr] gap-10 items-center', i % 2 === 1 && 'lg:grid-cols-[3fr_2fr]']}>
+          <div class:list={[i % 2 === 1 && 'lg:order-2']}>
+            <h2 class="text-3xl font-serif font-bold mb-4">{s.title}</h2>
+            <p class="text-lg text-rb-muted leading-relaxed">{s.body}</p>
+          </div>
+          <img src={s.src} alt={s.alt} width="1222" height="875" loading={i === 0 ? 'eager' : 'lazy'}
+            class="w-full h-auto rounded-xl border border-rb-border shadow-2xl" />
+        </div>
+      </section>
+    ))}
+
+    <section class="py-20 px-6 border-t border-rb-border">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-3xl font-serif font-bold text-center mb-12">Everything a game master preps</h2>
+        <ul class="grid md:grid-cols-3 gap-6">
+          {more.map(([icon, title, body]) => (
+            <li class="bg-rb-surface border border-rb-border rounded-2xl p-6">
+              <div class="text-3xl mb-3" aria-hidden="true">{icon}</div>
+              <h3 class="font-semibold text-rb-text mb-2 font-serif">{title}</h3>
+              <p class="text-sm text-rb-muted leading-relaxed">{body}</p>
+            </li>
+          ))}
+        </ul>
+        <p class="text-center mt-10 text-rb-muted">
+          <a href="/docs/tabletop" class="text-rb-accent hover:underline">How it works, in the docs →</a>
+        </p>
+        <p class="text-center mt-6 text-xs text-rb-muted max-w-2xl mx-auto">
+          Encounter difficulty uses the experience budgets from the System Reference Document 5.2.1, available under CC BY 4.0.
+          Ravenburst includes no game’s rules text or creatures of its own; the creatures and characters shown are our own examples.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-20 px-6 border-t border-rb-border">
+      <div class="max-w-md mx-auto text-center">
+        <h2 class="text-2xl font-serif font-bold mb-3">Be first when it launches.</h2>
+        <p class="text-rb-muted mb-8">Join the list and we’ll email you the day the Kickstarter goes live.</p>
+        <SignupForm id="signup-tabletop-bottom" source="tabletop" />
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Base>
