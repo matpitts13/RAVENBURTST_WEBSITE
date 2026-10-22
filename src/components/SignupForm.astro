@@ -31,7 +31,13 @@ const { id = 'signup', source = 'site' } = Astro.props
 </form>
 
 <script>
+  // A printed card's QR code says where the visitor came from
+  // (e.g. /tabletop?src=shop-card); the server sanitizes it again.
+  const src = new URLSearchParams(location.search).get('src')
+  const fromLink = src && /^[a-z0-9-]{1,40}$/.test(src) ? src : null
+
   for (const form of document.querySelectorAll<HTMLFormElement>('form.rb-signup')) {
+    if (fromLink) form.querySelector<HTMLInputElement>('input[name=source]')!.value = fromLink
     if (form.dataset.bound) continue
     form.dataset.bound = '1'
     form.addEventListener('submit', async (e) => {
