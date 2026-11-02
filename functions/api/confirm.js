@@ -16,13 +16,14 @@ export async function onRequestPost({ request, env }) {
   const token = await tokenFrom(request);
   if (!token) return redirect("/list/link-expired");
 
-  const row = await env.DB.prepare("SELECT status FROM subscribers WHERE token = ?1").bind(token).first();
+  const row = await env.DB.prepare("SELECT status, block_reason FROM subscribers WHERE token = ?1").bind(token).first();
   if (!row) return redirect("/list/link-expired");
-  if (row.status === "pending") {
+  // A blocked address is always unsubscribed (the database enforces it too).
+  if (row.status === "pending" && !row.block_reason) {
     await env.DB.prepare(
-      "UPDATE subscribers SET status = 'confirmed', confirmed_at = datetime('now') WHERE token = ?1 AND status = 'pending'",
+      "UPDATE subscribers SET status = 'confirmed', confirmed_at = datetime('now') WHERE token = ?1 AND status = 'pending' AND block_reason IS NULL",
     ).bind(token).run();
   }
   // Already confirmed is fine; an unsubscribed address stays unsubscribed.
-  return redirect(row.status === "unsubscribed" ? "/list/unsubscribed" : "/list/confirmed");
+  return redirect(row.status === "unsubscribed" || row.block_reason ? "/list/unsubscribed" : "/list/confirmed");
 }

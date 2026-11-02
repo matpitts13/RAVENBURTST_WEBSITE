@@ -3,6 +3,7 @@
 // the request asks for it (the page's script), otherwise redirects to a
 // page, so the form also works without JavaScript.
 import { EMAIL_RE, json, redirect, newToken, sha256Hex, sendConfirmation } from "../_lib/list.js";
+import { BURNER_REASON, blockReasonFor } from "../_lib/blocking.js";
 
 const MAX_ATTEMPTS_PER_HOUR = 10;
 const RESEND_COOLDOWN_MINUTES = 10;
@@ -40,7 +41,9 @@ export async function onRequestPost({ request, env, waitUntil }) {
   // retries nor learns there was a trap.
   if (website) return done();
 
-  email = email.trim().toLowerCase();
+  // A trailing dot ("a@b.com.") still delivers; drop it so the stored address
+  // and the block check see the plain domain.
+  email = email.trim().toLowerCase().replace(/\.+$/, "");
   if (email.length > 254 || !EMAIL_RE.test(email)) {
     return reply(false, "Please enter a valid email address.", 400);
   }
@@ -66,8 +69,34 @@ export async function onRequestPost({ request, env, waitUntil }) {
   }
 
   const existing = await env.DB.prepare(
-    "SELECT status, confirm_sent_at, confirm_sends FROM subscribers WHERE email = ?1",
+    "SELECT status, confirm_sent_at, confirm_sends, block_reason FROM subscribers WHERE email = ?1",
   ).bind(email).first();
+
+  // A disposable or hand-blocked domain: kept, unsubscribed and tagged, so it
+  // shows in the admin app - and never emailed. A reason already on the row
+  // (perhaps edited in the admin app) is kept.
+  const blockReason = await blockReasonFor(env, email);
+  if (blockReason) {
+    await env.DB.prepare(
+      `INSERT INTO subscribers (email, token, source, status, unsubscribed_at, block_reason, blocked_at)
+       VALUES (?1, ?2, ?3, 'unsubscribed', datetime('now'), ?4, datetime('now'))
+       ON CONFLICT(email) DO UPDATE SET status = 'unsubscribed',
+         unsubscribed_at = COALESCE(unsubscribed_at, datetime('now')),
+         block_reason = COALESCE(block_reason, excluded.block_reason),
+         blocked_at = COALESCE(blocked_at, excluded.blocked_at)`,
+    ).bind(email, newToken(), source, blockReason).run();
+    return reply(
+      false,
+      blockReason === BURNER_REASON
+        ? "Please use a permanent email address. Temporary and disposable addresses can’t join the list."
+        : "That email address can’t join the list.",
+      400,
+    );
+  }
+
+  // Blocked by hand (the address, not its domain): nothing changes and
+  // nothing is sent. The same answer as anyone else, so it can't be probed.
+  if (existing?.block_reason) return done();
 
   if (existing && existing.status === "confirmed") return done();
 
@@ -81,12 +110,15 @@ export async function onRequestPost({ request, env, waitUntil }) {
     const capped = existing.confirm_sends >= MAX_CONFIRM_SENDS && sinceLast < 24 * 3600_000;
     if (existing.status === "pending" && (coolingDown || capped)) return done();
 
-    await env.DB.prepare(
+    // block_reason IS NULL: blocked in the admin app since the read above -
+    // nothing changes (the trigger would refuse it anyway) and nothing is sent.
+    const updated = await env.DB.prepare(
       `UPDATE subscribers SET status = 'pending', token = ?2, unsubscribed_at = NULL,
            source = CASE WHEN status = 'unsubscribed' THEN ?3 ELSE source END,
            confirm_sends = CASE WHEN ?4 THEN 0 ELSE confirm_sends END
-       WHERE email = ?1`,
+       WHERE email = ?1 AND block_reason IS NULL`,
     ).bind(email, token, source, sinceLast >= 24 * 3600_000 ? 1 : 0).run();
+    if (!updated.meta.changes) return done();
   } else {
     // Two submissions of a new address at once: the second is a no-op.
     const inserted = await env.DB.prepare(
@@ -96,7 +128,9 @@ export async function onRequestPost({ request, env, waitUntil }) {
   }
 
   waitUntil(
-    sendConfirmation(env, email, token)
+    // Re-checked just before sending, in case the address was blocked meanwhile.
+    env.DB.prepare("SELECT block_reason FROM subscribers WHERE email = ?1").bind(email).first()
+      .then((row) => (row && !row.block_reason ? sendConfirmation(env, email, token) : false))
       .then((sent) => sent && env.DB.prepare(
         "UPDATE subscribers SET confirm_sent_at = datetime('now'), confirm_sends = confirm_sends + 1 WHERE email = ?1",
       ).bind(email).run())

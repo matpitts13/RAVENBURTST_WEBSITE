@@ -20,7 +20,7 @@ const env = {
   MAIL_FROM: "Ravenburst <hello@ravenburst.com>",
 };
 
-const pending = d1Read("SELECT email, token FROM subscribers WHERE status = 'pending' AND confirm_sent_at IS NULL");
+const pending = d1Read("SELECT email, token FROM subscribers WHERE status = 'pending' AND confirm_sent_at IS NULL AND block_reason IS NULL");
 if (pending.some((r) => typeof r.email !== "string" || typeof r.token !== "string")) {
   console.error("Unexpected rows from the database; nothing sent.", pending);
   process.exit(1);

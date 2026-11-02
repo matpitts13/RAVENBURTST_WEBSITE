@@ -100,7 +100,7 @@ const audience = mail.audience ? ` AND s.source = '${mail.audience}'` : "";
 
 // `release` and `audience` passed the patterns above, so they are safe in fixed SQL.
 const due = d1Read(
-  `SELECT s.email, s.token FROM subscribers s WHERE s.status = 'confirmed'${audience}${alreadySent} ORDER BY s.confirmed_at`,
+  `SELECT s.email, s.token FROM subscribers s WHERE s.status = 'confirmed' AND s.block_reason IS NULL${audience}${alreadySent} ORDER BY s.confirmed_at`,
 );
 if (due.some((r) => typeof r.email !== "string" || typeof r.token !== "string")) {
   console.error("Unexpected rows from the database; nothing sent.", due);
