@@ -20,7 +20,7 @@ const env = {
   MAIL_FROM: "Ravenburst <hello@ravenburst.com>",
 };
 
-const pending = d1Read("SELECT email, token FROM subscribers WHERE status = 'pending' AND confirm_sent_at IS NULL AND block_reason IS NULL");
+const pending = await d1Read("SELECT email, token FROM subscribers WHERE status = 'pending' AND confirm_sent_at IS NULL AND block_reason IS NULL");
 if (pending.some((r) => typeof r.email !== "string" || typeof r.token !== "string")) {
   console.error("Unexpected rows from the database; nothing sent.", pending);
   process.exit(1);
@@ -34,7 +34,7 @@ for (const { email, token } of pending) {
     console.error(`  ✗ ${email} - Resend refused it; stopping so nothing is double-sent.`);
     break;
   }
-  d1Write(`UPDATE subscribers SET confirm_sent_at = datetime('now'), confirm_sends = confirm_sends + 1 WHERE email = ${sqlString(email)};`);
+  await d1Write(`UPDATE subscribers SET confirm_sent_at = datetime('now'), confirm_sends = confirm_sends + 1 WHERE email = ${sqlString(email)};`);
   sent++;
   console.log(`  ✓ ${email}`);
   await new Promise((r) => setTimeout(r, 600)); // stay well under Resend's rate limit

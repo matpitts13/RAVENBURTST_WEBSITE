@@ -78,9 +78,9 @@ ${mail.howToGet.map((l) => `<p ${p}>${esc(l)}</p>`).join("\n")}
 
 // Who's had which release's email (migrations/0002). Created here on the
 // first real send, so there's no separate step; a dry run changes nothing.
-const tableExists = d1Read("SELECT name FROM sqlite_master WHERE type = 'table' AND name = 'announcement_sends'").length > 0;
+const tableExists = (await d1Read("SELECT name FROM sqlite_master WHERE type = 'table' AND name = 'announcement_sends'")).length > 0;
 if (send && !tableExists) {
-  d1Write(`CREATE TABLE IF NOT EXISTS announcement_sends (
+  await d1Write(`CREATE TABLE IF NOT EXISTS announcement_sends (
   release  TEXT NOT NULL,
   email    TEXT NOT NULL COLLATE NOCASE,
   sent_at  TEXT NOT NULL DEFAULT (datetime('now')),
@@ -99,7 +99,7 @@ if (mail.audience !== undefined && !/^[a-z0-9-]+$/.test(mail.audience)) {
 const audience = mail.audience ? ` AND s.source = '${mail.audience}'` : "";
 
 // `release` and `audience` passed the patterns above, so they are safe in fixed SQL.
-const due = d1Read(
+const due = await d1Read(
   `SELECT s.email, s.token FROM subscribers s WHERE s.status = 'confirmed' AND s.block_reason IS NULL${audience}${alreadySent} ORDER BY s.confirmed_at`,
 );
 if (due.some((r) => typeof r.email !== "string" || typeof r.token !== "string")) {
@@ -137,7 +137,7 @@ for (const { email, token } of due) {
     console.error("Stopping. Run it again later; it only sends to whoever hasn't had it.");
     break;
   }
-  d1Write(`INSERT OR IGNORE INTO announcement_sends (release, email) VALUES (${sqlString(release)}, ${sqlString(email)});`);
+  await d1Write(`INSERT OR IGNORE INTO announcement_sends (release, email) VALUES (${sqlString(release)}, ${sqlString(email)});`);
   sent++;
   console.log(`  ✓ ${email}`);
   await new Promise((r) => setTimeout(r, 600)); // stay well under Resend's rate limit

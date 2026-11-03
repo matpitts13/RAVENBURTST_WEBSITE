@@ -11,7 +11,8 @@
     "list:export": "node scripts/export-list.mjs",
     "list:send-confirmations": "node scripts/send-confirmations.mjs",
     "list:send-update": "node scripts/send-update-email.mjs",
-    "list:update-blocklist": "node scripts/update-blocklist.mjs"
+    "list:update-blocklist": "node scripts/update-blocklist.mjs",
+    "db:migrate": "node scripts/migrate.mjs"
   },
   "dependencies": {
     "astro": "^6.0.0",

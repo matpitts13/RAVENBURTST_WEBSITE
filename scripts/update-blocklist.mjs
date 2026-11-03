@@ -36,8 +36,8 @@ const { BURNER_REASON, domainAndParents } = await import("../functions/_lib/bloc
 const list = new Set(domains);
 let allowed, rows;
 try {
-  allowed = new Set(d1Read("SELECT domain FROM allowed_domains").map((r) => r.domain.toLowerCase()));
-  rows = d1Read("SELECT id, email, status FROM subscribers WHERE block_reason IS NULL");
+  allowed = new Set((await d1Read("SELECT domain FROM allowed_domains")).map((r) => r.domain.toLowerCase()));
+  rows = await d1Read("SELECT id, email, status FROM subscribers WHERE block_reason IS NULL");
 } catch (err) {
   console.log(`Couldn't check existing subscribers (${err.message}). Is migrations/0003_blocking.sql applied, and wrangler logged in?`);
   process.exit(0);
@@ -51,7 +51,7 @@ if (!hits.length) {
 } else {
   for (const r of hits) console.log(`  ${r.email} (${r.status})`);
   if (apply) {
-    d1Write(
+    await d1Write(
       `UPDATE subscribers SET status = 'unsubscribed', unsubscribed_at = COALESCE(unsubscribed_at, datetime('now')),
          block_reason = '${BURNER_REASON}', blocked_at = datetime('now')
        WHERE block_reason IS NULL AND id IN (${hits.map((r) => Number(r.id)).join(", ")});`,
