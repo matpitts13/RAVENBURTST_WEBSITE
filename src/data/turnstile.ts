@@ -6,4 +6,4 @@
 //      (the widget's secret key)
 //   3. npm run deploy
 // See functions/_lib/turnstile.js.
-export const TURNSTILE_SITE_KEY = ''
+export const TURNSTILE_SITE_KEY = '0x4AAAAAAFyFA6cZ1aX6qD18'
