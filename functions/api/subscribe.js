@@ -4,6 +4,8 @@
 // page, so the form also works without JavaScript.
 import { EMAIL_RE, json, redirect, newToken, sha256Hex, sendConfirmation } from "../_lib/list.js";
 import { BURNER_REASON, blockReasonFor } from "../_lib/blocking.js";
+import { domainAcceptsMail } from "../_lib/mx.js";
+import { passesTurnstile } from "../_lib/turnstile.js";
 
 const MAX_ATTEMPTS_PER_HOUR = 10;
 const RESEND_COOLDOWN_MINUTES = 10;
@@ -14,7 +16,7 @@ export async function onRequestPost({ request, env, waitUntil }) {
   const reply = (ok, message, status = 200) =>
     wantsJson ? json({ ok, message }, status) : redirect(ok ? "/list/check-inbox" : "/list/problem");
 
-  let email = "", website = "", source = "";
+  let email = "", website = "", source = "", turnstileToken = "";
   try {
     const type = request.headers.get("Content-Type") || "";
     const body = type.includes("application/json") ? await request.json() : null;
@@ -23,6 +25,7 @@ export async function onRequestPost({ request, env, waitUntil }) {
     email = field("email");
     website = field("website");
     source = field("source");
+    turnstileToken = field("cf-turnstile-response"); // added to the form by the Turnstile widget
   } catch {
     return reply(false, "That didn’t look like a signup. Please try again.", 400);
   }
@@ -49,9 +52,14 @@ export async function onRequestPost({ request, env, waitUntil }) {
   }
   source = source.slice(0, 40).replace(/[^a-z0-9-]/gi, "") || "site";
 
+  const ip = request.headers.get("CF-Connecting-IP") || "unknown";
+  // The bot check (only once TURNSTILE_SECRET_KEY is set).
+  if (!(await passesTurnstile(env, turnstileToken, ip))) {
+    return reply(false, "Please complete the bot check on the form and try again.", 400);
+  }
+
   // Rate limit per network, stored only as a salted hash, per hour. IPv6
   // users get a whole /64 each, so limit by that prefix, not the address.
-  const ip = request.headers.get("CF-Connecting-IP") || "unknown";
   const network = ip.includes(":") ? ip.split(":").slice(0, 4).join(":") : ip;
   const ipHash = await sha256Hex(`${env.IP_SALT || "ravenburst-list"}:${network}`);
   const now = new Date();
@@ -92,6 +100,14 @@ export async function onRequestPost({ request, env, waitUntil }) {
         : "That email address can’t join the list.",
       400,
     );
+  }
+
+  // A domain that can't receive email (doesn't exist, or says it takes no
+  // mail): a typo or a made-up address. Nothing is stored or sent. Checked
+  // for every address, listed or not, so the DNS lookup's time can't tell
+  // which addresses are already on the list.
+  if ((await domainAcceptsMail(email.slice(email.lastIndexOf("@") + 1))) === false) {
+    return reply(false, "That email domain can’t receive email. Please check the address.", 400);
   }
 
   // Blocked by hand (the address, not its domain): nothing changes and

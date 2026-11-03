@@ -8,3 +8,6 @@ dist
 # Wrangler local state
 .wrangler/
 list-export-*.csv
+
+# Local secrets for wrangler pages dev
+.dev.vars
